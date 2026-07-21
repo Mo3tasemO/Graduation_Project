@@ -5,9 +5,9 @@
 	(uuid "e6453ed3-bf8a-4c30-a495-0dde09964f8c")
 	(paper "A3")
 	(title_block
-		(title "MindSpeak")
+		(title "MindSpeak_(Main_Board)")
 		(date "2026-07-14")
-		(rev "1")
+		(rev "2")
 		(company "Mo3_Tech")
 	)
 	(lib_symbols
@@ -19465,7 +19465,7 @@
 			(uuid "581a20cc-5cba-4149-8bc5-a7d520603207")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR025")
 					(unit 1)
@@ -19566,7 +19566,7 @@
 			(uuid "92fdb687-9cff-47dc-bbca-729e89ee1b09")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C37")
 					(unit 1)
@@ -19773,7 +19773,7 @@
 			(uuid "b95cf95a-0577-449e-af96-1926296e08bb")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "RN6")
 					(unit 1)
@@ -20011,7 +20011,7 @@
 			(uuid "8cbe28e3-25d6-447f-af8e-ba57cef5872e")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "D6")
 					(unit 1)
@@ -20128,7 +20128,7 @@
 			(uuid "4d5f8f76-3096-4c17-b906-0ed15bc0cb2f")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C8")
 					(unit 1)
@@ -20280,7 +20280,7 @@
 			(uuid "66620e62-bd42-43c7-9c1f-4a50c8e50b7c")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "J8")
 					(unit 1)
@@ -20357,7 +20357,7 @@
 			(uuid "ee6a23d1-4c6d-45dd-bf40-2123ba4f47ef")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR045")
 					(unit 1)
@@ -20474,7 +20474,7 @@
 			(uuid "dc68e290-21c7-40a8-836e-2a1e195945a8")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C33")
 					(unit 1)
@@ -20552,7 +20552,7 @@
 			(uuid "022cbceb-870a-4ae9-b073-49c778a6f1dd")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR02")
 					(unit 1)
@@ -20653,7 +20653,7 @@
 			(uuid "b6261888-2217-431d-bcdc-1a0a15f64b1a")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C36")
 					(unit 1)
@@ -20769,7 +20769,7 @@
 			(uuid "db014535-5735-4128-a876-7911a6eb25b9")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C27")
 					(unit 1)
@@ -20847,7 +20847,7 @@
 			(uuid "262055f6-4cb8-4249-b3c9-aa43848a4aed")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR017")
 					(unit 1)
@@ -20925,7 +20925,7 @@
 			(uuid "c4012243-9148-4b11-8f35-d074a4a9eaf3")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR010")
 					(unit 1)
@@ -21041,7 +21041,7 @@
 			(uuid "4b4ee614-1185-417f-897c-543fc1e67b96")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C23")
 					(unit 1)
@@ -21118,7 +21118,7 @@
 			(uuid "ffe6262e-36c7-4e6e-834e-a435b124bfea")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR044")
 					(unit 1)
@@ -21386,7 +21386,7 @@
 			(uuid "f9dc9284-c45d-4dc3-8400-8a0aa79d8e31")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "U8")
 					(unit 1)
@@ -21463,7 +21463,7 @@
 			(uuid "964d5a9c-0063-4ce5-8181-a3d33c994c14")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR043")
 					(unit 1)
@@ -21549,7 +21549,7 @@
 			(uuid "35b50834-2e77-49b9-8bb7-f28efa036d13")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "J7")
 					(unit 1)
@@ -21665,7 +21665,7 @@
 			(uuid "b028bec2-9a90-4a2e-9f61-57d0848c7786")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C25")
 					(unit 1)
@@ -21743,7 +21743,7 @@
 			(uuid "d2e3c47c-a405-435a-824b-dc74cb3e9841")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR07")
 					(unit 1)
@@ -21859,7 +21859,7 @@
 			(uuid "37dafcba-bdba-4d07-890d-3de3b6bc3806")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C6")
 					(unit 1)
@@ -21937,7 +21937,7 @@
 			(uuid "018ef6b0-c0f2-426f-b4de-bd3728301a86")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR036")
 					(unit 1)
@@ -22014,7 +22014,7 @@
 			(uuid "2d58dbc2-62f0-48cc-b5e3-bd45c9bdb42c")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR053")
 					(unit 1)
@@ -22092,7 +22092,7 @@
 			(uuid "327907c9-b296-4e87-8bbc-9310acfadae7")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR019")
 					(unit 1)
@@ -22169,7 +22169,7 @@
 			(uuid "2801191c-0467-49ba-9de4-b1c75738c630")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR046")
 					(unit 1)
@@ -22407,7 +22407,7 @@
 			(uuid "36d432a2-b9fb-4c49-8e59-1f7dc6dbac94")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "D2")
 					(unit 1)
@@ -22524,7 +22524,7 @@
 			(uuid "d3e5902f-5890-40de-a6b9-896645c72e37")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C2")
 					(unit 1)
@@ -22601,7 +22601,7 @@
 			(uuid "99bcaa3c-4ac3-4700-a57b-896586df6e35")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR037")
 					(unit 1)
@@ -22702,7 +22702,7 @@
 			(uuid "5acfebab-de85-401c-8f1a-025ed3061ca4")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C38")
 					(unit 1)
@@ -22826,7 +22826,7 @@
 			(uuid "e22527d3-39c7-45bb-a42a-52f28dce6508")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "J1")
 					(unit 1)
@@ -22903,7 +22903,7 @@
 			(uuid "95aab448-d995-4a46-ad01-794fa4600c52")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR035")
 					(unit 1)
@@ -23033,7 +23033,7 @@
 			(uuid "b905824a-c59b-4ecc-af04-0a9b8298ef3a")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "U2")
 					(unit 1)
@@ -23150,7 +23150,7 @@
 			(uuid "ae3ca1ff-cf6f-4a54-811e-f7b6e30437ad")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C22")
 					(unit 1)
@@ -23227,7 +23227,7 @@
 			(uuid "460f57b7-0f70-4d27-ba65-deef492be8de")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR051")
 					(unit 1)
@@ -23325,7 +23325,7 @@
 			(uuid "a88f9b4a-7591-4db9-9482-c4b6251e18bf")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "J4")
 					(unit 1)
@@ -23403,7 +23403,7 @@
 			(uuid "7fa70739-c218-4236-8eda-04bfb0ce68d8")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#FLG01")
 					(unit 1)
@@ -23481,7 +23481,7 @@
 			(uuid "d6b2483c-f763-408e-b32b-5f01b41ff010")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR027")
 					(unit 1)
@@ -23608,7 +23608,7 @@
 			(uuid "294612fb-8656-445f-b63a-ada5536a1689")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "U6")
 					(unit 1)
@@ -23685,7 +23685,7 @@
 			(uuid "01ead553-7aaa-49fe-9227-db3fca425966")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR047")
 					(unit 1)
@@ -23771,7 +23771,7 @@
 			(uuid "3996833c-e6ed-4db7-b0ad-a3b59c76c197")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "J6")
 					(unit 1)
@@ -23861,7 +23861,7 @@
 			(uuid "bc15be0d-6af6-4766-90d9-862377d542b9")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "U5")
 					(unit 1)
@@ -23951,7 +23951,7 @@
 			(uuid "53162d39-2622-4473-99ed-78c779e9f9a3")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "U4")
 					(unit 1)
@@ -24029,7 +24029,7 @@
 			(uuid "0ff8b59e-a139-4bcb-8755-3e7b3b3e01f5")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR011")
 					(unit 1)
@@ -24145,7 +24145,7 @@
 			(uuid "e6be80b3-bb1b-4098-98e8-8fc41766e4e2")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C7")
 					(unit 1)
@@ -24262,7 +24262,7 @@
 			(uuid "4629fdae-36fe-4239-a7ee-2cfe323ab298")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C29")
 					(unit 1)
@@ -24340,7 +24340,7 @@
 			(uuid "78f8a0e3-2a67-4768-8710-305077448077")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR031")
 					(unit 1)
@@ -24456,7 +24456,7 @@
 			(uuid "6d02f143-7e98-4896-87a0-c1fc644b72d1")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C30")
 					(unit 1)
@@ -24534,7 +24534,7 @@
 			(uuid "4e7b5232-1362-4811-900c-b5a55fadb2ed")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR014")
 					(unit 1)
@@ -24627,7 +24627,7 @@
 			(uuid "03bf505c-9b59-42cf-8edc-5ebf5d507ce2")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "R1")
 					(unit 1)
@@ -24704,7 +24704,7 @@
 			(uuid "41f5cef8-3340-453b-9eb6-eb2f7f71cb68")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR034")
 					(unit 1)
@@ -24782,7 +24782,7 @@
 			(uuid "11fda684-8d9f-4c99-8f13-1e17b3806ee7")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR023")
 					(unit 1)
@@ -24860,7 +24860,7 @@
 			(uuid "89b67759-e2da-4d44-a088-712d2ead1be1")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR038")
 					(unit 1)
@@ -24977,7 +24977,7 @@
 			(uuid "8d1a8126-ba0f-4993-a816-634271e12188")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C19")
 					(unit 1)
@@ -25055,7 +25055,7 @@
 			(uuid "835d76f5-e2b8-4c22-a8f1-c507345d6443")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR04")
 					(unit 1)
@@ -25172,7 +25172,7 @@
 			(uuid "4d3e09a4-9615-4bad-8624-1354bc574ae4")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C26")
 					(unit 1)
@@ -25416,7 +25416,7 @@
 			(uuid "9b5d80f8-23e0-4f3a-ad6c-07165a5a2754")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "U10")
 					(unit 1)
@@ -25505,7 +25505,7 @@
 			(uuid "51f4dd5d-b395-452d-a7f7-f4b469d1fbc1")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "U9")
 					(unit 1)
@@ -25622,7 +25622,7 @@
 			(uuid "6b9584da-fd90-46ad-93f6-4f255d0f4ce1")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C18")
 					(unit 1)
@@ -25700,7 +25700,7 @@
 			(uuid "42499b71-5020-4c76-982e-3b9f6401e902")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR021")
 					(unit 1)
@@ -25778,7 +25778,7 @@
 			(uuid "3e18ce21-e7d5-4ff7-b598-4590dd7ab042")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR024")
 					(unit 1)
@@ -25855,7 +25855,7 @@
 			(uuid "8a4d13b7-0a30-47f1-9260-8ac0dc15f544")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR041")
 					(unit 1)
@@ -25972,7 +25972,7 @@
 			(uuid "7cf31384-ca1e-4595-b896-bbd09f9dd4e5")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C14")
 					(unit 1)
@@ -26049,7 +26049,7 @@
 			(uuid "8f8b8cf7-c096-42f4-83af-13af0914a07c")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR09")
 					(unit 1)
@@ -26166,7 +26166,7 @@
 			(uuid "b5feaaa2-9c1d-403f-8a5c-f22fd92a9c0d")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C32")
 					(unit 1)
@@ -26243,7 +26243,7 @@
 			(uuid "ccef6176-a46f-48d0-8a57-0ce233833bb3")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR028")
 					(unit 1)
@@ -26360,7 +26360,7 @@
 			(uuid "7deb4ff5-8695-414d-92af-80d23db41521")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C12")
 					(unit 1)
@@ -26438,7 +26438,7 @@
 			(uuid "b7693a37-f189-4f3e-849b-4fe2a971c395")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR040")
 					(unit 1)
@@ -26554,7 +26554,7 @@
 			(uuid "c55aa2d3-decf-40b4-8955-664c3c5a737f")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C10")
 					(unit 1)
@@ -26671,7 +26671,7 @@
 			(uuid "01cef9c2-6572-49b0-a629-2749d865d5fd")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C5")
 					(unit 1)
@@ -26909,7 +26909,7 @@
 			(uuid "4b31f686-e11b-4b7a-8971-95570bff4a93")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "D3")
 					(unit 1)
@@ -26991,7 +26991,7 @@
 			(uuid "4e2d4396-562f-4afd-bfef-e79a3fa08996")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "U1")
 					(unit 1)
@@ -27107,7 +27107,7 @@
 			(uuid "24f5e665-ba9a-4e0a-9b4f-12d08efbd927")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C9")
 					(unit 1)
@@ -27223,7 +27223,7 @@
 			(uuid "62cfc20d-0f24-4c1b-bc83-3d1d42b418d8")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C20")
 					(unit 1)
@@ -27301,7 +27301,7 @@
 			(uuid "0e97ca4f-9a1c-4174-8994-bfebbd97b1c9")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR08")
 					(unit 1)
@@ -27378,7 +27378,7 @@
 			(uuid "e958cb24-65d0-44ba-9c8d-61bfebd7b5b6")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR054")
 					(unit 1)
@@ -27616,7 +27616,7 @@
 			(uuid "55c4542a-6073-4dad-a36e-54e2287ad1b4")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "D1")
 					(unit 1)
@@ -27694,7 +27694,7 @@
 			(uuid "1794fbe6-d2eb-48e1-bb04-fa4f91a40424")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR020")
 					(unit 1)
@@ -27772,7 +27772,7 @@
 			(uuid "1788b7bc-f795-4f0c-ae22-7a2a664e129d")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR018")
 					(unit 1)
@@ -28010,7 +28010,7 @@
 			(uuid "d69bf36a-7a94-47ea-8859-bcbbf1ac637d")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "D4")
 					(unit 1)
@@ -28087,7 +28087,7 @@
 			(uuid "a8a9389f-54fe-4a67-ab3d-77ea4de82c88")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR042")
 					(unit 1)
@@ -28165,7 +28165,7 @@
 			(uuid "70c06c2b-a69a-4478-9472-34e2a15e9ed0")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR015")
 					(unit 1)
@@ -28282,7 +28282,7 @@
 			(uuid "9483a237-c344-453a-912a-6eea19ed6d48")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C35")
 					(unit 1)
@@ -28399,7 +28399,7 @@
 			(uuid "e34af56c-2f88-43c6-a38e-7bce1f68bda2")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C15")
 					(unit 1)
@@ -28516,7 +28516,7 @@
 			(uuid "c038932f-a15f-4e64-ac3d-f12d7db6ec7a")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C16")
 					(unit 1)
@@ -28594,7 +28594,7 @@
 			(uuid "27feaa90-8973-4429-b1af-41ee26e1c382")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR026")
 					(unit 1)
@@ -28671,7 +28671,7 @@
 			(uuid "2e617a41-fa6c-46e9-a87c-6a422271a4d2")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR052")
 					(unit 1)
@@ -28788,7 +28788,7 @@
 			(uuid "ae3d3f12-e2f4-4670-9b2e-8e23e2d40305")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C28")
 					(unit 1)
@@ -28905,7 +28905,7 @@
 			(uuid "8715e691-baf2-4225-8e7c-8b54c473d7ab")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C1")
 					(unit 1)
@@ -29112,7 +29112,7 @@
 			(uuid "d7e8e7de-5214-4e04-9514-1243810080e8")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "RN4")
 					(unit 1)
@@ -29190,7 +29190,7 @@
 			(uuid "cb6da3a0-a563-44a7-bcce-2d77e7846112")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR032")
 					(unit 1)
@@ -29307,7 +29307,7 @@
 			(uuid "293fe7d1-67cd-4ef3-ae00-e7b51876077f")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C17")
 					(unit 1)
@@ -29514,7 +29514,7 @@
 			(uuid "ffe0d256-2f4a-4666-b4ee-854554f3eba1")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "RN5")
 					(unit 1)
@@ -29591,7 +29591,7 @@
 			(uuid "23364c6c-f08a-4412-b012-b9afb1da6980")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR048")
 					(unit 1)
@@ -29668,7 +29668,7 @@
 			(uuid "5bc94554-6f81-46db-930d-74a840083ad8")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR029")
 					(unit 1)
@@ -29785,7 +29785,7 @@
 			(uuid "bd0380e2-92e2-41c8-9bd8-4bac7548fb36")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C31")
 					(unit 1)
@@ -29902,7 +29902,7 @@
 			(uuid "771e622a-59c1-4f90-bb97-6b2e90aeb84c")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C13")
 					(unit 1)
@@ -29980,7 +29980,7 @@
 			(uuid "1ed255dc-a43a-4f1f-afbe-fab255a7c677")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR030")
 					(unit 1)
@@ -30058,7 +30058,7 @@
 			(uuid "feb63319-0911-468b-a0d9-a19a113d55f2")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR012")
 					(unit 1)
@@ -30174,7 +30174,7 @@
 			(uuid "08ccbe32-34f9-459f-89fb-9d82c2d52092")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C11")
 					(unit 1)
@@ -30252,7 +30252,7 @@
 			(uuid "c882a0a8-3bc8-445b-8867-46fd1fb42d73")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR06")
 					(unit 1)
@@ -30329,7 +30329,7 @@
 			(uuid "e4a77efc-6a9b-47b1-abee-5b22cfdcb570")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR055")
 					(unit 1)
@@ -30406,7 +30406,7 @@
 			(uuid "c7a4d2f4-1c38-4e48-b4ea-eb690ad132dc")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR050")
 					(unit 1)
@@ -30484,7 +30484,7 @@
 			(uuid "fb34e7d1-7769-4991-a3a5-3fa20ba3c695")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR022")
 					(unit 1)
@@ -30561,7 +30561,7 @@
 			(uuid "2b4744ba-07c7-4471-87a4-d33af3e6ed80")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR049")
 					(unit 1)
@@ -30638,7 +30638,7 @@
 			(uuid "704ab5ee-fb29-4d75-8ebc-43d2fab5dd23")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR033")
 					(unit 1)
@@ -30876,7 +30876,7 @@
 			(uuid "c9c7e9de-3260-464f-bee5-07998a638c8e")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "D5")
 					(unit 1)
@@ -30956,7 +30956,7 @@
 			(uuid "e92b554a-063c-411c-9af3-0372e6d1b767")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "J5")
 					(unit 1)
@@ -31034,7 +31034,7 @@
 			(uuid "2734b580-3947-42c1-9588-4c073295a820")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR016")
 					(unit 1)
@@ -31112,7 +31112,7 @@
 			(uuid "c37c4768-a415-495d-a5fc-13a7cdfe7251")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR013")
 					(unit 1)
@@ -31319,7 +31319,7 @@
 			(uuid "31209c30-8848-45e9-8487-bb77635ecb0c")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "RN3")
 					(unit 1)
@@ -31396,7 +31396,7 @@
 			(uuid "9e3a5fe3-ae46-4769-b1eb-8f854c91f31e")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR039")
 					(unit 1)
@@ -31497,7 +31497,7 @@
 			(uuid "7d0ef12d-f4aa-4b94-b685-9ce5a29dead2")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C39")
 					(unit 1)
@@ -31613,7 +31613,7 @@
 			(uuid "eb0bc8a2-7db8-452f-89ca-e5c115f1d8c1")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C24")
 					(unit 1)
@@ -31793,7 +31793,7 @@
 			(uuid "162fbc12-241a-4df4-9689-70130a7f81b4")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "P1")
 					(unit 1)
@@ -31909,7 +31909,7 @@
 			(uuid "4a15bd32-3795-4ac5-a63b-5f22015d9dd8")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C21")
 					(unit 1)
@@ -32116,7 +32116,7 @@
 			(uuid "5268bb1e-6f83-47b9-aca4-7dab13a9f1da")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "RN2")
 					(unit 1)
@@ -32194,7 +32194,7 @@
 			(uuid "43dfe981-5860-4a22-a1a6-8149c48be8a8")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR05")
 					(unit 1)
@@ -32295,7 +32295,7 @@
 			(uuid "d210860f-d3e8-49d1-b49d-976b6baf3879")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C4")
 					(unit 1)
@@ -32412,7 +32412,7 @@
 			(uuid "5dbd0cf9-1b95-4a8c-a6b8-617674ca1514")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "C34")
 					(unit 1)
@@ -32587,7 +32587,7 @@
 			(uuid "4dd8db1c-742c-4657-a1bf-e1dda7fe93bb")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "U7")
 					(unit 1)
@@ -33007,7 +33007,7 @@
 			(uuid "cbc50ae7-b669-4da0-b620-aa3f2f850bf7")
 		)
 		(instances
-			(project "Mind_Speak"
+			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "U3")
 					(unit 1)
