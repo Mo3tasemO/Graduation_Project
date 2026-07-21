@@ -8,7 +8,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": "1"
+      "sch_revision": "2"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -256,7 +256,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "Mind_Speak.kicad_pro",
+    "filename": "Mind_Speak_(Main_Board).kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -411,18 +411,18 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "Mind_Speak.kicad_sch",
-        "name": "Mind_Speak",
+        "filename": "Mind_Speak_(Main_Board).kicad_sch",
+        "name": "Mind_Speak_(Main_Board)",
         "uuid": "e6453ed3-bf8a-4c30-a495-0dde09964f8c"
       }
     ],
-    "used_designators": "U3,U9-10,C3-4,C33-39,J2-8,RN1-6,#PWR40-55,D1-6",
+    "used_designators": "",
     "variants": []
   },
   "sheets": [
     [
       "e6453ed3-bf8a-4c30-a495-0dde09964f8c",
-      "Mind_Speak"
+      "Mind_Speak_(Main_Board)"
     ]
   ],
   "text_variables": {},
