@@ -8893,285 +8893,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "PCM_SparkFun-Switch:SPDT_Slide_SMD_6.7x2.6mm"
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "SW"
-				(at 0 4.318 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SPDT_Slide_SMD_6.7x2.6mm"
-				(at 0 -5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "PCM_SparkFun-Switch:Slide_SPST_SMD_6.7x2.6mm"
-				(at 0 -7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.nidec-components.com/e/catalog/switch/cus.pdf"
-				(at 0 -10.16 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Switch, single pole double throw"
-				(at 0 -17.78 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "PROD_ID" "SWCH-10651"
-				(at 0 -12.7 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Mrg Part#" "CUS-12B"
-				(at 0 -15.24 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "SparkFun switch single-pole double-throw spdt ON-ON"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "SPDT_Slide_SMD_6.7x2.6mm_0_0"
-				(circle
-					(center -2.032 0)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.032 -2.54)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "SPDT_Slide_SMD_6.7x2.6mm_0_1"
-				(polyline
-					(pts
-						(xy -1.524 0.254) (xy 1.651 2.286)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.032 2.54)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "SPDT_Slide_SMD_6.7x2.6mm_1_1"
-				(pin passive line
-					(at 5.08 2.54 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 -2.54 180)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 15.24 2.54 180)
-					(length 2.54)
-					(hide yes)
-					(name "MT1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "MT1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 15.24 0 180)
-					(length 2.54)
-					(hide yes)
-					(name "MT2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "MT2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 15.24 -2.54 180)
-					(length 2.54)
-					(hide yes)
-					(name "MT3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "MT3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 15.24 -5.08 180)
-					(length 2.54)
-					(hide yes)
-					(name "MT4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "MT4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "PIC32MX250F128B-I_SS:PIC32MX250F128B-I_SS"
 			(pin_names
 				(offset 1.016)
@@ -10887,6 +10608,406 @@
 						)
 					)
 					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "SSSS811101:SSSS811101"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "S"
+				(at -5.08 5.715 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "SSSS811101"
+				(at -5.08 -10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "SSSS811101:SW_SSSS811101"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Switch Slide SP Side Slide 0.3A 5VDC 10000Cycles Gull Wing SMD T/R"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "MF" "ALPS"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "MAXIMUM_PACKAGE_HEIGHT" "1.60 mm"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "Package" "None"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "Price" "None"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "Check_prices" "https://www.snapeda.com/parts/SSSS811101/ALPS/view-part/?ref=eda"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "STANDARD" "Manufacturer Recommendations"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "PARTREV" "N/A"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "SnapEDA_Link" "https://www.snapeda.com/parts/SSSS811101/ALPS/view-part/?ref=snap"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "MP" "SSSS811101"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "Availability" "In Stock"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "MANUFACTURER" "ALPS"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(symbol "SSSS811101_0_0"
+				(rectangle
+					(start -5.08 -7.62)
+					(end 5.08 5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -4.445) (xy 0 -5.715) (xy -1.27 -5.715) (xy -1.27 0.635) (xy 0 0.635) (xy 0 -0.635) (xy -0.635 -0.635)
+						(xy -0.635 -4.445) (xy 0 -4.445)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.905) (xy 1.27 3.175) (xy 0 2.54) (xy 1.27 1.905)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -0.635) (xy 1.27 0.635) (xy 0 0) (xy 1.27 -0.635)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -3.175) (xy 1.27 -1.905) (xy 0 -2.54) (xy 1.27 -3.175)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -5.715) (xy 1.27 -4.445) (xy 0 -5.08) (xy 1.27 -5.715)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 3.81 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -2.54) (xy 1.27 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 2.54) (xy 1.27 2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -2.54) (xy 3.81 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -5.08) (xy 1.27 -5.08)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 10.16 2.54 180)
+					(length 5.08)
+					(name ""
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -2.54 180)
+					(length 5.08)
+					(name ""
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -5.08 180)
+					(length 5.08)
+					(name ""
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -13442,7 +13563,7 @@
 	)
 	(text "NINA_RX"
 		(exclude_from_sim no)
-		(at 316.992 71.882 0)
+		(at 316.992 74.422 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -13546,7 +13667,7 @@
 	)
 	(text "NINA_TX"
 		(exclude_from_sim no)
-		(at 316.992 69.088 0)
+		(at 316.992 71.628 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -13556,7 +13677,7 @@
 	)
 	(text "GPIO_PINS"
 		(exclude_from_sim no)
-		(at 398.272 69.342 0)
+		(at 398.272 71.882 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -13597,6 +13718,12 @@
 		(uuid "037dc3c9-68ee-4e14-aada-c07563748848")
 	)
 	(junction
+		(at 383.54 22.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "03834fe9-a475-4db7-a505-19066d5b304e")
+	)
+	(junction
 		(at 162.56 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -13615,7 +13742,7 @@
 		(uuid "10349aae-9ffb-4909-be0e-ab1d1f60199e")
 	)
 	(junction
-		(at 312.42 30.48)
+		(at 312.42 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "12d84aaf-8a3b-4aea-9ed9-3e795c1f33db")
@@ -14101,7 +14228,7 @@
 		(uuid "a8f055fe-4589-4889-ab9b-c0fdcc357848")
 	)
 	(junction
-		(at 393.7 107.95)
+		(at 393.7 110.49)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a8f65f7a-c053-4f94-be38-7af4382efa65")
@@ -14143,7 +14270,7 @@
 		(uuid "b5787093-2b22-4c2d-a8d0-131905b81d45")
 	)
 	(junction
-		(at 327.66 41.91)
+		(at 327.66 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b5cf0df5-fa67-49a5-bb60-5bb45118346b")
@@ -14161,7 +14288,7 @@
 		(uuid "b8e239dc-e93f-4f4f-8a2f-61cf5a97639a")
 	)
 	(junction
-		(at 393.7 30.48)
+		(at 393.7 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b913799a-c46e-490b-94d0-49d9d2ae1e06")
@@ -14251,19 +14378,13 @@
 		(uuid "e27fb4df-a409-4077-9f31-885bd7da96c5")
 	)
 	(junction
-		(at 381 21.59)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e40cd4c8-7d26-415c-9a54-c3df15c00b51")
-	)
-	(junction
 		(at 204.47 166.37)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e4779449-8f58-4bc7-b1df-832ae89b0c67")
 	)
 	(junction
-		(at 323.85 30.48)
+		(at 323.85 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e5206cd1-b490-4ace-8f39-7e8412b9ab96")
@@ -14323,7 +14444,7 @@
 		(uuid "fb6e3d3a-5d28-4bab-8444-14a480eb5686")
 	)
 	(no_connect
-		(at 391.16 77.47)
+		(at 391.16 80.01)
 		(uuid "0468052e-1461-4b0f-bc02-f62b2929e6ab")
 	)
 	(no_connect
@@ -14331,11 +14452,11 @@
 		(uuid "057bfa9b-1b88-4858-98dd-6ba422ee396d")
 	)
 	(no_connect
-		(at 391.16 90.17)
+		(at 391.16 92.71)
 		(uuid "0c7f8d3f-0ca2-465f-b3f7-9440f8736df1")
 	)
 	(no_connect
-		(at 391.16 100.33)
+		(at 391.16 102.87)
 		(uuid "122786aa-ee1d-410a-9aeb-328bb483b16e")
 	)
 	(no_connect
@@ -14343,11 +14464,11 @@
 		(uuid "15ecd6bd-4942-4cfd-8390-ffa81816485b")
 	)
 	(no_connect
-		(at 330.2 57.15)
+		(at 330.2 59.69)
 		(uuid "18513890-4070-4217-be33-93496de96008")
 	)
 	(no_connect
-		(at 330.2 36.83)
+		(at 330.2 39.37)
 		(uuid "21f1ad65-ca16-41ff-8288-7a6f807ede4e")
 	)
 	(no_connect
@@ -14363,23 +14484,23 @@
 		(uuid "2e669089-8795-4c0d-b85c-9067510b7d8b")
 	)
 	(no_connect
-		(at 391.16 52.07)
+		(at 391.16 54.61)
 		(uuid "3432901a-1f3a-4614-9514-4e1e27b3f58f")
 	)
 	(no_connect
-		(at 391.16 74.93)
+		(at 391.16 77.47)
 		(uuid "3ad7e70e-38b9-47c1-827b-0906f40198fe")
 	)
 	(no_connect
-		(at 391.16 54.61)
+		(at 391.16 57.15)
 		(uuid "3c5f2828-a775-4ea9-afef-56676dca81d8")
 	)
 	(no_connect
-		(at 391.16 49.53)
+		(at 391.16 52.07)
 		(uuid "47627637-ac56-4c2f-916c-e3c045c26a75")
 	)
 	(no_connect
-		(at 391.16 97.79)
+		(at 391.16 100.33)
 		(uuid "47c4be94-ae69-49e7-80b7-4f9c6ac927ba")
 	)
 	(no_connect
@@ -14391,7 +14512,7 @@
 		(uuid "53453689-f799-4613-9e8b-b14e6679309c")
 	)
 	(no_connect
-		(at 330.2 80.01)
+		(at 330.2 82.55)
 		(uuid "613428af-22d5-4d51-bc1d-2c9bb854a823")
 	)
 	(no_connect
@@ -14399,11 +14520,11 @@
 		(uuid "6205ef06-b295-4b81-b684-c7033bcec6f0")
 	)
 	(no_connect
-		(at 330.2 67.31)
+		(at 330.2 69.85)
 		(uuid "65cdbfa5-e81f-4465-ad39-9769061d208f")
 	)
 	(no_connect
-		(at 391.16 41.91)
+		(at 391.16 44.45)
 		(uuid "67ff3277-b384-416a-99ac-0a0bd3b653bf")
 	)
 	(no_connect
@@ -14411,15 +14532,15 @@
 		(uuid "697c8511-a5c3-4270-abcf-70311eede6fc")
 	)
 	(no_connect
-		(at 330.2 54.61)
+		(at 330.2 57.15)
 		(uuid "6be0433c-b27d-4e18-b6b7-a69368e3bf07")
 	)
 	(no_connect
-		(at 330.2 62.23)
+		(at 330.2 64.77)
 		(uuid "73078992-14d7-4e3a-8204-fce844d3f584")
 	)
 	(no_connect
-		(at 391.16 87.63)
+		(at 391.16 90.17)
 		(uuid "73381f4e-b6ed-4207-965a-827c76be1710")
 	)
 	(no_connect
@@ -14427,15 +14548,15 @@
 		(uuid "74073e14-cb0d-42c4-b183-e4fcdaa25c4d")
 	)
 	(no_connect
-		(at 391.16 85.09)
+		(at 391.16 87.63)
 		(uuid "7c0a6d25-66f4-42fd-a68c-1f1260f3c754")
 	)
 	(no_connect
-		(at 330.2 74.93)
+		(at 330.2 77.47)
 		(uuid "7d8223d0-8d18-404c-b389-581fdcb63c82")
 	)
 	(no_connect
-		(at 391.16 44.45)
+		(at 391.16 46.99)
 		(uuid "8aa3863f-24f3-41aa-9832-b2599865f14a")
 	)
 	(no_connect
@@ -14447,27 +14568,27 @@
 		(uuid "973eda58-74e0-4f71-b572-068dae3ce1f6")
 	)
 	(no_connect
-		(at 391.16 82.55)
+		(at 391.16 85.09)
 		(uuid "9ce698b6-8078-46b0-a210-f48a072ff919")
 	)
 	(no_connect
-		(at 330.2 87.63)
+		(at 330.2 90.17)
 		(uuid "9d2d5c9f-32d6-4f28-801d-39d9f28bcef8")
 	)
 	(no_connect
-		(at 391.16 80.01)
+		(at 391.16 82.55)
 		(uuid "a96e5537-33aa-4da8-9aa4-510938bcc23f")
 	)
 	(no_connect
-		(at 330.2 95.25)
+		(at 330.2 97.79)
 		(uuid "b4385ec1-821f-4447-862b-382a8949ab18")
 	)
 	(no_connect
-		(at 330.2 82.55)
+		(at 330.2 85.09)
 		(uuid "be2ae244-f39a-4ca7-afde-114067945f5b")
 	)
 	(no_connect
-		(at 391.16 95.25)
+		(at 391.16 97.79)
 		(uuid "c0bde6a0-a2ce-4c2c-83d2-55dd0d3b9e71")
 	)
 	(no_connect
@@ -14483,7 +14604,7 @@
 		(uuid "c6542ae1-b162-44bb-88c7-d5a61b8f7a1d")
 	)
 	(no_connect
-		(at 391.16 92.71)
+		(at 391.16 95.25)
 		(uuid "c7ab180d-014d-4bd5-a84d-5b6a04e02959")
 	)
 	(no_connect
@@ -14495,7 +14616,7 @@
 		(uuid "ce3c047a-05fd-4cd0-88d9-e062cd2f6252")
 	)
 	(no_connect
-		(at 330.2 92.71)
+		(at 330.2 95.25)
 		(uuid "d05b7c1c-1a92-4c98-9466-75e4e598889e")
 	)
 	(no_connect
@@ -14507,27 +14628,27 @@
 		(uuid "dc20d547-34de-40bc-b553-b11972d3015a")
 	)
 	(no_connect
-		(at 330.2 90.17)
+		(at 330.2 92.71)
 		(uuid "dca7269f-010f-4049-a006-c45287934782")
 	)
 	(no_connect
-		(at 391.16 69.85)
+		(at 391.16 72.39)
 		(uuid "dd007bed-f9aa-469c-b499-4fed82b5cc37")
 	)
 	(no_connect
-		(at 391.16 46.99)
+		(at 391.16 49.53)
 		(uuid "e8a88c99-aa6c-452e-93d3-a607829a089c")
 	)
 	(no_connect
-		(at 391.16 36.83)
+		(at 391.16 39.37)
 		(uuid "ed21baf1-de70-4f5b-a6ec-76a90e010ab8")
 	)
 	(no_connect
-		(at 330.2 97.79)
+		(at 330.2 100.33)
 		(uuid "ef2bcac3-9a8e-4a8f-8c75-48ea381047d4")
 	)
 	(no_connect
-		(at 330.2 85.09)
+		(at 330.2 87.63)
 		(uuid "f0abd273-adf7-4a8f-aa9b-4d9c61a4173c")
 	)
 	(no_connect
@@ -14535,15 +14656,15 @@
 		(uuid "f3d97872-3246-4b1e-98d3-5d4998ad0008")
 	)
 	(no_connect
-		(at 330.2 100.33)
+		(at 330.2 102.87)
 		(uuid "fb10fbe1-91fe-4dfd-ab8e-beb7ffb6770f")
 	)
 	(no_connect
-		(at 391.16 72.39)
+		(at 391.16 74.93)
 		(uuid "ff3be500-facd-42bf-ad47-6d4390189a95")
 	)
 	(no_connect
-		(at 391.16 39.37)
+		(at 391.16 41.91)
 		(uuid "ffead815-7af8-4590-a846-b5fe5c2328d6")
 	)
 	(wire
@@ -14658,7 +14779,7 @@
 	)
 	(wire
 		(pts
-			(xy 391.16 62.23) (xy 396.24 62.23)
+			(xy 391.16 64.77) (xy 396.24 64.77)
 		)
 		(stroke
 			(width 0)
@@ -14928,7 +15049,7 @@
 	)
 	(wire
 		(pts
-			(xy 397.51 107.95) (xy 393.7 107.95)
+			(xy 397.51 110.49) (xy 393.7 110.49)
 		)
 		(stroke
 			(width 0)
@@ -15248,6 +15369,16 @@
 	)
 	(wire
 		(pts
+			(xy 381 22.86) (xy 383.54 22.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e885ad7-c8a4-4caf-bb11-b0563b2f835c")
+	)
+	(wire
+		(pts
 			(xy 248.92 50.8) (xy 260.35 50.8)
 		)
 		(stroke
@@ -15288,7 +15419,7 @@
 	)
 	(wire
 		(pts
-			(xy 313.69 29.21) (xy 312.42 29.21)
+			(xy 313.69 31.75) (xy 312.42 31.75)
 		)
 		(stroke
 			(width 0)
@@ -15318,7 +15449,7 @@
 	)
 	(wire
 		(pts
-			(xy 327.66 41.91) (xy 327.66 30.48)
+			(xy 327.66 44.45) (xy 327.66 33.02)
 		)
 		(stroke
 			(width 0)
@@ -15388,7 +15519,7 @@
 	)
 	(wire
 		(pts
-			(xy 391.16 64.77) (xy 396.24 64.77)
+			(xy 391.16 67.31) (xy 396.24 67.31)
 		)
 		(stroke
 			(width 0)
@@ -15418,7 +15549,7 @@
 	)
 	(wire
 		(pts
-			(xy 312.42 30.48) (xy 312.42 31.75)
+			(xy 312.42 33.02) (xy 312.42 34.29)
 		)
 		(stroke
 			(width 0)
@@ -15428,7 +15559,7 @@
 	)
 	(wire
 		(pts
-			(xy 391.16 67.31) (xy 396.24 67.31)
+			(xy 391.16 69.85) (xy 396.24 69.85)
 		)
 		(stroke
 			(width 0)
@@ -15528,7 +15659,7 @@
 	)
 	(wire
 		(pts
-			(xy 327.66 41.91) (xy 330.2 41.91)
+			(xy 327.66 44.45) (xy 330.2 44.45)
 		)
 		(stroke
 			(width 0)
@@ -15868,7 +15999,7 @@
 	)
 	(wire
 		(pts
-			(xy 311.15 30.48) (xy 311.15 35.56)
+			(xy 311.15 33.02) (xy 311.15 38.1)
 		)
 		(stroke
 			(width 0)
@@ -15898,7 +16029,7 @@
 	)
 	(wire
 		(pts
-			(xy 323.85 46.99) (xy 330.2 46.99)
+			(xy 323.85 49.53) (xy 330.2 49.53)
 		)
 		(stroke
 			(width 0)
@@ -16098,7 +16229,7 @@
 	)
 	(wire
 		(pts
-			(xy 391.16 105.41) (xy 393.7 105.41)
+			(xy 391.16 107.95) (xy 393.7 107.95)
 		)
 		(stroke
 			(width 0)
@@ -16318,7 +16449,7 @@
 	)
 	(wire
 		(pts
-			(xy 391.16 59.69) (xy 396.24 59.69)
+			(xy 391.16 62.23) (xy 396.24 62.23)
 		)
 		(stroke
 			(width 0)
@@ -16418,7 +16549,7 @@
 	)
 	(wire
 		(pts
-			(xy 393.7 30.48) (xy 393.7 31.75)
+			(xy 393.7 33.02) (xy 393.7 34.29)
 		)
 		(stroke
 			(width 0)
@@ -16458,7 +16589,7 @@
 	)
 	(wire
 		(pts
-			(xy 393.7 30.48) (xy 393.7 29.21)
+			(xy 393.7 33.02) (xy 393.7 31.75)
 		)
 		(stroke
 			(width 0)
@@ -16498,7 +16629,7 @@
 	)
 	(wire
 		(pts
-			(xy 321.31 72.39) (xy 330.2 72.39)
+			(xy 321.31 74.93) (xy 330.2 74.93)
 		)
 		(stroke
 			(width 0)
@@ -16508,7 +16639,7 @@
 	)
 	(wire
 		(pts
-			(xy 393.7 29.21) (xy 391.16 29.21)
+			(xy 393.7 31.75) (xy 391.16 31.75)
 		)
 		(stroke
 			(width 0)
@@ -16548,7 +16679,7 @@
 	)
 	(wire
 		(pts
-			(xy 393.7 105.41) (xy 393.7 107.95)
+			(xy 393.7 107.95) (xy 393.7 110.49)
 		)
 		(stroke
 			(width 0)
@@ -16918,7 +17049,7 @@
 	)
 	(wire
 		(pts
-			(xy 393.7 107.95) (xy 393.7 110.49)
+			(xy 393.7 110.49) (xy 393.7 113.03)
 		)
 		(stroke
 			(width 0)
@@ -16948,7 +17079,7 @@
 	)
 	(wire
 		(pts
-			(xy 391.16 107.95) (xy 393.7 107.95)
+			(xy 391.16 110.49) (xy 393.7 110.49)
 		)
 		(stroke
 			(width 0)
@@ -16958,7 +17089,7 @@
 	)
 	(wire
 		(pts
-			(xy 321.31 69.85) (xy 330.2 69.85)
+			(xy 321.31 72.39) (xy 330.2 72.39)
 		)
 		(stroke
 			(width 0)
@@ -17048,16 +17179,6 @@
 	)
 	(wire
 		(pts
-			(xy 378.46 21.59) (xy 381 21.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "69f13754-dc55-4438-88d6-4a1f1b8c01e2")
-	)
-	(wire
-		(pts
 			(xy 156.21 41.91) (xy 156.21 39.37)
 		)
 		(stroke
@@ -17075,16 +17196,6 @@
 			(type default)
 		)
 		(uuid "6b40efdf-38fb-403d-aed8-1167b1be7331")
-	)
-	(wire
-		(pts
-			(xy 381 21.59) (xy 384.81 21.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6b578877-10ea-4aba-aad3-93d797b686a0")
 	)
 	(wire
 		(pts
@@ -17118,7 +17229,7 @@
 	)
 	(wire
 		(pts
-			(xy 312.42 29.21) (xy 312.42 30.48)
+			(xy 312.42 31.75) (xy 312.42 33.02)
 		)
 		(stroke
 			(width 0)
@@ -17128,7 +17239,7 @@
 	)
 	(wire
 		(pts
-			(xy 391.16 57.15) (xy 396.24 57.15)
+			(xy 391.16 59.69) (xy 396.24 59.69)
 		)
 		(stroke
 			(width 0)
@@ -17175,16 +17286,6 @@
 			(type default)
 		)
 		(uuid "6fa89f1e-f244-4cc4-8d68-b8edc12ee8d5")
-	)
-	(wire
-		(pts
-			(xy 397.51 109.22) (xy 397.51 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "70b73cac-6e80-483c-94dc-634dec27cf67")
 	)
 	(wire
 		(pts
@@ -17295,6 +17396,16 @@
 			(type default)
 		)
 		(uuid "7639ac6f-33d0-4ffb-8201-917fa7b7d10e")
+	)
+	(wire
+		(pts
+			(xy 381 25.4) (xy 384.81 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7652d9c9-3dcb-4fe7-a33a-3578cadd9c87")
 	)
 	(polyline
 		(pts
@@ -17508,7 +17619,7 @@
 	)
 	(wire
 		(pts
-			(xy 323.85 29.21) (xy 323.85 30.48)
+			(xy 323.85 31.75) (xy 323.85 33.02)
 		)
 		(stroke
 			(width 0)
@@ -18208,7 +18319,7 @@
 	)
 	(wire
 		(pts
-			(xy 327.66 30.48) (xy 323.85 30.48)
+			(xy 327.66 33.02) (xy 323.85 33.02)
 		)
 		(stroke
 			(width 0)
@@ -18678,7 +18789,7 @@
 	)
 	(wire
 		(pts
-			(xy 311.15 30.48) (xy 312.42 30.48)
+			(xy 311.15 33.02) (xy 312.42 33.02)
 		)
 		(stroke
 			(width 0)
@@ -18928,7 +19039,7 @@
 	)
 	(wire
 		(pts
-			(xy 323.85 41.91) (xy 327.66 41.91)
+			(xy 323.85 44.45) (xy 327.66 44.45)
 		)
 		(stroke
 			(width 0)
@@ -19198,7 +19309,7 @@
 	)
 	(wire
 		(pts
-			(xy 393.7 110.49) (xy 391.16 110.49)
+			(xy 393.7 113.03) (xy 391.16 113.03)
 		)
 		(stroke
 			(width 0)
@@ -19288,7 +19399,7 @@
 	)
 	(polyline
 		(pts
-			(xy 408 114.56) (xy 408 252.96)
+			(xy 408 117.1) (xy 408 252.96)
 		)
 		(stroke
 			(width 0.5)
@@ -19348,7 +19459,7 @@
 	)
 	(wire
 		(pts
-			(xy 391.16 31.75) (xy 393.7 31.75)
+			(xy 391.16 34.29) (xy 393.7 34.29)
 		)
 		(stroke
 			(width 0)
@@ -19678,7 +19789,7 @@
 	)
 	(wire
 		(pts
-			(xy 312.42 31.75) (xy 313.69 31.75)
+			(xy 312.42 34.29) (xy 313.69 34.29)
 		)
 		(stroke
 			(width 0)
@@ -19758,7 +19869,7 @@
 	)
 	(wire
 		(pts
-			(xy 321.31 77.47) (xy 330.2 77.47)
+			(xy 321.31 80.01) (xy 330.2 80.01)
 		)
 		(stroke
 			(width 0)
@@ -19818,7 +19929,7 @@
 	)
 	(wire
 		(pts
-			(xy 323.85 49.53) (xy 330.2 49.53)
+			(xy 323.85 52.07) (xy 330.2 52.07)
 		)
 		(stroke
 			(width 0)
@@ -19828,7 +19939,7 @@
 	)
 	(wire
 		(pts
-			(xy 323.85 30.48) (xy 323.85 31.75)
+			(xy 323.85 33.02) (xy 323.85 34.29)
 		)
 		(stroke
 			(width 0)
@@ -19908,7 +20019,7 @@
 	)
 	(wire
 		(pts
-			(xy 393.7 30.48) (xy 394.97 30.48)
+			(xy 393.7 33.02) (xy 394.97 33.02)
 		)
 		(stroke
 			(width 0)
@@ -20035,6 +20146,16 @@
 			(type default)
 		)
 		(uuid "f9a11dd8-2f1d-4e75-a8be-3d64f3edbd37")
+	)
+	(wire
+		(pts
+			(xy 383.54 22.86) (xy 384.81 22.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9e1bd3c-3fd9-4ac0-9943-a265f76a466b")
 	)
 	(wire
 		(pts
@@ -20188,7 +20309,7 @@
 	)
 	(wire
 		(pts
-			(xy 394.97 19.05) (xy 405.13 19.05)
+			(xy 381 17.78) (xy 394.97 17.78)
 		)
 		(stroke
 			(width 0)
@@ -20303,7 +20424,7 @@
 		(uuid "3d77dfc6-55cd-436f-a5ca-79de8a3ca7fd")
 	)
 	(label "PGEC"
-		(at 321.31 77.47 0)
+		(at 321.31 80.01 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -20315,7 +20436,7 @@
 		(uuid "421e0438-d988-48e6-b279-67c098d1ca2a")
 	)
 	(label "RXD"
-		(at 321.31 69.85 0)
+		(at 321.31 72.39 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -20325,7 +20446,7 @@
 		(uuid "67d345d4-5b49-47bd-b35a-b47e82e3312d")
 	)
 	(label "TXD"
-		(at 321.31 72.39 0)
+		(at 321.31 74.93 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -20522,7 +20643,7 @@
 	)
 	(global_label "SWD_IO"
 		(shape input)
-		(at 323.85 49.53 180)
+		(at 323.85 52.07 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20532,7 +20653,7 @@
 		)
 		(uuid "05743205-e2af-4e05-a094-f25557d3daee")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 314.031 49.53 0)
+			(at 314.031 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21786,7 +21907,7 @@
 	)
 	(global_label "SWD_CLK"
 		(shape input)
-		(at 323.85 46.99 180)
+		(at 323.85 49.53 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21796,7 +21917,7 @@
 		)
 		(uuid "5ce2b11e-3eb8-4d94-959f-c7280198d856")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 312.3982 46.99 0)
+			(at 312.3982 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21965,7 +22086,7 @@
 	)
 	(global_label "NINA_VCC"
 		(shape input)
-		(at 394.97 24.13 0)
+		(at 384.81 25.4 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21975,7 +22096,7 @@
 		)
 		(uuid "687d6ad9-2a0b-4878-9b1a-defdd984ff99")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 406.9058 24.13 0)
+			(at 396.7458 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22275,7 +22396,7 @@
 	)
 	(global_label "NINA_RST"
 		(shape input)
-		(at 323.85 41.91 180)
+		(at 323.85 44.45 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -22285,7 +22406,7 @@
 		)
 		(uuid "81a74f12-3a76-44db-a451-0f25327f5cc0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 312.0957 41.91 0)
+			(at 312.0957 44.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23053,7 +23174,7 @@
 	)
 	(global_label "NINA_PWR"
 		(shape input)
-		(at 394.97 30.48 0)
+		(at 394.97 33.02 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23063,7 +23184,7 @@
 		)
 		(uuid "ca50be2e-92a1-4ace-b655-90fae04b0c4e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 407.2686 30.48 0)
+			(at 407.2686 33.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23337,17 +23458,17 @@
 	)
 	(global_label "NINA_PWR"
 		(shape input)
-		(at 378.46 21.59 180)
+		(at 384.81 22.86 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
 		(uuid "e02a4f46-109b-40bb-b500-9cad3a383fa5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 366.1614 21.59 0)
+			(at 397.1086 22.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23355,7 +23476,7 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 	)
@@ -23875,7 +23996,7 @@
 				)
 			)
 		)
-		(property "Value" "CKCL44X7R1H102M085AA"
+		(property "Value" "0.001uF"
 			(at 178.054 278.892 0)
 			(hide yes)
 			(show_name no)
@@ -23932,7 +24053,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "**"
 			(at 182.88 276.86 90)
 			(hide yes)
 			(show_name no)
@@ -24150,7 +24271,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Bourns/CAY16-2201F4LF?qs=tEaODSGlU8NX5flyk%2FHGvg%3D%3D&srsltid=AfmBOoq_rQexR-NDTxy0QnMENI1j3tgUt_4lSMNNdIZFZG2lnGNfUSZU"
 			(at 278.13 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -24161,7 +24282,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 278.13 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -24269,7 +24390,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/CK/PTS810SJK250SMTR-LFS?qs=Imq1NPwxi77Ow0tzRIznfA%3D%3D&srsltid=AfmBOorKhGRG7uFvdg2H0nIiJD6X6eRKQotECo2UJbwLEi6FRqmCeH1I"
 			(at 328.93 157.48 0)
 			(hide yes)
 			(show_name no)
@@ -24280,7 +24401,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 328.93 157.48 0)
 			(hide yes)
 			(show_name no)
@@ -24544,7 +24665,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/RC0402JR-07470KL?qs=uM1JSSdPjODkyS3O7Vrt5Q%3D%3D&srsltid=AfmBOooaxSKt0N6UJGhavBLM5POwhUyB0FyNqZwjwKzm8FOpX-A5tJLe"
 			(at 349.25 139.7 90)
 			(hide yes)
 			(show_name no)
@@ -24555,7 +24676,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 349.25 139.7 90)
 			(hide yes)
 			(show_name no)
@@ -24792,7 +24913,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Texas-Instruments/TPD4E1B06DCKR?qs=FBI%252BX3tnPf1Bt8uBkGhcNg%3D%3D&srsltid=AfmBOoq8SZ4zD5PeCiYnCBg9yVWnvdSgGnjkXLmVU__6-gfzoxGP1Lnb"
 			(at 200.66 215.9 0)
 			(hide yes)
 			(show_name no)
@@ -24803,7 +24924,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 200.66 215.9 0)
 			(hide yes)
 			(show_name no)
@@ -24943,7 +25064,7 @@
 				(justify right)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Murata-Electronics/GRM155C80J225ME95D?qs=eeBpzGFlv%252B%2FrWGjWqjxzrQ%3D%3D&srsltid=AfmBOooN7zLjP1ysYE6i-5gamX0EZDBjMpP8ik1ZROxz0EmXyiMfHLCA"
 			(at 124.46 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -24954,7 +25075,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 124.46 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -25045,7 +25166,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://microohm-eg.com/2-54mm-0-100-pin-header-male-2x40-right-angle/"
 			(at 241.3 63.5 0)
 			(hide yes)
 			(show_name no)
@@ -25056,7 +25177,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "MicroOhm"
 			(at 241.3 63.5 0)
 			(hide yes)
 			(show_name no)
@@ -25333,7 +25454,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R5BB105?qs=HEu%2FF%2FCqxzJ6VbuCv2R5Zg%3D%3D&srsltid=AfmBOop-583j3lFh7MY1njj9ItlrwjsDowHmxNgJ5NfDpU7uTYJXvD3O"
 			(at 35.56 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -25344,7 +25465,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 35.56 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -25547,7 +25668,7 @@
 				)
 			)
 		)
-		(property "Value" "CKCL44X7R1H102M085AA"
+		(property "Value" "0.001uF"
 			(at 152.654 233.172 0)
 			(hide yes)
 			(show_name no)
@@ -25604,7 +25725,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "**"
 			(at 157.48 231.14 90)
 			(hide yes)
 			(show_name no)
@@ -25749,7 +25870,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC1206MKX5R5BB107?qs=57cj7OiSijmA1unmqOkHVw%3D%3D&srsltid=AfmBOorZTpVlxSIASlrfX5yB5qKZZgfce-eTjtA2S6Qn6w0gOP0QPBun"
 			(at 140.97 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -25760,7 +25881,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 140.97 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -25944,7 +26065,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_MEC_5E")
-		(at 318.77 31.75 0)
+		(at 318.77 34.29 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -25954,7 +26075,7 @@
 		(dnp no)
 		(uuid "1bebbdf2-07d3-439b-974f-87d14a3cbe48")
 		(property "Reference" "SW3"
-			(at 319.024 22.352 0)
+			(at 319.024 24.892 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -25964,7 +26085,7 @@
 			)
 		)
 		(property "Value" "SW_MEC_5E"
-			(at 318.77 24.638 0)
+			(at 318.77 27.178 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -25974,7 +26095,7 @@
 			)
 		)
 		(property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_Vertical_Wuerth_434133025816"
-			(at 318.77 24.13 0)
+			(at 318.77 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25985,7 +26106,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.apem.com/medias/download/MEC_switches_serie_MULTIMEC5E.pdf"
-			(at 318.77 24.13 0)
+			(at 318.77 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25996,7 +26117,7 @@
 			)
 		)
 		(property "Description" "MEC 5E single pole normally-open tactile switch"
-			(at 318.77 31.75 0)
+			(at 318.77 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26006,8 +26127,8 @@
 				)
 			)
 		)
-		(property "LINK" ""
-			(at 318.77 31.75 0)
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/CK/PTS810SJK250SMTR-LFS?qs=Imq1NPwxi77Ow0tzRIznfA%3D%3D&srsltid=AfmBOorKhGRG7uFvdg2H0nIiJD6X6eRKQotECo2UJbwLEi6FRqmCeH1I"
+			(at 318.77 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26017,8 +26138,8 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
-			(at 318.77 31.75 0)
+		(property "VENDOR" "Mouser"
+			(at 318.77 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26228,7 +26349,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R7BB102?qs=cQA0dC2V9ENjYxMNJXN2bg%3D%3D&srsltid=AfmBOopmZyuxaGwZHzS6oItiw8nHcuc36lVs9zLFo3UrK0otWn6enPoL"
 			(at 293.37 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -26239,7 +26360,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 293.37 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -26409,7 +26530,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Texas-Instruments/ADS1299IPAG?qs=g9Q%2FF7kJgMyNB%2Fl7Pgr%252B%252BA%3D%3D&srsltid=AfmBOooUgtyyNeLSkzrY_FBI01DTB7_EIg7kKRMBFD_IR4kw9XaoYWen"
 			(at 233.68 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -26420,7 +26541,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 233.68 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -26774,7 +26895,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://microohm-eg.com/pin-header-2-54mm-1x40-pin-male-single-row-straight-short-header-strip/"
 			(at 246.38 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -26785,7 +26906,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "MicroOhm"
 			(at 246.38 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -26918,7 +27039,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R7BB104?qs=AgBp2OyFlx%252BSOyhfyS7hpw%3D%3D&srsltid=AfmBOop_xy3Fc8F5mU2NeKT0K3EMtiKfVLDKg6EX36DYS6M2BVhnat8m"
 			(at 194.31 170.18 0)
 			(hide yes)
 			(show_name no)
@@ -26929,7 +27050,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 194.31 170.18 0)
 			(hide yes)
 			(show_name no)
@@ -27134,7 +27255,7 @@
 				(justify right)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Murata-Electronics/GRM155C80J225ME95D?qs=eeBpzGFlv%252B%2FrWGjWqjxzrQ%3D%3D&srsltid=AfmBOooN7zLjP1ysYE6i-5gamX0EZDBjMpP8ik1ZROxz0EmXyiMfHLCA"
 			(at 177.8 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -27145,7 +27266,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 177.8 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -27692,7 +27813,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Texas-Instruments/TPD4E1B06DCKR?qs=FBI%252BX3tnPf1Bt8uBkGhcNg%3D%3D&srsltid=AfmBOoq8SZ4zD5PeCiYnCBg9yVWnvdSgGnjkXLmVU__6-gfzoxGP1Lnb"
 			(at 99.06 218.44 0)
 			(hide yes)
 			(show_name no)
@@ -27703,7 +27824,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 99.06 218.44 0)
 			(hide yes)
 			(show_name no)
@@ -27842,7 +27963,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www.lcsc.com/product-detail/C710916.html?s_z=n_q_GRM188C80G106KE47D&spm=wm.fly.bg.0.xh&lcsc_vid=TgJcAgIAFFFeUFVVRgNdUVwCQAVaXl1UFFhcUFJTRQQxVlNeQlRcV11VQFlXXzsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slFhMKSjcJFAoLExdLNA4ACQEFAw4cFDs%2BIi8%2BMkkyMUxfVlE5NFNYUVJUR08GEwkK"
 			(at 400.05 146.05 0)
 			(hide yes)
 			(show_name no)
@@ -27853,7 +27974,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "LCSC"
 			(at 400.05 146.05 0)
 			(hide yes)
 			(show_name no)
@@ -27958,7 +28079,7 @@
 	)
 	(symbol
 		(lib_id "power:VDD")
-		(at 405.13 19.05 0)
+		(at 394.97 17.78 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -27966,10 +28087,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "37f3f9b1-938c-4e52-a0d8-b4a2bba4e22d")
 		(property "Reference" "#PWR076"
-			(at 405.13 22.86 0)
+			(at 394.97 21.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27980,7 +28100,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 405.13 13.97 0)
+			(at 394.97 13.97 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -27990,7 +28110,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 405.13 19.05 0)
+			(at 394.97 17.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28001,7 +28121,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 405.13 19.05 0)
+			(at 394.97 17.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28012,7 +28132,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VDD\""
-			(at 405.13 19.05 0)
+			(at 394.97 17.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28136,7 +28256,7 @@
 				(justify right)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Murata-Electronics/GRM155C80J225ME95D?qs=eeBpzGFlv%252B%2FrWGjWqjxzrQ%3D%3D&srsltid=AfmBOooN7zLjP1ysYE6i-5gamX0EZDBjMpP8ik1ZROxz0EmXyiMfHLCA"
 			(at 111.76 33.02 0)
 			(hide yes)
 			(show_name no)
@@ -28147,7 +28267,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 111.76 33.02 0)
 			(hide yes)
 			(show_name no)
@@ -28272,7 +28392,7 @@
 				)
 			)
 		)
-		(property "Value" "CKCL44X7R1H102M085AA"
+		(property "Value" "0.001uF"
 			(at 275.844 263.652 0)
 			(hide yes)
 			(show_name no)
@@ -28329,7 +28449,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "**"
 			(at 280.67 261.62 90)
 			(hide yes)
 			(show_name no)
@@ -28404,7 +28524,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_SparkFun-Connector:microSD_External_Pin"
+		(property "Footprint" "SparkFun-Connector:CUI_MSD-1-A"
 			(at 73.66 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -28448,7 +28568,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Same-Sky/MSD-1-A?qs=Z%252BL2brAPG1Ip18XLC4tUPQ%3D%3D"
 			(at 73.66 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -28459,7 +28579,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 73.66 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -28701,7 +28821,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Texas-Instruments/LP5907MFX-3.3-NOPB?qs=biyDIajrTn6NhrJCoL%2FdSQ%3D%3D&srsltid=AfmBOorrP4JovOz11JzCPfgfyXUKv5SP8bfOBMgHySElO5maLf22oUeR"
 			(at 88.9 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -28712,7 +28832,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 88.9 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -28849,7 +28969,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC1206MKX5R5BB107?qs=57cj7OiSijmA1unmqOkHVw%3D%3D&srsltid=AfmBOorZTpVlxSIASlrfX5yB5qKZZgfce-eTjtA2S6Qn6w0gOP0QPBun"
 			(at 35.56 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -28860,7 +28980,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 35.56 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -29106,7 +29226,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://microohm-eg.com/pin-header-2-54mm-1x40-pin-male-single-row-straight-short-header-strip/"
 			(at 280.67 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -29117,7 +29237,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "MicroOhm"
 			(at 280.67 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -29537,7 +29657,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://microohm-eg.com/pin-header-2-54mm-1x40-pin-male-single-row-straight-short-header-strip/"
 			(at 283.21 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -29548,7 +29668,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "MicroOhm"
 			(at 283.21 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -29659,7 +29779,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/STMicroelectronics/LIS3DHTR?qs=6la6oa3D8xzhXYax3cEo4w%3D%3D&srsltid=AfmBOoqxFFJl7CtUqIEXANYLz-WCeb3_J6xclIvOpp1C93A1_YYnGPDP"
 			(at 60.96 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -29670,7 +29790,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 60.96 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -29810,144 +29930,6 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_SparkFun-Switch:SPDT_Slide_SMD_6.7x2.6mm")
-		(at 389.89 21.59 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "4de8ff3a-80f3-4f8a-b4c8-dc71256efc79")
-		(property "Reference" "SW4"
-			(at 389.636 16.002 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SPDT_Slide_SMD_6.7x2.6mm"
-			(at 387.35 13.716 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Button_Switch_SMD:SW_SPDT_Shouhan_MSK12C02"
-			(at 389.89 29.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.nidec-components.com/e/catalog/switch/cus.pdf"
-			(at 389.89 31.75 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Switch, single pole double throw"
-			(at 389.89 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "PROD_ID" "SWCH-10651"
-			(at 389.89 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mrg Part#" "CUS-12B"
-			(at 389.89 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LINK" ""
-			(at 389.89 21.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "VENDOR" ""
-			(at 389.89 21.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "MT2"
-			(uuid "e2e9969e-bac0-4f03-be92-73eeaeb64cf5")
-		)
-		(pin "1"
-			(uuid "f6e8a944-40fb-4505-9089-850fe5a81ede")
-		)
-		(pin "3"
-			(uuid "59d8e2f3-b099-4b1d-a0bd-6522483aabb8")
-		)
-		(pin "2"
-			(uuid "38b0bb74-2bd5-4419-8f3c-c93c40257e3d")
-		)
-		(pin "MT1"
-			(uuid "aab85dbf-32ea-4ad2-adb2-5fc5ca889336")
-		)
-		(pin "MT3"
-			(uuid "705a1c08-881b-4b73-b977-a8d4d2dddca9")
-		)
-		(pin "MT4"
-			(uuid "7b613a53-aee3-4a3c-99a9-89951d8fc94f")
-		)
-		(instances
-			(project "Mind_Speak_(Main_Board)"
-				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
-					(reference "SW4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:Conn_01x04_Pin")
 		(at 228.6 27.94 0)
 		(mirror y)
@@ -30012,7 +29994,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://microohm-eg.com/pin-header-2-54mm-1x40-pin-male-single-row-straight-short-header-strip/"
 			(at 228.6 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -30023,7 +30005,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "MicroOhm"
 			(at 228.6 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -30077,7 +30059,7 @@
 				)
 			)
 		)
-		(property "Value" "TPS72325DBV"
+		(property "Value" "TPS72325DBVR"
 			(at 146.05 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -30121,7 +30103,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www.lcsc.com/product-detail/C69932.html?s_z=n_q_TPS72325DBVR&spm=wm.fly.bg.0.xh&lcsc_vid=TgJcAgIAFFFeUFVVRgNdUVwCQAVaXl1UFFhcUFJTRQQxVlNeQlRXUVRVRFNbXjsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slFhMKSjcJFAoLExdLNA4ACQEFAw4cFDs%2BIi8%2BMkkyMUxfVlE5NFNYUVJUR08GEwkK"
 			(at 146.05 62.23 0)
 			(hide yes)
 			(show_name no)
@@ -30132,7 +30114,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 146.05 62.23 0)
 			(hide yes)
 			(show_name no)
@@ -30233,7 +30215,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Texas-Instruments/TLV70025QDDCRQ1?qs=NiBvnJE4bX1tmxoZbCukhA%3D%3D&srsltid=AfmBOopFpq975mE2cVI8zvJ7j5beaiw8RVqyQeU4tyFyq0MW17McberY"
 			(at 156.21 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -30244,7 +30226,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 156.21 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -30458,7 +30440,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www.lcsc.com/product-detail/C710916.html?s_z=n_q_GRM188C80G106KE47D&spm=wm.fly.bg.0.xh&lcsc_vid=TgJcAgIAFFFeUFVVRgNdUVwCQAVaXl1UFFhcUFJTRQQxVlNeQlRcV11VQFlXXzsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slFhMKSjcJFAoLExdLNA4ACQEFAw4cFDs%2BIi8%2BMkkyMUxfVlE5NFNYUVJUR08GEwkK"
 			(at 189.23 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -30469,7 +30451,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "LCSC"
 			(at 189.23 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -30597,7 +30579,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R5BB105?qs=HEu%2FF%2FCqxzJ6VbuCv2R5Zg%3D%3D&srsltid=AfmBOop-583j3lFh7MY1njj9ItlrwjsDowHmxNgJ5NfDpU7uTYJXvD3O"
 			(at 162.56 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -30608,7 +30590,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 162.56 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -30813,7 +30795,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R7BB104?qs=AgBp2OyFlx%252BSOyhfyS7hpw%3D%3D&srsltid=AfmBOop_xy3Fc8F5mU2NeKT0K3EMtiKfVLDKg6EX36DYS6M2BVhnat8m"
 			(at 172.72 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -30824,7 +30806,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 172.72 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -31005,7 +30987,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/RT0402FRE071KL?qs=BXCcY9r%252B08AJmLKodK5LLA%3D%3D&srsltid=AfmBOooldFICnS6jH0zNVBYs3d9EYwNS3j3m8ANs8ndKbPmBGqX4J0il"
 			(at 335.28 186.69 90)
 			(hide yes)
 			(show_name no)
@@ -31016,7 +30998,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 335.28 186.69 90)
 			(hide yes)
 			(show_name no)
@@ -31198,7 +31180,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/RC0402JR-071ML?qs=uM1JSSdPjOCNcwoUm19Cag%3D%3D&srsltid=AfmBOopOZz-0Kksk6syRlgEstOmOdtEvDYerT9acmHygsjZXuuIbfm5p"
 			(at 284.48 104.14 90)
 			(hide yes)
 			(show_name no)
@@ -31209,7 +31191,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 284.48 104.14 90)
 			(hide yes)
 			(show_name no)
@@ -31724,7 +31706,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R5BB105?qs=HEu%2FF%2FCqxzJ6VbuCv2R5Zg%3D%3D&srsltid=AfmBOop-583j3lFh7MY1njj9ItlrwjsDowHmxNgJ5NfDpU7uTYJXvD3O"
 			(at 156.21 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -31735,7 +31717,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 156.21 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -32096,7 +32078,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R5BB105?qs=HEu%2FF%2FCqxzJ6VbuCv2R5Zg%3D%3D&srsltid=AfmBOop-583j3lFh7MY1njj9ItlrwjsDowHmxNgJ5NfDpU7uTYJXvD3O"
 			(at 152.4 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -32107,7 +32089,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 152.4 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -32284,7 +32266,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Microchip-Technology/PIC32MX250F128B-I-SS?qs=hort8UWU32rRYqIHVJ6OfA%3D%3D&srsltid=AfmBOoqN9jmKe0gj2xvaYSNCAHxVgqGMprJCJM_WbCO9CgZeBmAUUn-f"
 			(at 375.92 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -32295,7 +32277,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 375.92 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -32401,7 +32383,7 @@
 	)
 	(symbol
 		(lib_id "power:GNDA")
-		(at 311.15 35.56 0)
+		(at 311.15 38.1 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -32411,7 +32393,7 @@
 		(dnp no)
 		(uuid "7b68916d-2472-4827-a351-486837e0694a")
 		(property "Reference" "#PWR075"
-			(at 311.15 41.91 0)
+			(at 311.15 44.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -32422,7 +32404,7 @@
 			)
 		)
 		(property "Value" "GNDA"
-			(at 311.15 39.624 0)
+			(at 311.15 42.164 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -32432,7 +32414,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 311.15 35.56 0)
+			(at 311.15 38.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -32443,7 +32425,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 311.15 35.56 0)
+			(at 311.15 38.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -32454,7 +32436,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GNDA\" , analog ground"
-			(at 311.15 35.56 0)
+			(at 311.15 38.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -32541,7 +32523,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www.lcsc.com/product-detail/C11338.html?s_z=n_q_TPS60403DBVR&spm=wm.fly.bg.0.xh&lcsc_vid=TgJcAgIAFFFeUFVVRgNdUVwCQAVaXl1UFFhcUFJTRQQxVlNeQlRXUV1TQlNeVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slFhMKSjcJFAoLExdLNA4ACQEFAw4cFDs%2BIi8%2BMkkyMUxfVlE5NFNYUVJUR08GEwkK"
 			(at 52.07 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -32552,7 +32534,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "LCSC"
 			(at 52.07 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -32589,7 +32571,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 381 21.59 0)
+		(at 383.54 22.86 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -32597,10 +32579,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "7e9c3aab-98b5-4a21-9aec-4105534a6e33")
 		(property "Reference" "#FLG02"
-			(at 381 19.685 0)
+			(at 383.54 20.955 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -32611,7 +32592,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 381 16.51 0)
+			(at 383.286 19.304 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -32621,7 +32602,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 381 21.59 0)
+			(at 383.54 22.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -32632,7 +32613,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 381 21.59 0)
+			(at 383.54 22.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -32643,7 +32624,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 381 21.59 0)
+			(at 383.54 22.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -32767,7 +32748,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R7BB104?qs=AgBp2OyFlx%252BSOyhfyS7hpw%3D%3D&srsltid=AfmBOop_xy3Fc8F5mU2NeKT0K3EMtiKfVLDKg6EX36DYS6M2BVhnat8m"
 			(at 146.05 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -32778,7 +32759,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 146.05 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -33139,7 +33120,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R7BB104?qs=AgBp2OyFlx%252BSOyhfyS7hpw%3D%3D&srsltid=AfmBOop_xy3Fc8F5mU2NeKT0K3EMtiKfVLDKg6EX36DYS6M2BVhnat8m"
 			(at 146.05 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -33150,7 +33131,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 146.05 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -33433,7 +33414,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R5BB105?qs=HEu%2FF%2FCqxzJ6VbuCv2R5Zg%3D%3D&srsltid=AfmBOop-583j3lFh7MY1njj9ItlrwjsDowHmxNgJ5NfDpU7uTYJXvD3O"
 			(at 237.49 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -33444,7 +33425,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 237.49 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -33649,7 +33630,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R5BB105?qs=HEu%2FF%2FCqxzJ6VbuCv2R5Zg%3D%3D&srsltid=AfmBOop-583j3lFh7MY1njj9ItlrwjsDowHmxNgJ5NfDpU7uTYJXvD3O"
 			(at 132.08 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -33660,7 +33641,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 132.08 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -33942,7 +33923,7 @@
 				(justify right)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Murata-Electronics/GRM155C80J225ME95D?qs=eeBpzGFlv%252B%2FrWGjWqjxzrQ%3D%3D&srsltid=AfmBOooN7zLjP1ysYE6i-5gamX0EZDBjMpP8ik1ZROxz0EmXyiMfHLCA"
 			(at 172.72 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -33953,7 +33934,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 172.72 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -34081,7 +34062,7 @@
 				(justify right)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Murata-Electronics/GRM155C80J225ME95D?qs=eeBpzGFlv%252B%2FrWGjWqjxzrQ%3D%3D&srsltid=AfmBOooN7zLjP1ysYE6i-5gamX0EZDBjMpP8ik1ZROxz0EmXyiMfHLCA"
 			(at 139.7 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -34092,7 +34073,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 139.7 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -34329,7 +34310,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Texas-Instruments/TPD4E1B06DCKR?qs=FBI%252BX3tnPf1Bt8uBkGhcNg%3D%3D&srsltid=AfmBOoq8SZ4zD5PeCiYnCBg9yVWnvdSgGnjkXLmVU__6-gfzoxGP1Lnb"
 			(at 125.73 264.16 0)
 			(hide yes)
 			(show_name no)
@@ -34340,7 +34321,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 125.73 264.16 0)
 			(hide yes)
 			(show_name no)
@@ -34410,7 +34391,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Comchip_Library:CDBU"
 			(at 54.61 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -34445,7 +34426,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Comchip-Technology/CDBU0130L?qs=tw%252BuQ%2FB6PO2Mup5%252Bk7mubQ%3D%3D&srsltid=AfmBOopoGwbikOs35tbUu6HyopigWZiPLHM894A7q_ehSf1viBb8wbEF"
 			(at 54.61 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -34456,7 +34437,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 54.61 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -34504,7 +34485,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10nF"
+		(property "Value" "0.01uF"
 			(at 165.1 67.056 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -34583,7 +34564,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R7BB103?qs=AgBp2OyFlx8cKvXdhdEm3Q%3D%3D&srsltid=AfmBOor6_gHaQohrhcvC22zEP9XV8CY30buuK4YHl_QcQTTQg1a8Y_n2"
 			(at 162.56 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -34594,7 +34575,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 162.56 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -34721,7 +34702,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www.lcsc.com/product-detail/C710916.html?s_z=n_q_GRM188C80G106KE47D&spm=wm.fly.bg.0.xh&lcsc_vid=TgJcAgIAFFFeUFVVRgNdUVwCQAVaXl1UFFhcUFJTRQQxVlNeQlRcV11VQFlXXzsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slFhMKSjcJFAoLExdLNA4ACQEFAw4cFDs%2BIi8%2BMkkyMUxfVlE5NFNYUVJUR08GEwkK"
 			(at 19.05 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -34732,7 +34713,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "LCSC"
 			(at 19.05 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -35124,7 +35105,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Texas-Instruments/TPD4E1B06DCKR?qs=FBI%252BX3tnPf1Bt8uBkGhcNg%3D%3D&srsltid=AfmBOoq8SZ4zD5PeCiYnCBg9yVWnvdSgGnjkXLmVU__6-gfzoxGP1Lnb"
 			(at 27.94 257.81 0)
 			(hide yes)
 			(show_name no)
@@ -35135,7 +35116,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 27.94 257.81 0)
 			(hide yes)
 			(show_name no)
@@ -35540,7 +35521,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Texas-Instruments/TPD4E1B06DCKR?qs=FBI%252BX3tnPf1Bt8uBkGhcNg%3D%3D&srsltid=AfmBOoq8SZ4zD5PeCiYnCBg9yVWnvdSgGnjkXLmVU__6-gfzoxGP1Lnb"
 			(at 223.52 248.92 0)
 			(hide yes)
 			(show_name no)
@@ -35551,7 +35532,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 223.52 248.92 0)
 			(hide yes)
 			(show_name no)
@@ -35763,7 +35744,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402JRNPO9BN180?qs=AgBp2OyFlx8ARaqa%252Br5VgQ%3D%3D&srsltid=AfmBOopipgbqCjKtQq6eDW2Vy2klr0SS8ViOijlblwWlWM5Uvk22d3WD"
 			(at 328.93 170.18 90)
 			(hide yes)
 			(show_name no)
@@ -35774,7 +35755,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 328.93 170.18 90)
 			(hide yes)
 			(show_name no)
@@ -35980,7 +35961,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R5BB105?qs=HEu%2FF%2FCqxzJ6VbuCv2R5Zg%3D%3D&srsltid=AfmBOop-583j3lFh7MY1njj9ItlrwjsDowHmxNgJ5NfDpU7uTYJXvD3O"
 			(at 83.82 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -35991,7 +35972,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 83.82 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -36197,7 +36178,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R5BB105?qs=HEu%2FF%2FCqxzJ6VbuCv2R5Zg%3D%3D&srsltid=AfmBOop-583j3lFh7MY1njj9ItlrwjsDowHmxNgJ5NfDpU7uTYJXvD3O"
 			(at 156.21 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -36208,7 +36189,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 156.21 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -36413,7 +36394,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R7BB104?qs=AgBp2OyFlx%252BSOyhfyS7hpw%3D%3D&srsltid=AfmBOop_xy3Fc8F5mU2NeKT0K3EMtiKfVLDKg6EX36DYS6M2BVhnat8m"
 			(at 121.92 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -36424,7 +36405,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 121.92 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -36547,7 +36528,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402JRNPO9BN180?qs=AgBp2OyFlx8ARaqa%252Br5VgQ%3D%3D&srsltid=AfmBOopipgbqCjKtQq6eDW2Vy2klr0SS8ViOijlblwWlWM5Uvk22d3WD"
 			(at 328.93 175.26 90)
 			(hide yes)
 			(show_name no)
@@ -36558,7 +36539,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 328.93 175.26 90)
 			(hide yes)
 			(show_name no)
@@ -36841,7 +36822,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R5BB105?qs=HEu%2FF%2FCqxzJ6VbuCv2R5Zg%3D%3D&srsltid=AfmBOop-583j3lFh7MY1njj9ItlrwjsDowHmxNgJ5NfDpU7uTYJXvD3O"
 			(at 184.15 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -36852,7 +36833,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 184.15 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -37058,7 +37039,7 @@
 				(justify right)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Murata-Electronics/GRM155R61C225KE44D?qs=K0Sa7bCb58LeAAXFhnh74A%3D%3D&srsltid=AfmBOoo586f-fBnXaQR3ZmOT4GDLYhDBoqTxzex_jrWoladTqBGt2nID"
 			(at 60.96 33.02 0)
 			(hide yes)
 			(show_name no)
@@ -37069,7 +37050,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 60.96 33.02 0)
 			(hide yes)
 			(show_name no)
@@ -37269,7 +37250,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Bourns/CAY16-2201F4LF?qs=tEaODSGlU8NX5flyk%2FHGvg%3D%3D&srsltid=AfmBOoq_rQexR-NDTxy0QnMENI1j3tgUt_4lSMNNdIZFZG2lnGNfUSZU"
 			(at 167.64 259.08 0)
 			(hide yes)
 			(show_name no)
@@ -37280,7 +37261,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 167.64 259.08 0)
 			(hide yes)
 			(show_name no)
@@ -37504,7 +37485,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R5BB105?qs=HEu%2FF%2FCqxzJ6VbuCv2R5Zg%3D%3D&srsltid=AfmBOop-583j3lFh7MY1njj9ItlrwjsDowHmxNgJ5NfDpU7uTYJXvD3O"
 			(at 132.08 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -37515,7 +37496,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 132.08 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -37715,7 +37696,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Bourns/CAY16-2201F4LF?qs=tEaODSGlU8NX5flyk%2FHGvg%3D%3D&srsltid=AfmBOoq_rQexR-NDTxy0QnMENI1j3tgUt_4lSMNNdIZFZG2lnGNfUSZU"
 			(at 265.43 243.84 0)
 			(hide yes)
 			(show_name no)
@@ -37726,7 +37707,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 265.43 243.84 0)
 			(hide yes)
 			(show_name no)
@@ -37772,7 +37753,7 @@
 	)
 	(symbol
 		(lib_id "power:GNDA")
-		(at 397.51 109.22 0)
+		(at 397.51 110.49 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -37782,7 +37763,7 @@
 		(dnp no)
 		(uuid "bd1f0ab0-4e90-479a-a14f-a80bdc4e25ef")
 		(property "Reference" "#PWR077"
-			(at 397.51 115.57 0)
+			(at 397.51 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -37793,7 +37774,7 @@
 			)
 		)
 		(property "Value" "GNDA"
-			(at 397.51 113.284 0)
+			(at 397.51 114.554 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -37803,7 +37784,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 397.51 109.22 0)
+			(at 397.51 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -37814,7 +37795,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 397.51 109.22 0)
+			(at 397.51 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -37825,7 +37806,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GNDA\" , analog ground"
-			(at 397.51 109.22 0)
+			(at 397.51 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -38103,7 +38084,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R5BB105?qs=HEu%2FF%2FCqxzJ6VbuCv2R5Zg%3D%3D&srsltid=AfmBOop-583j3lFh7MY1njj9ItlrwjsDowHmxNgJ5NfDpU7uTYJXvD3O"
 			(at 228.6 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -38114,7 +38095,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 228.6 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -38218,7 +38199,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/RC0402JR-07470KL?qs=uM1JSSdPjODkyS3O7Vrt5Q%3D%3D&srsltid=AfmBOooaxSKt0N6UJGhavBLM5POwhUyB0FyNqZwjwKzm8FOpX-A5tJLe"
 			(at 344.17 212.09 90)
 			(hide yes)
 			(show_name no)
@@ -38229,7 +38210,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 344.17 212.09 90)
 			(hide yes)
 			(show_name no)
@@ -38357,7 +38338,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R7BB104?qs=AgBp2OyFlx%252BSOyhfyS7hpw%3D%3D&srsltid=AfmBOop_xy3Fc8F5mU2NeKT0K3EMtiKfVLDKg6EX36DYS6M2BVhnat8m"
 			(at 121.92 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -38368,7 +38349,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 121.92 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -38651,7 +38632,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www.lcsc.com/product-detail/C710916.html?s_z=n_q_GRM188C80G106KE47D&spm=wm.fly.bg.0.xh&lcsc_vid=TgJcAgIAFFFeUFVVRgNdUVwCQAVaXl1UFFhcUFJTRQQxVlNeQlRcV11VQFlXXzsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slFhMKSjcJFAoLExdLNA4ACQEFAw4cFDs%2BIi8%2BMkkyMUxfVlE5NFNYUVJUR08GEwkK"
 			(at 184.15 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -38662,7 +38643,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "LCSC"
 			(at 184.15 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -39363,7 +39344,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Texas-Instruments/TPD4E1B06DCKR?qs=FBI%252BX3tnPf1Bt8uBkGhcNg%3D%3D&srsltid=AfmBOoq8SZ4zD5PeCiYnCBg9yVWnvdSgGnjkXLmVU__6-gfzoxGP1Lnb"
 			(at 234.95 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -39374,7 +39355,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 234.95 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -39477,7 +39458,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://microohm-eg.com/pin-header-2-54mm-1x40-pin-male-single-row-straight-short-header-strip/"
 			(at 280.67 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -39488,7 +39469,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "MicroOhm"
 			(at 280.67 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -39744,7 +39725,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/LITEON/LTST-C193TBKT-5A?qs=xIkB7y1OTorvzzuuxuVkOA%3D%3D&srsltid=AfmBOor-8moYLhI8HQGbtbo0KW5ULKlgK3qgCK6h7nkaup3EHqwqzU_g"
 			(at 337.82 180.34 0)
 			(hide yes)
 			(show_name no)
@@ -39755,7 +39736,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 337.82 180.34 0)
 			(hide yes)
 			(show_name no)
@@ -39854,6 +39835,255 @@
 			(project "Mind_Speak_(Main_Board)"
 				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
 					(reference "#PWR013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "SSSS811101:SSSS811101")
+		(at 370.84 20.32 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "df7bb4c9-5410-4702-9ee8-ff6cb4d1abb8")
+		(property "Reference" "S1"
+			(at 377.444 15.494 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SSSS811101"
+			(at 371.602 13.716 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ALPS_Library:SW_SSSS811101"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Datasheet" ""
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Switch Slide SP Side Slide 0.3A 5VDC 10000Cycles Gull Wing SMD T/R"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "MF" "ALPS"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" "1.60 mm"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Package" "None"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Price" "None"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Check_prices" "https://www.snapeda.com/parts/SSSS811101/ALPS/view-part/?ref=eda"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "STANDARD" "Manufacturer Recommendations"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "PARTREV" "N/A"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "SnapEDA_Link" "https://www.snapeda.com/parts/SSSS811101/ALPS/view-part/?ref=snap"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "MP" "SSSS811101"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Availability" "In Stock"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "MANUFACTURER" "ALPS"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "LINK" "https://www.lcsc.com/product-detail/C109335.html"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "LCSC"
+			(at 370.84 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "4fbb1486-1e90-4c0e-92b7-cc273f4b0d42")
+		)
+		(pin "1"
+			(uuid "8dc3ce7c-73ac-466f-833a-8f5e279752e6")
+		)
+		(pin "2"
+			(uuid "c4f52e3f-c729-46fb-8756-46bd1acf65b6")
+		)
+		(instances
+			(project "Mind_Speak_(Main_Board)"
+				(path "/e6453ed3-bf8a-4c30-a495-0dde09964f8c"
+					(reference "S1")
 					(unit 1)
 				)
 			)
@@ -40033,7 +40263,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Bourns/CAY16-2201F4LF?qs=tEaODSGlU8NX5flyk%2FHGvg%3D%3D&srsltid=AfmBOoq_rQexR-NDTxy0QnMENI1j3tgUt_4lSMNNdIZFZG2lnGNfUSZU"
 			(at 142.24 213.36 0)
 			(hide yes)
 			(show_name no)
@@ -40044,7 +40274,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 142.24 213.36 0)
 			(hide yes)
 			(show_name no)
@@ -40090,7 +40320,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x05_Pin")
-		(at 401.32 62.23 180)
+		(at 401.32 64.77 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -40100,7 +40330,7 @@
 		(dnp no)
 		(uuid "e34cec5b-4cf9-42aa-818a-e68d356f11ad")
 		(property "Reference" "J3"
-			(at 402.59 60.9599 0)
+			(at 402.59 63.4999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -40111,7 +40341,7 @@
 			)
 		)
 		(property "Value" "Conn_01x05_Pin"
-			(at 392.176 53.848 0)
+			(at 392.176 56.388 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -40122,7 +40352,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
-			(at 401.32 62.23 0)
+			(at 401.32 64.77 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -40133,7 +40363,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 401.32 62.23 0)
+			(at 401.32 64.77 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -40144,7 +40374,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x05, script generated"
-			(at 401.32 62.23 0)
+			(at 401.32 64.77 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -40154,8 +40384,8 @@
 				)
 			)
 		)
-		(property "LINK" ""
-			(at 401.32 62.23 0)
+		(property "LINK" "https://microohm-eg.com/pin-header-2-54mm-1x40-pin-male-single-row-straight-short-header-strip/"
+			(at 401.32 64.77 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -40165,8 +40395,8 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
-			(at 401.32 62.23 0)
+		(property "VENDOR" "MicroOhm"
+			(at 401.32 64.77 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -40310,7 +40540,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "PCM_SparkFun-Clock:Crystal-SMD-5x3.2mm"
+		(property "Footprint" "Abracon_Library:XTAL_ABMM2-8.000MHZ-E2-T"
 			(at 332.74 172.72 0)
 			(hide yes)
 			(show_name no)
@@ -40354,7 +40584,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/ABRACON/ABMM2-8.000MHZ-E2-T?qs=m%252BUhWDcpCfaGlLHGChx47g%3D%3D&srsltid=AfmBOorFlWntFEGSGhYzhFRj1VewGcGmZ4wkF2NcJd_m1epcwPggUEin"
 			(at 340.36 172.72 90)
 			(hide yes)
 			(show_name no)
@@ -40365,7 +40595,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 340.36 172.72 90)
 			(hide yes)
 			(show_name no)
@@ -40490,7 +40720,7 @@
 				)
 			)
 		)
-		(property "Value" "CKCL44X7R1H102M085AA"
+		(property "Value" "0.001uF"
 			(at 288.544 229.362 0)
 			(hide yes)
 			(show_name no)
@@ -40547,7 +40777,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "**"
 			(at 293.37 227.33 90)
 			(hide yes)
 			(show_name no)
@@ -40692,7 +40922,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www.lcsc.com/product-detail/C710916.html?s_z=n_q_GRM188C80G106KE47D&spm=wm.fly.bg.0.xh&lcsc_vid=TgJcAgIAFFFeUFVVRgNdUVwCQAVaXl1UFFhcUFJTRQQxVlNeQlRcV11VQFlXXzsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slFhMKSjcJFAoLExdLNA4ACQEFAw4cFDs%2BIi8%2BMkkyMUxfVlE5NFNYUVJUR08GEwkK"
 			(at 204.47 170.18 0)
 			(hide yes)
 			(show_name no)
@@ -40703,7 +40933,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "LCSC"
 			(at 204.47 170.18 0)
 			(hide yes)
 			(show_name no)
@@ -40793,7 +41023,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/CK/PTS810SJK250SMTR-LFS?qs=Imq1NPwxi77Ow0tzRIznfA%3D%3D&srsltid=AfmBOorKhGRG7uFvdg2H0nIiJD6X6eRKQotECo2UJbwLEi6FRqmCeH1I"
 			(at 335.28 207.01 0)
 			(hide yes)
 			(show_name no)
@@ -40804,7 +41034,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 335.28 207.01 0)
 			(hide yes)
 			(show_name no)
@@ -40870,7 +41100,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "S2B-PH-SM4-TB_LF__SN_:JST_S2B-PH-SM4-TB_LF__SN_"
+		(property "Footprint" "JST_Library:JST_S2B-PH-SM4-TB_LF__SN_"
 			(at 27.94 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -41001,7 +41231,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www.lcsc.com/product-detail/C295747.html"
 			(at 27.94 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -41012,7 +41242,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "LCSC"
 			(at 27.94 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -41139,7 +41369,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R7BB104?qs=AgBp2OyFlx%252BSOyhfyS7hpw%3D%3D&srsltid=AfmBOop_xy3Fc8F5mU2NeKT0K3EMtiKfVLDKg6EX36DYS6M2BVhnat8m"
 			(at 34.29 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -41150,7 +41380,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 34.29 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -41350,7 +41580,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Bourns/CAY16-2201F4LF?qs=tEaODSGlU8NX5flyk%2FHGvg%3D%3D&srsltid=AfmBOoq_rQexR-NDTxy0QnMENI1j3tgUt_4lSMNNdIZFZG2lnGNfUSZU"
 			(at 72.39 252.73 0)
 			(hide yes)
 			(show_name no)
@@ -41361,7 +41591,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 72.39 252.73 0)
 			(hide yes)
 			(show_name no)
@@ -41505,7 +41735,7 @@
 				)
 			)
 		)
-		(property "Value" "CKCL44X7R1H102M085AA"
+		(property "Value" "0.001uF"
 			(at 82.804 272.542 0)
 			(hide yes)
 			(show_name no)
@@ -41562,7 +41792,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "**"
 			(at 87.63 270.51 90)
 			(hide yes)
 			(show_name no)
@@ -41708,7 +41938,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R5BB105?qs=HEu%2FF%2FCqxzJ6VbuCv2R5Zg%3D%3D&srsltid=AfmBOop-583j3lFh7MY1njj9ItlrwjsDowHmxNgJ5NfDpU7uTYJXvD3O"
 			(at 64.77 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -41719,7 +41949,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 64.77 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -41777,7 +42007,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SN74LVC1G32DCKR:SOT65P210X110-5N"
+		(property "Footprint" "TI_Library:SOT65P210X110-5N"
 			(at 50.8 153.67 0)
 			(hide yes)
 			(show_name no)
@@ -41896,7 +42126,7 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/Texas-Instruments/SN74LVC1G32DCKR?qs=rshUhwi3fbYur8p35NB%252BLQ%3D%3D&srsltid=AfmBOooKiGctGK4yMqUgHU-1amAkQpIRovY4JzezTdg_b2wPSvLiamaO"
 			(at 50.8 153.67 0)
 			(hide yes)
 			(show_name no)
@@ -41907,7 +42137,7 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
 			(at 50.8 153.67 0)
 			(hide yes)
 			(show_name no)
@@ -41944,7 +42174,7 @@
 	)
 	(symbol
 		(lib_id "NINA-B306-00B:NINA-B30x")
-		(at 360.68 69.85 0)
+		(at 360.68 72.39 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -41954,16 +42184,6 @@
 		(dnp no)
 		(uuid "fe073a22-1098-4342-9bd3-97bdf66be7b4")
 		(property "Reference" "U3"
-			(at 360.68 22.606 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "NINA-B30x"
 			(at 360.68 25.146 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -41973,8 +42193,18 @@
 				)
 			)
 		)
+		(property "Value" "NINA-B30x"
+			(at 357.886 27.686 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Footprint" "U_Blox_Library:XCVR_NINA-B306-00B"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -41986,7 +42216,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -41997,7 +42227,7 @@
 			)
 		)
 		(property "Description" "Bluetooth Bluetooth v5.0 Transceiver Module 2.4GHz Integrated, Trace Surface Mount"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42009,7 +42239,7 @@
 			)
 		)
 		(property "MF" "U-Blox"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42021,7 +42251,7 @@
 			)
 		)
 		(property "MAXIMUM_PACKAGE_HEIGHT" "2.23mm"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42033,7 +42263,7 @@
 			)
 		)
 		(property "Package" "SMD-55 U-Blox"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42045,7 +42275,7 @@
 			)
 		)
 		(property "Price" "None"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42057,7 +42287,7 @@
 			)
 		)
 		(property "Check_prices" "https://www.snapeda.com/parts/NINA-B306-00B/u-blox/view-part/?ref=eda"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42069,7 +42299,7 @@
 			)
 		)
 		(property "STANDARD" "Manufacturer Recommendations"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42081,7 +42311,7 @@
 			)
 		)
 		(property "PARTREV" "R07"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42093,7 +42323,7 @@
 			)
 		)
 		(property "SnapEDA_Link" "https://www.snapeda.com/parts/NINA-B306-00B/u-blox/view-part/?ref=snap"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42105,7 +42335,7 @@
 			)
 		)
 		(property "MP" "NINA-B306-00B"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42117,7 +42347,7 @@
 			)
 		)
 		(property "Availability" "In Stock"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42129,7 +42359,7 @@
 			)
 		)
 		(property "MANUFACTURER" "UBLOX"
-			(at 360.68 69.85 0)
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42140,8 +42370,8 @@
 				(justify bottom)
 			)
 		)
-		(property "LINK" ""
-			(at 360.68 69.85 0)
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/u-blox/NINA-B306-01B?qs=HBWAp0VN4RjRrjBx%252B921jQ%3D%3D&srsltid=AfmBOoozFR822yXoHsUv7NDN1sAphogSUSnvd9bvzjMoSMV_BHbbmJ5w"
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42151,8 +42381,8 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
-			(at 360.68 69.85 0)
+		(property "VENDOR" "Mouser"
+			(at 360.68 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

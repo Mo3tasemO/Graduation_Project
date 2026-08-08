@@ -356,6 +356,18 @@
           "show": true
         },
         {
+          "group_by": false,
+          "label": "VENDOR",
+          "name": "VENDOR",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "LINK",
+          "name": "LINK",
+          "show": true
+        },
+        {
           "group_by": true,
           "label": "Footprint",
           "name": "Footprint",
@@ -492,18 +504,6 @@
           "label": "#",
           "name": "${ITEM_NUMBER}",
           "show": false
-        },
-        {
-          "group_by": false,
-          "label": "VENDOR",
-          "name": "VENDOR",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "LINK",
-          "name": "LINK",
-          "show": false
         }
       ],
       "filter_string": "",
@@ -554,7 +554,7 @@
         "uuid": "e6453ed3-bf8a-4c30-a495-0dde09964f8c"
       }
     ],
-    "used_designators": "#FLG2",
+    "used_designators": "",
     "variants": []
   },
   "sheets": [

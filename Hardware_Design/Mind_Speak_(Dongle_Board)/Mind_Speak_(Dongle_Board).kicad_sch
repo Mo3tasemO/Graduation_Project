@@ -4678,142 +4678,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "PCM_SparkFun-PowerSymbol:3.3V"
-			(power global)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "3.3V"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"3.3V\""
-				(at 0 -6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "SparkFun global power"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "3.3V_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "3.3V_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(hide yes)
-					(name "3.3V"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "PCM_SparkFun-PowerSymbol:GND"
 			(power global)
 			(pin_names
@@ -5554,49 +5418,39 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "PCM_SparkFun-Switch:SPDT_Slide_SMD_6.7x2.6mm"
+		(symbol "SSSS811101:SSSS811101"
 			(pin_names
-				(offset 0)
-				(hide yes)
+				(offset 1.016)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "SW"
-				(at 0 4.318 0)
+			(property "Reference" "S"
+				(at -5.08 5.715 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left bottom)
 				)
 			)
-			(property "Value" "SPDT_Slide_SMD_6.7x2.6mm"
-				(at 0 -5.08 0)
+			(property "Value" "SSSS811101"
+				(at -5.08 -10.16 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left bottom)
 				)
 			)
-			(property "Footprint" "PCM_SparkFun-Switch:Slide_SPST_SMD_6.7x2.6mm"
-				(at 0 -7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.nidec-components.com/e/catalog/switch/cus.pdf"
-				(at 0 -10.16 0)
+			(property "Footprint" "SSSS811101:SW_SSSS811101"
+				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -5604,42 +5458,10 @@
 					(font
 						(size 1.27 1.27)
 					)
+					(justify bottom)
 				)
 			)
-			(property "Description" "Switch, single pole double throw"
-				(at 0 -17.78 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "PROD_ID" "SWCH-10651"
-				(at 0 -12.7 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Mrg Part#" "CUS-12B"
-				(at 0 -15.24 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "SparkFun switch single-pole double-throw spdt ON-ON"
+			(property "Datasheet" ""
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5650,182 +5472,345 @@
 					)
 				)
 			)
-			(symbol "SPDT_Slide_SMD_6.7x2.6mm_0_0"
-				(circle
-					(center -2.032 0)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
+			(property "Description" "Switch Slide SP Side Slide 0.3A 5VDC 10000Cycles Gull Wing SMD T/R"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.032 -2.54)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
+					(justify bottom)
 				)
 			)
-			(symbol "SPDT_Slide_SMD_6.7x2.6mm_0_1"
+			(property "MF" "ALPS"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "MAXIMUM_PACKAGE_HEIGHT" "1.60 mm"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "Package" "None"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "Price" "None"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "Check_prices" "https://www.snapeda.com/parts/SSSS811101/ALPS/view-part/?ref=eda"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "STANDARD" "Manufacturer Recommendations"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "PARTREV" "N/A"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "SnapEDA_Link" "https://www.snapeda.com/parts/SSSS811101/ALPS/view-part/?ref=snap"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "MP" "SSSS811101"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "Availability" "In Stock"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "MANUFACTURER" "ALPS"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(symbol "SSSS811101_0_0"
+				(rectangle
+					(start -5.08 -7.62)
+					(end 5.08 5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
 				(polyline
 					(pts
-						(xy -1.524 0.254) (xy 1.651 2.286)
+						(xy 0 -4.445) (xy 0 -5.715) (xy -1.27 -5.715) (xy -1.27 0.635) (xy 0 0.635) (xy 0 -0.635) (xy -0.635 -0.635)
+						(xy -0.635 -4.445) (xy 0 -4.445)
 					)
 					(stroke
-						(width 0)
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.905) (xy 1.27 3.175) (xy 0 2.54) (xy 1.27 1.905)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -0.635) (xy 1.27 0.635) (xy 0 0) (xy 1.27 -0.635)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -3.175) (xy 1.27 -1.905) (xy 0 -2.54) (xy 1.27 -3.175)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -5.715) (xy 1.27 -4.445) (xy 0 -5.08) (xy 1.27 -5.715)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.1524)
 						(type default)
 					)
 					(fill
 						(type none)
 					)
 				)
-				(circle
-					(center 2.032 2.54)
-					(radius 0.508)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 3.81 -2.54)
+					)
 					(stroke
-						(width 0)
+						(width 0.1524)
 						(type default)
 					)
 					(fill
 						(type none)
 					)
 				)
-			)
-			(symbol "SPDT_Slide_SMD_6.7x2.6mm_1_1"
+				(polyline
+					(pts
+						(xy 3.81 -2.54) (xy 1.27 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 2.54) (xy 1.27 2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -2.54) (xy 3.81 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -5.08) (xy 1.27 -5.08)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(pin passive line
-					(at 5.08 2.54 180)
-					(length 2.54)
-					(name "A"
+					(at 10.16 2.54 180)
+					(length 5.08)
+					(name ""
 						(effects
 							(font
-								(size 1.27 1.27)
+								(size 1.016 1.016)
 							)
 						)
 					)
 					(number "1"
 						(effects
 							(font
-								(size 1.27 1.27)
+								(size 1.016 1.016)
 							)
 						)
 					)
 				)
 				(pin passive line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "2"
+					(at 10.16 -2.54 180)
+					(length 5.08)
+					(name ""
 						(effects
 							(font
-								(size 1.27 1.27)
+								(size 1.016 1.016)
 							)
 						)
 					)
 					(number "2"
 						(effects
 							(font
-								(size 1.27 1.27)
+								(size 1.016 1.016)
 							)
 						)
 					)
 				)
 				(pin passive line
-					(at 5.08 -2.54 180)
-					(length 2.54)
-					(name "C"
+					(at 10.16 -5.08 180)
+					(length 5.08)
+					(name ""
 						(effects
 							(font
-								(size 1.27 1.27)
+								(size 1.016 1.016)
 							)
 						)
 					)
 					(number "3"
 						(effects
 							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 15.24 2.54 180)
-					(length 2.54)
-					(hide yes)
-					(name "MT1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "MT1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 15.24 0 180)
-					(length 2.54)
-					(hide yes)
-					(name "MT2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "MT2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 15.24 -2.54 180)
-					(length 2.54)
-					(hide yes)
-					(name "MT3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "MT3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 15.24 -5.08 180)
-					(length 2.54)
-					(hide yes)
-					(name "MT4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "MT4"
-						(effects
-							(font
-								(size 1.27 1.27)
+								(size 1.016 1.016)
 							)
 						)
 					)
@@ -6065,7 +6050,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:VDD"
+		(symbol "power:+3V3"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -6090,7 +6075,7 @@
 					)
 				)
 			)
-			(property "Value" "VDD"
+			(property "Value" "+3V3"
 				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6122,7 +6107,7 @@
 					)
 				)
 			)
-			(property "Description" "Power symbol creates a global label with name \"VDD\""
+			(property "Description" "Power symbol creates a global label with name \"+3V3\""
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6144,7 +6129,7 @@
 					)
 				)
 			)
-			(symbol "VDD_0_1"
+			(symbol "+3V3_0_1"
 				(polyline
 					(pts
 						(xy -0.762 1.27) (xy 0 2.54)
@@ -6182,7 +6167,7 @@
 					)
 				)
 			)
-			(symbol "VDD_1_1"
+			(symbol "+3V3_1_1"
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
@@ -6791,6 +6776,16 @@
 	)
 	(wire
 		(pts
+			(xy 132.08 46.99) (xy 146.05 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36022425-9ee3-4636-b59d-06fb998252d9")
+	)
+	(wire
+		(pts
 			(xy 63.5 31.75) (xy 63.5 30.48)
 		)
 		(stroke
@@ -6808,16 +6803,6 @@
 			(type default)
 		)
 		(uuid "4a54d84e-144d-4038-8808-c93c1463756e")
-	)
-	(wire
-		(pts
-			(xy 140.97 53.34) (xy 148.59 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4c823b74-d6b6-435c-80f2-98539f2f913c")
 	)
 	(wire
 		(pts
@@ -7038,6 +7023,16 @@
 			(type default)
 		)
 		(uuid "7c230c03-e318-44c6-97e9-7291b71137d3")
+	)
+	(wire
+		(pts
+			(xy 135.89 54.61) (xy 132.08 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c9e1dc6-ac47-45e2-bec8-00aebfca759f")
 	)
 	(wire
 		(pts
@@ -7371,6 +7366,16 @@
 	)
 	(wire
 		(pts
+			(xy 135.89 52.07) (xy 132.08 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c76188e6-8f3f-4d04-9488-c3016306f552")
+	)
+	(wire
+		(pts
 			(xy 30.48 43.18) (xy 45.72 43.18)
 		)
 		(stroke
@@ -7661,17 +7666,17 @@
 	)
 	(global_label "NINA_PWR"
 		(shape input)
-		(at 130.81 55.88 180)
+		(at 135.89 52.07 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
 		(uuid "30db3929-ad0c-42fb-86a6-b2a0a7b81477")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 118.5114 55.88 0)
+			(at 148.1886 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7679,7 +7684,7 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 	)
@@ -7757,7 +7762,7 @@
 	)
 	(global_label "NINA_VCC"
 		(shape input)
-		(at 140.97 58.42 0)
+		(at 135.89 54.61 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7767,7 +7772,7 @@
 		)
 		(uuid "7c85095b-d83a-497d-81aa-893bbcd2691f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 152.9058 58.42 0)
+			(at 147.8258 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8234,6 +8239,39 @@
 				)
 			)
 		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/Molex/48037-1000?qs=naUSJSqnqcLCdinS3SemhA%3D%3D"
+			(at 22.86 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 22.86 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 22.86 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "SH"
 			(uuid "9de596f1-f9a6-411e-b408-8f19f86871fa")
 		)
@@ -8253,84 +8291,6 @@
 			(project "Mind_Speak_(Dongle_Board)"
 				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
 					(reference "J1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VDD")
-		(at 148.59 53.34 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "18bd8b04-1709-4f38-97cb-c4fd1e4a9ab9")
-		(property "Reference" "#PWR076"
-			(at 148.59 57.15 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 148.59 48.26 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 148.59 53.34 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 148.59 53.34 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"VDD\""
-			(at 148.59 53.34 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "3f6b3ac0-6b1f-46e4-b313-b30f1e895341")
-		)
-		(instances
-			(project "Mind_Speak_(Dongle_Board)"
-				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
-					(reference "#PWR076")
 					(unit 1)
 				)
 			)
@@ -8370,7 +8330,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitors SMD:CAPC0603X33N"
+		(property "Footprint" "PCM_SparkFun-Capacitor:C_0402_1005Metric"
 			(at 67.31 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -8436,6 +8396,39 @@
 				(justify left)
 			)
 		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/Murata-Electronics/GRM0335C1E470JA01D?qs=lsk7mV%2FgRRKAIqZiEhHwXQ%3D%3D&srsltid=AfmBOoolpuwrnX-qziXlEA-Nux6hL_5fQkdXGoYO1D3lE3AQ8QSeD9HK"
+			(at 67.31 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 67.31 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 67.31 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "08897a19-f515-4182-b5c7-68de21d08d55")
 		)
@@ -8446,6 +8439,84 @@
 			(project "Mind_Speak_(Dongle_Board)"
 				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
 					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 146.05 46.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "222ca3b7-91ab-4ea3-805f-c089459442a3")
+		(property "Reference" "#PWR06"
+			(at 146.05 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 146.05 41.91 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 146.05 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 146.05 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "71a4a504-7ef6-429e-8a9d-26e5b865b05f")
+		)
+		(instances
+			(project "Mind_Speak_(Dongle_Board)"
+				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -8684,6 +8755,39 @@
 				)
 			)
 		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/LITEON/LTST-C191KRKT?qs=sGAEpiMZZMvVL5Kk7ZYykb8QxutrK7%252BLYfxVrbrEw2E%3D"
+			(at 261.62 50.8 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 261.62 50.8 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 261.62 50.8 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5d6ce7c6-0977-4b4c-8411-bd4c4df49a2a")
 		)
@@ -8733,7 +8837,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitors SMD:CAPC0603X33N"
+		(property "Footprint" "PCM_SparkFun-Capacitor:C_0402_1005Metric"
 			(at 77.47 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -8797,6 +8901,39 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/Murata-Electronics/GRM0335C1E470JA01D?qs=lsk7mV%2FgRRKAIqZiEhHwXQ%3D%3D&srsltid=AfmBOoolpuwrnX-qziXlEA-Nux6hL_5fQkdXGoYO1D3lE3AQ8QSeD9HK"
+			(at 77.47 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 77.47 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 77.47 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -8902,6 +9039,39 @@
 				(justify left)
 			)
 		)
+		(property "LINK" "https://www.lcsc.com/product-detail/C275480.html?s_z=n_q_MPZ1005S300C&spm=wm.fly.bg.0.xh&lcsc_vid=TgJcAgIAFFFeUFVVRgNdUVwCQAVaXl1UFFhcUFJTRQQxVlNeQlRcVVJUR1ReVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slFhMKSjcJFAoLExdLNA4ACQEFAw4cFDs%2BIi8%2BMkkyMUxfVlE5NFNYUVJUR08GEwkK"
+			(at 35.56 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "LCSC"
+			(at 35.56 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 35.56 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d5c74994-7331-4246-b72d-ff4dfa3ff747")
 		)
@@ -8974,6 +9144,39 @@
 			)
 		)
 		(property "Description" "Full Speed USB to Full Handshake UART, QFN-20"
+			(at 219.71 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LINK" "https://www.lcsc.com/product-detail/C132159.html?s_z=n_q_FT231XQ-R%2520&spm=wm.fly.bg.0.xh&lcsc_vid=TgJcAgIAFFFeUFVVRgNdUVwCQAVaXl1UFFhcUFJTRQQxVlNeQlRcVFVUQ1VeVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slFhMKSjcJFAoLExdLNA4ACQEFAw4cFDs%2BIi8%2BMkkyMUxfVlE5NFNYUVJUR08GEwkK"
+			(at 219.71 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "LCSC"
+			(at 219.71 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
 			(at 219.71 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -9211,6 +9414,39 @@
 				)
 			)
 		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/YAGEO/RC0402JR-07330RL?qs=uM1JSSdPjODKnhKTI7Q4uA%3D%3D&srsltid=AfmBOopfn4HWJXXpMeBdo2JzNEdkSOH7BtD_71jQqdLKCFuW4Up3DEpC"
+			(at 261.62 58.42 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 261.62 58.42 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 261.62 58.42 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5d7f9d0b-883c-403e-bdc8-5925f89370a9")
 		)
@@ -9301,6 +9537,39 @@
 				)
 			)
 		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/Bourns/MF-MSMF050-2?qs=t3shhpq1i1DZ7OBD5kLNoA%3D%3D&srsltid=AfmBOop7COMufImahxKmnvxmAFegqJ4AEjZ_XvWfa01lNl5xjUfGQqtG"
+			(at 50.8 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 50.8 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 50.8 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "503725a5-71c4-4687-b463-b07a0141433f")
 		)
@@ -9311,84 +9580,6 @@
 			(project "Mind_Speak_(Dongle_Board)"
 				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
 					(reference "F1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_SparkFun-PowerSymbol:3.3V")
-		(at 193.04 20.32 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5c2d450b-9bb1-4c80-83f7-f0c49b725691")
-		(property "Reference" "#PWR06"
-			(at 193.04 24.13 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "3.3V"
-			(at 193.04 16.51 0)
-			(show_name no)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 193.04 20.32 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 193.04 20.32 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"3.3V\""
-			(at 193.04 26.67 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "463f112f-9085-4339-bca1-3e7d29f7adea")
-		)
-		(instances
-			(project "Mind_Speak_(Dongle_Board)"
-				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
-					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -9449,6 +9640,39 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x05, script generated"
+			(at 64.77 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LINK" "https://microohm-eg.com/pin-header-2-54mm-1x40-pin-male-single-row-straight-short-header-strip/"
+			(at 64.77 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "MicroOhm"
+			(at 64.77 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
 			(at 64.77 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -9540,6 +9764,39 @@
 		)
 		(property "Description" "The BOURNS CG0402MLC-05LG is an ESD Suppressor Diode designed to protect sensitive electronic components from electrostatic discharge events. This diode has a working voltage of 5V and comes in a compact 0402 (1006 metric) case, making it ideal for space-constrained applications. It is supplied in tape and reel packaging for easy use on automated assembly lines. Trust BOURNS for reliable ESD protection in your electronic designs."
 			(at 44.196 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/Bourns/CG0402MLC-05LG?qs=m8myXnDJXpXKFnFgvLE1Zw%3D%3D&srsltid=AfmBOooXQcmdnei33vZHA5E1U3fgr46DUkzHseWcAWop6eF7bgr_qtcs"
+			(at 45.72 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 45.72 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 45.72 63.5 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9718,6 +9975,39 @@
 				)
 			)
 		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/YAGEO/RC0402FR-0722RL?qs=V1yeUXFNrkkRg6zf08ADKQ%3D%3D&srsltid=AfmBOop8SW49TJcti6bcb7JYG0ZtApqFTaRHiXhv8UaSUVJM9EYc5cLk"
+			(at 83.82 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 83.82 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 83.82 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "8b745965-7622-4471-b24c-ca2278e0aa34")
 		)
@@ -9756,7 +10046,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "PESD5V0S1UL"
+		(property "Value" "ESDALC6V1-1M2"
 			(at 66.04 27.9399 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9791,6 +10081,39 @@
 		)
 		(property "Description" "Unidirectional ESD protection diode, 5V, SOD-882"
 			(at 71.12 26.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LINK" "https://www.lcsc.com/product-detail/C2649894.html?s_z=n_q_ESDALC6V1-1M2&spm=wm.fly.bg.2.xh&lcsc_vid=TgJcAgIAFFFeUFVVRgNdUVwCQAVaXl1UFFhcUFJTRQQxVlNeQlRcVlBSQVZfVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slRVhZVVFXRk8GEwkK"
+			(at 63.5 26.67 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "LCSC"
+			(at 63.5 26.67 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 63.5 26.67 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9869,6 +10192,39 @@
 			)
 		)
 		(property "Description" "MEC 5E single pole normally-open tactile switch"
+			(at 90.17 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/CK/PTS810SJK250SMTR-LFS?qs=Imq1NPwxi77Ow0tzRIznfA%3D%3D&srsltid=AfmBOorKhGRG7uFvdg2H0nIiJD6X6eRKQotECo2UJbwLEi6FRqmCeH1I"
+			(at 90.17 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 90.17 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
 			(at 90.17 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -9977,6 +10333,39 @@
 				)
 			)
 		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/LITEON/LTST-C191KGKT?qs=xSPZu9B1aMCRQ5ACasEYAg%3D%3D&srsltid=AfmBOoojGXtZF46iDSpcnLQASRNawzXjUnZWGcj-t-85vLNCdx2SCuTA"
+			(at 267.97 50.8 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 267.97 50.8 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 267.97 50.8 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8c7337cf-4725-47a8-b893-2c2a6a4738d9")
 		)
@@ -10068,6 +10457,39 @@
 				)
 			)
 		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/YAGEO/RT0402FRE071KL?qs=BXCcY9r%252B08AJmLKodK5LLA%3D%3D&srsltid=AfmBOorTNV6yOMkLy0yceN-bIsUX6-Hy7vW6m8lEciFj7UEOrYB_Eorh"
+			(at 246.38 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 246.38 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 246.38 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "d8e81891-0d5e-435d-a3b2-5627ea517ae0")
 		)
@@ -10149,7 +10571,7 @@
 				)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://microohm-eg.com/pin-header-2-54mm-1x40-pin-male-single-row-straight-short-header-strip/"
 			(at 182.88 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -10160,7 +10582,18 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "MicroOhm"
+			(at 182.88 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
 			(at 182.88 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -10190,6 +10623,84 @@
 			(project "Mind_Speak_(Dongle_Board)"
 				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
 					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 193.04 20.32 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a63515e5-de38-44f5-8a1e-7c42929cd2ee")
+		(property "Reference" "#PWR04"
+			(at 193.04 24.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 193.04 15.24 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 193.04 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 193.04 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 193.04 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5b6805ca-dba1-4203-bfae-e4b009bea92f")
+		)
+		(instances
+			(project "Mind_Speak_(Dongle_Board)"
+				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -10261,6 +10772,39 @@
 		)
 		(property "PROD_ID" "RES-14342"
 			(at 246.38 48.768 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/YAGEO/RT0402FRE071KL?qs=BXCcY9r%252B08AJmLKodK5LLA%3D%3D&srsltid=AfmBOorTNV6yOMkLy0yceN-bIsUX6-Hy7vW6m8lEciFj7UEOrYB_Eorh"
+			(at 246.38 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 246.38 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 246.38 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10559,6 +11103,39 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+			)
+		)
+		(property "LINK" "https://www2.mouser.com/en/ProductDetail/u-blox/NINA-B306-01B?qs=HBWAp0VN4RjRrjBx%252B921jQ%3D%3D&srsltid=AfmBOoozFR822yXoHsUv7NDN1sAphogSUSnvd9bvzjMoSMV_BHbbmJ5w"
+			(at 140.97 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 140.97 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 140.97 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "12"
@@ -10872,6 +11449,39 @@
 				(justify right)
 			)
 		)
+		(property "LINK" "https://www.lcsc.com/product-detail/C275480.html?s_z=n_q_MPZ1005S300C&spm=wm.fly.bg.0.xh&lcsc_vid=TgJcAgIAFFFeUFVVRgNdUVwCQAVaXl1UFFhcUFJTRQQxVlNeQlRcVVJUR1ReVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slFhMKSjcJFAoLExdLNA4ACQEFAw4cFDs%2BIi8%2BMkkyMUxfVlE5NFNYUVJUR08GEwkK"
+			(at 34.29 24.13 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "LCSC"
+			(at 34.29 24.13 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 34.29 24.13 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e9955519-457b-43b2-b521-3ced14ae64b5")
 		)
@@ -10966,6 +11576,256 @@
 		)
 	)
 	(symbol
+		(lib_id "SSSS811101:SSSS811101")
+		(at 121.92 49.53 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c7b5a12a-b933-488b-a1d8-fe0d712a4e0d")
+		(property "Reference" "S1"
+			(at 121.92 39.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SSSS811101"
+			(at 121.92 41.91 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "ALPS_Library:SW_SSSS811101"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Datasheet" ""
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Switch Slide SP Side Slide 0.3A 5VDC 10000Cycles Gull Wing SMD T/R"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "MF" "ALPS"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" "1.60 mm"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Package" "None"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Price" "None"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Check_prices" "https://www.snapeda.com/parts/SSSS811101/ALPS/view-part/?ref=eda"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "STANDARD" "Manufacturer Recommendations"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "PARTREV" "N/A"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "SnapEDA_Link" "https://www.snapeda.com/parts/SSSS811101/ALPS/view-part/?ref=snap"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "MP" "SSSS811101"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Availability" "In Stock"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "MANUFACTURER" "ALPS"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "LINK" "https://www.lcsc.com/product-detail/C109335.html"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "LCSC"
+			(at 121.92 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "7b7b45df-8bc6-4be4-ab48-6ddac295cf96")
+		)
+		(pin "1"
+			(uuid "87a30e93-3e6e-4d6f-bfd4-facb7315ca61")
+		)
+		(pin "2"
+			(uuid "d0bdd5af-75cb-4ba5-9bc6-f620babf94d0")
+		)
+		(instances
+			(project "Mind_Speak_(Dongle_Board)"
+				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
+					(reference "S1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "PCM_SparkFun-Resistor:22_0402")
 		(at 83.82 45.72 0)
 		(unit 1)
@@ -11031,6 +11891,39 @@
 		)
 		(property "PROD_ID" "RES-12427"
 			(at 83.82 52.578 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/YAGEO/RC0402FR-0722RL?qs=V1yeUXFNrkkRg6zf08ADKQ%3D%3D&srsltid=AfmBOop8SW49TJcti6bcb7JYG0ZtApqFTaRHiXhv8UaSUVJM9EYc5cLk"
+			(at 83.82 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 83.82 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 83.82 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11156,7 +12049,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://www.lcsc.com/product-detail/C710916.html?s_z=n_q_GRM188C80G106KE47D&spm=wm.fly.bg.0.xh&lcsc_vid=TgJcAgIAFFFeUFVVRgNdUVwCQAVaXl1UFFhcUFJTRQQxVlNeQlRcV11VQFlXXzsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slFhMKSjcJFAoLExdLNA4ACQEFAw4cFDs%2BIi8%2BMkkyMUxfVlE5NFNYUVJUR08GEwkK"
 			(at 177.8 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -11167,7 +12060,18 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "LCSC"
+			(at 177.8 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
 			(at 177.8 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -11371,6 +12275,39 @@
 				(justify left)
 			)
 		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R7BB103?qs=AgBp2OyFlx8cKvXdhdEm3Q%3D%3D&srsltid=AfmBOoq3tdF0cme3FyVm_ZAEeyMThV0cq4XN1ZLb5kKvmSXHEhhr3AIO"
+			(at 40.64 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 40.64 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 40.64 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "a32248b2-727e-4ed9-893e-0f38de53646f")
 		)
@@ -11488,7 +12425,7 @@
 				(justify left)
 			)
 		)
-		(property "LINK" ""
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/YAGEO/CC0402KRX7R7BB104?qs=AgBp2OyFlx%252BSOyhfyS7hpw%3D%3D&srsltid=AfmBOop_xy3Fc8F5mU2NeKT0K3EMtiKfVLDKg6EX36DYS6M2BVhnat8m"
 			(at 191.77 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -11499,7 +12436,18 @@
 				)
 			)
 		)
-		(property "VENDOR" ""
+		(property "VENDOR" "Mouser"
+			(at 191.77 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
 			(at 191.77 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -11582,6 +12530,39 @@
 		)
 		(property "Description" "The BOURNS CG0402MLC-05LG is an ESD Suppressor Diode designed to protect sensitive electronic components from electrostatic discharge events. This diode has a working voltage of 5V and comes in a compact 0402 (1006 metric) case, making it ideal for space-constrained applications. It is supplied in tape and reel packaging for easy use on automated assembly lines. Trust BOURNS for reliable ESD protection in your electronic designs."
 			(at 55.626 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/Bourns/CG0402MLC-05LG?qs=m8myXnDJXpXKFnFgvLE1Zw%3D%3D&srsltid=AfmBOooXQcmdnei33vZHA5E1U3fgr46DUkzHseWcAWop6eF7bgr_qtcs"
+			(at 57.15 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 57.15 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 57.15 63.5 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11839,6 +12820,39 @@
 				)
 			)
 		)
+		(property "LINK" "https://eu.mouser.com/en/ProductDetail/YAGEO/RC0402JR-07330RL?qs=uM1JSSdPjODKnhKTI7Q4uA%3D%3D&srsltid=AfmBOopfn4HWJXXpMeBdo2JzNEdkSOH7BtD_71jQqdLKCFuW4Up3DEpC"
+			(at 267.97 58.42 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "VENDOR" "Mouser"
+			(at 267.97 58.42 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mrg Part#" ""
+			(at 267.97 58.42 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "aea6b116-22aa-4da8-9990-012971aabbd3")
 		)
@@ -11849,144 +12863,6 @@
 			(project "Mind_Speak_(Dongle_Board)"
 				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
 					(reference "R5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_SparkFun-Switch:SPDT_Slide_SMD_6.7x2.6mm")
-		(at 135.89 55.88 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "f43eb276-ee15-46cf-b334-34b3d4df8e0c")
-		(property "Reference" "SW4"
-			(at 135.89 48.26 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SPDT_Slide_SMD_6.7x2.6mm"
-			(at 127.762 50.546 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Button_Switch_SMD:SW_SPDT_Shouhan_MSK12C02"
-			(at 135.89 63.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.nidec-components.com/e/catalog/switch/cus.pdf"
-			(at 135.89 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Switch, single pole double throw"
-			(at 135.89 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "PROD_ID" "SWCH-10651"
-			(at 135.89 68.58 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mrg Part#" "CUS-12B"
-			(at 135.89 71.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LINK" ""
-			(at 135.89 55.88 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "VENDOR" ""
-			(at 135.89 55.88 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "MT2"
-			(uuid "5c68333d-a58b-45f4-b16a-b713ce46ad3e")
-		)
-		(pin "1"
-			(uuid "22575bdf-86da-457a-b830-aab9ed921e5b")
-		)
-		(pin "3"
-			(uuid "3ca9cf72-e3ed-4604-be3d-ae16ccfb2340")
-		)
-		(pin "2"
-			(uuid "0cd1bc9c-6097-4969-8a22-3bc4bb6605a1")
-		)
-		(pin "MT1"
-			(uuid "8d22f372-842b-44fa-97da-25fc8ff2a9bc")
-		)
-		(pin "MT3"
-			(uuid "3a0eb6a2-16b7-40a5-8cd6-18953751b49a")
-		)
-		(pin "MT4"
-			(uuid "864fedc9-a7d3-491e-bca0-cb9ab6f17974")
-		)
-		(instances
-			(project "Mind_Speak_(Dongle_Board)"
-				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
-					(reference "SW4")
 					(unit 1)
 				)
 			)
