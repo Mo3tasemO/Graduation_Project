@@ -5816,6 +5816,26 @@
 					)
 				)
 			)
+			(symbol "SSSS811101_1_0"
+				(pin passive line
+					(at -10.16 3.81 0)
+					(length 5.08)
+					(name "SHIELD"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
 			(embedded_fonts no)
 		)
 		(symbol "Switch:SW_MEC_5E"
@@ -6502,10 +6522,6 @@
 		(uuid "4d3c3132-14ce-42ef-b361-f387b2549563")
 	)
 	(no_connect
-		(at 20.32 53.34)
-		(uuid "4d4aea85-ab9b-4500-bdf5-e5aaecf05dc1")
-	)
-	(no_connect
 		(at 134.62 135.89)
 		(uuid "59f34146-a8f8-4ecc-8edc-508c1b517647")
 	)
@@ -6669,6 +6685,16 @@
 	)
 	(wire
 		(pts
+			(xy 20.32 57.15) (xy 20.32 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05558c8b-bf7e-4ed0-bb0e-922f66628ecf")
+	)
+	(wire
+		(pts
 			(xy 219.71 80.01) (xy 222.25 80.01)
 		)
 		(stroke
@@ -6802,8 +6828,8 @@
 			(xy 285 12) (xy 12 12)
 		)
 		(stroke
-			(width 0)
-			(type default)
+			(width 0.5)
+			(type solid)
 		)
 		(uuid "29cbc4ad-5e64-4bcf-8013-9c92dd67690f")
 	)
@@ -6872,8 +6898,8 @@
 			(xy 12 86) (xy 285 86)
 		)
 		(stroke
-			(width 0)
-			(type default)
+			(width 0.5)
+			(type solid)
 		)
 		(uuid "393f036d-ebcd-4426-863b-ff54445a02fd")
 	)
@@ -6982,8 +7008,8 @@
 			(xy 285 86) (xy 285 166)
 		)
 		(stroke
-			(width 0)
-			(type default)
+			(width 0.5)
+			(type solid)
 		)
 		(uuid "5cbfaaa9-a352-48c7-8ca9-e1ebcbe1ebcf")
 	)
@@ -7062,8 +7088,8 @@
 			(xy 12 12) (xy 12 86)
 		)
 		(stroke
-			(width 0)
-			(type default)
+			(width 0.5)
+			(type solid)
 		)
 		(uuid "6c4f39fb-c550-4af8-ae7c-64e5a09fef9b")
 	)
@@ -7092,8 +7118,8 @@
 			(xy 177 166) (xy 177 198)
 		)
 		(stroke
-			(width 0)
-			(type default)
+			(width 0.5)
+			(type solid)
 		)
 		(uuid "705fc687-fe70-4c3b-91cd-dd1b8a17957d")
 	)
@@ -7166,6 +7192,16 @@
 			(type default)
 		)
 		(uuid "7c9e1dc6-ac47-45e2-bec8-00aebfca759f")
+	)
+	(wire
+		(pts
+			(xy 209.55 125.73) (xy 213.36 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d91578d-371c-4b27-a879-c4a8f7f52bec")
 	)
 	(wire
 		(pts
@@ -7282,8 +7318,8 @@
 			(xy 138 12) (xy 138 86)
 		)
 		(stroke
-			(width 0)
-			(type default)
+			(width 0.5)
+			(type solid)
 		)
 		(uuid "9b5fd516-6747-4e5d-b194-2e5e04bd4192")
 	)
@@ -7422,8 +7458,8 @@
 			(xy 12 86) (xy 12 198)
 		)
 		(stroke
-			(width 0)
-			(type default)
+			(width 0.5)
+			(type solid)
 		)
 		(uuid "b40b9d41-86ca-44f1-a257-fc22063641a9")
 	)
@@ -7582,8 +7618,8 @@
 			(xy 177 86) (xy 177 166)
 		)
 		(stroke
-			(width 0)
-			(type default)
+			(width 0.5)
+			(type solid)
 		)
 		(uuid "cfb59165-5649-42e3-b462-790c655b02a6")
 	)
@@ -7642,8 +7678,8 @@
 			(xy 285 86) (xy 285 12)
 		)
 		(stroke
-			(width 0)
-			(type default)
+			(width 0.5)
+			(type solid)
 		)
 		(uuid "d3f824d7-3dd0-440f-beba-9023bc3654e5")
 	)
@@ -7782,8 +7818,8 @@
 			(xy 285 166) (xy 177 166)
 		)
 		(stroke
-			(width 0)
-			(type default)
+			(width 0.5)
+			(type solid)
 		)
 		(uuid "e97effa1-435b-45da-956f-9ace352bcf1e")
 	)
@@ -7802,8 +7838,8 @@
 			(xy 12 198) (xy 177 198)
 		)
 		(stroke
-			(width 0)
-			(type default)
+			(width 0.5)
+			(type solid)
 		)
 		(uuid "ee62a148-e031-4c1d-a689-3bc069c24ab3")
 	)
@@ -8370,6 +8406,84 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 20.32 57.15 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "07b646c0-fd31-4dcf-8b21-e11f1d9f8dba")
+		(property "Reference" "#PWR013"
+			(at 20.32 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 20.32 60.96 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 20.32 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 20.32 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 20.32 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2901511d-04e0-4b6a-a920-46443168a98a")
+		)
+		(instances
+			(project "Mind_Speak_(Dongle_Board)"
+				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
+					(reference "#PWR013")
+					(unit 1)
+				)
 			)
 		)
 	)
@@ -9747,6 +9861,84 @@
 			(project "Mind_Speak_(Dongle_Board)"
 				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
 					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 209.55 125.73 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4741f40f-7a04-4712-911c-85135eeb3de0")
+		(property "Reference" "#PWR014"
+			(at 209.55 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 209.55 129.54 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 209.55 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 209.55 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 209.55 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b4561408-e17b-43d7-8d5c-821b5968ff1a")
+		)
+		(instances
+			(project "Mind_Speak_(Dongle_Board)"
+				(path "/602895f5-aacf-4c92-9095-deb81879ec95"
+					(reference "#PWR014")
 					(unit 1)
 				)
 			)
@@ -12231,6 +12423,9 @@
 		)
 		(pin "2"
 			(uuid "d0bdd5af-75cb-4ba5-9bc6-f620babf94d0")
+		)
+		(pin "4"
+			(uuid "b919293f-706d-4c54-b7af-c188acf4ac0f")
 		)
 		(instances
 			(project "Mind_Speak_(Dongle_Board)"
