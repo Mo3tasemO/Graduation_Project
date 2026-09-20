@@ -1,0 +1,58 @@
+configVersion: 1.0.0
+coreVersion: 5.9.0
+spaHostVersion: 1.3.0
+device: PIC32MX250F128B
+deviceLibrary: {}
+groupModules:
+- group: Group0
+  modules:
+  - spi1
+  - uart1
+modules:
+- core
+- dfp
+generatedFileHashHistoryMap:
+- file: ..\src\config\default\definitions.h
+  hash: 6973a777a1749c248e7bd7d52d76a5f19a3a6806c5da389e634d2dfb2ee62325
+- file: ..\src\config\default\device.h
+  hash: 4d4341a6f9628cea0bf73f980b639f7cb81089e55a60ad7e434be2a71e477442
+- file: ..\src\config\default\exceptions.c
+  hash: df6a7db71f29db985de306abd7b848a24111cef6398ccfb9479449ae4fbc069d
+- file: ..\src\config\default\initialization.c
+  hash: e7e5333e7bfe250c9c0c5b363be8267d5d0ed731b4bc5d9d6586d745fb427508
+- file: ..\src\config\default\interrupts.c
+  hash: 09679e0f83f3c07069ff2503ce67a70a537c459355f18efde8ddb0ade6382a7c
+- file: ..\src\config\default\interrupts.h
+  hash: 87f8dfb2418be8145f95a8200999f2340ad334e623e0c7417f15662db0dc9985
+- file: ..\src\config\default\p32MX250F128B.ld
+  hash: 8890d3d9ceb62324f0200da465ca8af349f09de2f02078a15783f20579653c3f
+- file: ..\src\config\default\peripheral\clk\plib_clk.c
+  hash: a114fed18429ba96b5717885a3250e4b4a9806fa0e6547f8fb6c1b73beeafa65
+- file: ..\src\config\default\peripheral\clk\plib_clk.h
+  hash: 35384f2e13e59b7190bf77f6996baf3ea2377ec42df94979a6f793326def5255
+- file: ..\src\config\default\peripheral\evic\plib_evic.c
+  hash: 977abe06d7db70842883f61c186b0d712d619987ff373409b76e5d1eb45954f1
+- file: ..\src\config\default\peripheral\evic\plib_evic.h
+  hash: 65ddf691b7fbc1fcd57a07a93a4442732effb8c53fc7ceca4464dade923f80f8
+- file: ..\src\config\default\peripheral\gpio\plib_gpio.c
+  hash: 9a10012d9287b7b61726f5e399345524bd0c438b151cd98bf858a619b70e7add
+- file: ..\src\config\default\peripheral\gpio\plib_gpio.h
+  hash: dfa0f6a69e32c599555d0ebea5cca4a9f32436dec6ecfad8e1f7887fed550581
+- file: ..\src\config\default\peripheral\spi\spi_master\plib_spi1_master.c
+  hash: 43be60360856de75b1df0e4027960bbfdd94169dae14c70ef9060903f0de475d
+- file: ..\src\config\default\peripheral\spi\spi_master\plib_spi1_master.h
+  hash: e022deaa6bc614442c072622acf6a7ebb292ba4db067510bd6e37af805bea226
+- file: ..\src\config\default\peripheral\spi\spi_master\plib_spi_master_common.h
+  hash: 844a71566e886cd1f28024000d440ac48841cdb4f4059f5feefac8e4334f12ef
+- file: ..\src\config\default\peripheral\uart\plib_uart1.c
+  hash: 4b3b7913d579620efa7a574696d699955fd024969e86d77ed451778b95a07484
+- file: ..\src\config\default\peripheral\uart\plib_uart1.h
+  hash: 3cfe8272a32c26c7264e28eac424effd76aad49efbebfc491d07208147ed8ad4
+- file: ..\src\config\default\peripheral\uart\plib_uart_common.h
+  hash: b87295faadae4157d5880e22970f89094f2b51e1866930040a90ba49c6b29797
+- file: ..\src\config\default\stdio\xc32_monitor.c
+  hash: 858f8710d4287200a5ee7f3b3ad7c24f505aed9c05c16956ab0ff9f7bb162a6a
+- file: ..\src\config\default\toolchain_specifics.h
+  hash: f6f3282ecb4ad8b5ba3487b7d7b8f6cfa3f977240726af07eaab058caf904381
+- file: ..\src\main.c
+  hash: d3c233d419e6304bfacbafc18cc68c0f5c26e365f23b20ea40ccfac458f664c5
