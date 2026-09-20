@@ -7933,6 +7933,52 @@
 		)
 		(uuid "ffacd852-a6ec-4b1b-8add-31e8667b5ffb")
 	)
+	(label "D+"
+		(at 33.02 43.18 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a89a422c-55c2-401e-be61-e287967c213c")
+		(property "Net Class" "DP_90R"
+			(at 33.02 44.45 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+			)
+		)
+	)
+	(label "D-"
+		(at 33.02 45.72 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f58030d6-54e3-4000-b1e0-e11815eb3dcd")
+		(property "Net Class" "DP_90R"
+			(at 33.02 46.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "NINA_PWR"
 		(shape input)
 		(at 237.49 132.08 0)

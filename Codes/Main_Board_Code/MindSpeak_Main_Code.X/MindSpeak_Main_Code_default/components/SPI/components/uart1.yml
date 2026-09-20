@@ -1,0 +1,236 @@
+configVersion: 1.0.0
+componentName: uart1
+coreVersion: 5.9.0
+device: PIC32MX250F128B
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: uart1
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.26.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition: {}
+  symbols:
+    BAUD_RATE:
+      attributes:
+        id: BAUD_RATE
+        label: Baud Rate
+      type: Integer
+    BRG_VALUE:
+      attributes:
+        id: BRG_VALUE
+        label: BRG_VALUE
+      children:
+      - children:
+        - attributes:
+            id: uart1
+            value: '25'
+          type: Dynamic
+        type: Values
+      type: Integer
+    RECEIVE_DATA_REGISTER:
+      attributes:
+        id: RECEIVE_DATA_REGISTER
+        label: RECEIVE_DATA_REGISTER
+      type: String
+    TRANSMIT_DATA_REGISTER:
+      attributes:
+        id: TRANSMIT_DATA_REGISTER
+        label: TRANSMIT_DATA_REGISTER
+      type: String
+    UART_9BIT_MODE_ADDR:
+      attributes:
+        id: UART_9BIT_MODE_ADDR
+        label: Address
+      type: Integer
+    UART_AUTOMATIC_ADDR_DETECTION_ENABLE:
+      attributes:
+        id: UART_AUTOMATIC_ADDR_DETECTION_ENABLE
+        label: Enable Automatic Address Detection?
+      type: Boolean
+    UART_BRGH:
+      attributes:
+        id: UART_BRGH
+        label: High Baud Rate Enable bit
+      children:
+      - children:
+        - attributes:
+            id: uart1
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    UART_CLOCK_FREQ:
+      attributes:
+        id: UART_CLOCK_FREQ
+        label: Clock Frequency
+      children:
+      - children:
+        - attributes:
+            id: uart1
+            value: '48000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    UART_FAULT_IEC_REG:
+      attributes:
+        id: UART_FAULT_IEC_REG
+        label: UART_FAULT_IEC_REG
+      type: String
+    UART_FAULT_IFS_REG:
+      attributes:
+        id: UART_FAULT_IFS_REG
+        label: UART_FAULT_IFS_REG
+      type: String
+    UART_INSTANCE_NAME:
+      attributes:
+        id: UART_INSTANCE_NAME
+        label: UART_INSTANCE_NAME
+      type: String
+    UART_INSTANCE_NUM:
+      attributes:
+        id: UART_INSTANCE_NUM
+        label: UART_INSTANCE_NUM
+      type: String
+    UART_INTERRUPT_COUNT:
+      attributes:
+        id: UART_INTERRUPT_COUNT
+        label: UART_INTERRUPT_COUNT
+      type: Integer
+    UART_INTERRUPT_MODE_ENABLE:
+      attributes:
+        id: UART_INTERRUPT_MODE_ENABLE
+        label: Enable Interrrupts ?
+      type: Boolean
+    UART_OPERATING_MODE:
+      attributes:
+        id: UART_OPERATING_MODE
+        label: Operating Mode
+      type: KeyValueSet
+    UART_PDBIT_SELECT:
+      attributes:
+        id: UART_PDBIT_SELECT
+        label: Parity and Data Selection bits
+      type: KeyValueSet
+    UART_RING_BUFFER_ENABLE:
+      attributes:
+        id: UART_RING_BUFFER_ENABLE
+        label: Enable Ring Buffer ?
+      type: Boolean
+    UART_RING_BUFFER_MODE_ENABLE:
+      attributes:
+        id: UART_RING_BUFFER_MODE_ENABLE
+        label: Enable Ring Buffer ?
+      type: Boolean
+    UART_RX_IEC_REG:
+      attributes:
+        id: UART_RX_IEC_REG
+        label: UART_RX_IEC_REG
+      type: String
+    UART_RX_IFS_REG:
+      attributes:
+        id: UART_RX_IFS_REG
+        label: UART_RX_IFS_REG
+      type: String
+    UART_RX_RING_BUFFER_SIZE:
+      attributes:
+        id: UART_RX_RING_BUFFER_SIZE
+        label: RX Ring Buffer Size
+      type: Integer
+    UART_STOPBIT_SELECT:
+      attributes:
+        id: UART_STOPBIT_SELECT
+        label: Stop Selection bit
+      type: KeyValueSet
+    UART_TX_IEC_REG:
+      attributes:
+        id: UART_TX_IEC_REG
+        label: UART_TX_IEC_REG
+      type: String
+    UART_TX_IFS_REG:
+      attributes:
+        id: UART_TX_IFS_REG
+        label: UART_TX_IFS_REG
+      type: String
+    UART_TX_RING_BUFFER_SIZE:
+      attributes:
+        id: UART_TX_RING_BUFFER_SIZE
+        label: TX Ring Buffer Size
+      type: Integer
+    UART_UEN_SELECT:
+      attributes:
+        id: UART_UEN_SELECT
+        label: UARTx Enable bits
+      type: KeyValueSet
+    USART_DATA_8_BIT_MASK:
+      attributes:
+        id: USART_DATA_8_BIT_MASK
+        label: USART_DATA_8_BIT_MASK
+      type: String
+    USART_DATA_9_BIT_MASK:
+      attributes:
+        id: USART_DATA_9_BIT_MASK
+        label: USART_DATA_9_BIT_MASK
+      type: String
+    USART_DATA_BITS:
+      attributes:
+        id: USART_DATA_BITS
+        label: USART_DATA_BITS
+      type: String
+    USART_FRAMING_ERROR_VALUE:
+      attributes:
+        id: USART_FRAMING_ERROR_VALUE
+        label: USART_FRAMING_ERROR_VALUE
+      type: String
+    USART_INTERRUPT_MODE:
+      attributes:
+        id: USART_INTERRUPT_MODE
+        label: Enable Interrrupts ?
+      type: Boolean
+    USART_OVERRUN_ERROR_VALUE:
+      attributes:
+        id: USART_OVERRUN_ERROR_VALUE
+        label: USART_OVERRUN_ERROR_VALUE
+      type: String
+    USART_PARITY_ERROR_VALUE:
+      attributes:
+        id: USART_PARITY_ERROR_VALUE
+        label: USART_PARITY_ERROR_VALUE
+      type: String
+    USART_PARITY_EVEN_MASK:
+      attributes:
+        id: USART_PARITY_EVEN_MASK
+        label: USART_PARITY_EVEN_MASK
+      type: String
+    USART_PARITY_NONE_MASK:
+      attributes:
+        id: USART_PARITY_NONE_MASK
+        label: USART_PARITY_NONE_MASK
+      type: String
+    USART_PARITY_ODD_MASK:
+      attributes:
+        id: USART_PARITY_ODD_MASK
+        label: USART_PARITY_ODD_MASK
+      type: String
+    USART_PLIB_API_PREFIX:
+      attributes:
+        id: USART_PLIB_API_PREFIX
+        label: USART_PLIB_API_PREFIX
+      type: String
+    USART_STOP_1_BIT_MASK:
+      attributes:
+        id: USART_STOP_1_BIT_MASK
+        label: USART_STOP_1_BIT_MASK
+      type: String
+    USART_STOP_2_BIT_MASK:
+      attributes:
+        id: USART_STOP_2_BIT_MASK
+        label: USART_STOP_2_BIT_MASK
+      type: String
+  userData: {}

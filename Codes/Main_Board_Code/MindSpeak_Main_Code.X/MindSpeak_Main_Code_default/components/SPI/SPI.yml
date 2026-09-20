@@ -1,0 +1,31 @@
+configVersion: 1.0.0
+componentName: Group0
+coreVersion: 5.9.0
+device: PIC32MX250F128B
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyGroupModule
+  name: Group0
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.26.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition: {}
+  symbols:
+    GroupName:
+      attributes:
+        id: GroupName
+        label: Name
+      children:
+      - children:
+        - attributes:
+            value: SPI
+          type: User
+        type: Values
+      type: String
+  userData: {}

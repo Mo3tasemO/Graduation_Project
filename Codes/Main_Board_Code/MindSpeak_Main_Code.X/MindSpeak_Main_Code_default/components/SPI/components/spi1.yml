@@ -1,0 +1,296 @@
+configVersion: 1.0.0
+componentName: spi1
+coreVersion: 5.9.0
+device: PIC32MX250F128B
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: spi1
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.26.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition: {}
+  symbols:
+    RECEIVE_DATA_REGISTER:
+      attributes:
+        id: RECEIVE_DATA_REGISTER
+        label: RECEIVE_DATA_REGISTER
+      type: String
+    SPIS_BUSY_PIN:
+      attributes:
+        id: SPIS_BUSY_PIN
+        label: Slave Busy Pin
+      type: KeyValueSet
+    SPIS_BUSY_PIN_LOGIC_LEVEL:
+      attributes:
+        id: SPIS_BUSY_PIN_LOGIC_LEVEL
+        label: Slave Busy Pin Logic Level
+      type: KeyValueSet
+    SPIS_CS_PIN:
+      attributes:
+        id: SPIS_CS_PIN
+        label: Chip Select Pin
+      type: KeyValueSet
+    SPIS_CS_PIN_LOGIC_LEVEL:
+      attributes:
+        id: SPIS_CS_PIN_LOGIC_LEVEL
+        label: Chip Select Pin Logic Level
+      type: KeyValueSet
+    SPIS_RX_BUFFER_SIZE:
+      attributes:
+        id: SPIS_RX_BUFFER_SIZE
+        label: RX Buffer Size (in bytes)
+      type: Integer
+    SPIS_SLAVE_SELECT_ENABLE:
+      attributes:
+        id: SPIS_SLAVE_SELECT_ENABLE
+        label: Enable Slave Select
+      children:
+      - children:
+        - attributes:
+            id: spi1
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    SPIS_TX_BUFFER_SIZE:
+      attributes:
+        id: SPIS_TX_BUFFER_SIZE
+        label: TX Buffer Size (in bytes)
+      type: Integer
+    SPIS_USE_BUSY_PIN:
+      attributes:
+        id: SPIS_USE_BUSY_PIN
+        label: Use GPIO pin as Busy signal?
+      type: Boolean
+    SPI_BAUD_RATE:
+      attributes:
+        id: SPI_BAUD_RATE
+        label: Baud Rate in Hz
+      children:
+      - children:
+        - attributes:
+            value: '1000000'
+          type: User
+        type: Values
+      type: Integer
+    SPI_BRG_VALUE:
+      attributes:
+        id: SPI_BRG_VALUE
+        label: SPI_BRG_VALUE
+      children:
+      - children:
+        - attributes:
+            id: spi1
+            value: '23'
+          type: Dynamic
+        type: Values
+      type: Integer
+    SPI_CHARSIZE_BITS_16_BIT_MASK:
+      attributes:
+        id: SPI_CHARSIZE_BITS_16_BIT_MASK
+        label: SPI_CHARSIZE_BITS_16_BIT_MASK
+      type: String
+    SPI_CHARSIZE_BITS_32_BIT_MASK:
+      attributes:
+        id: SPI_CHARSIZE_BITS_32_BIT_MASK
+        label: SPI_CHARSIZE_BITS_32_BIT_MASK
+      type: String
+    SPI_CHARSIZE_BITS_8_BIT_MASK:
+      attributes:
+        id: SPI_CHARSIZE_BITS_8_BIT_MASK
+        label: SPI_CHARSIZE_BITS_8_BIT_MASK
+      type: String
+    SPI_CLOCK_PHASE_LEADING_MASK:
+      attributes:
+        id: SPI_CLOCK_PHASE_LEADING_MASK
+        label: SPI_CLOCK_PHASE_LEADING_MASK
+      type: String
+    SPI_CLOCK_PHASE_TRAILING_MASK:
+      attributes:
+        id: SPI_CLOCK_PHASE_TRAILING_MASK
+        label: SPI_CLOCK_PHASE_TRAILING_MASK
+      type: String
+    SPI_CLOCK_POLARITY_HIGH_MASK:
+      attributes:
+        id: SPI_CLOCK_POLARITY_HIGH_MASK
+        label: SPI_CLOCK_POLARITY_HIGH_MASK
+      type: String
+    SPI_CLOCK_POLARITY_LOW_MASK:
+      attributes:
+        id: SPI_CLOCK_POLARITY_LOW_MASK
+        label: SPI_CLOCK_POLARITY_LOW_MASK
+      type: String
+    SPI_CON2_SPIROVEN:
+      attributes:
+        id: SPI_CON2_SPIROVEN
+        label: SPI_CON2_SPIROVEN
+      type: Boolean
+    SPI_DUMMY_DATA:
+      attributes:
+        id: SPI_DUMMY_DATA
+        label: Dummy Data
+      children:
+      - children:
+        - attributes:
+            id: max
+          children:
+          - type: Value
+            value: '4294967295'
+          type: Long
+        type: Attributes
+      - children:
+        - attributes:
+            id: spi1
+            value: '4294967295'
+          type: Dynamic
+        type: Values
+      type: Hex
+    SPI_ERROR_NAME:
+      attributes:
+        id: SPI_ERROR_NAME
+        label: SPI_ERROR_NAME
+      type: String
+    SPI_FLT_IEC_REG:
+      attributes:
+        id: SPI_FLT_IEC_REG
+        label: SPI_FLT_IEC_REG
+      type: String
+    SPI_FLT_IEC_REG_MASK:
+      attributes:
+        id: SPI_FLT_IEC_REG_MASK
+        label: SPI_FLT_IEC_REG_MASK
+      type: String
+    SPI_FLT_IFS_REG:
+      attributes:
+        id: SPI_FLT_IFS_REG
+        label: SPI_FLT_IFS_REG
+      type: String
+    SPI_FLT_IFS_REG_MASK:
+      attributes:
+        id: SPI_FLT_IFS_REG_MASK
+        label: SPI_FLT_IFS_REG_MASK
+      type: String
+    SPI_INSTANCE_NAME:
+      attributes:
+        id: SPI_INSTANCE_NAME
+        label: SPI_INSTANCE_NAME
+      type: String
+    SPI_INSTANCE_NUM:
+      attributes:
+        id: SPI_INSTANCE_NUM
+        label: SPI_INSTANCE_NUM
+      type: String
+    SPI_INTERRUPT_COUNT:
+      attributes:
+        id: SPI_INTERRUPT_COUNT
+        label: SPI_INTERRUPT_COUNT
+      type: Integer
+    SPI_INTERRUPT_MODE:
+      attributes:
+        id: SPI_INTERRUPT_MODE
+        label: Enable Interrupts ?
+      type: Boolean
+    SPI_MASTER_CLOCK:
+      attributes:
+        id: SPI_MASTER_CLOCK
+        label: Master Clock Enable bit
+      type: KeyValueSet
+    SPI_MAX_BRG:
+      attributes:
+        id: SPI_MAX_BRG
+        label: SPI_MAX_BRG
+      type: Integer
+    SPI_MSTR_MODE_EN:
+      attributes:
+        id: SPI_MSTR_MODE_EN
+        label: Master Mode Enable bit
+      type: KeyValueSet
+    SPI_PLIB_API_PREFIX:
+      attributes:
+        id: SPI_PLIB_API_PREFIX
+        label: SPI_PLIB_API_PREFIX
+      type: String
+    SPI_RX_IEC_REG:
+      attributes:
+        id: SPI_RX_IEC_REG
+        label: SPI_RX_IEC_REG
+      type: String
+    SPI_RX_IEC_REG_MASK:
+      attributes:
+        id: SPI_RX_IEC_REG_MASK
+        label: SPI_RX_IEC_REG_MASK
+      type: String
+    SPI_RX_IFS_REG:
+      attributes:
+        id: SPI_RX_IFS_REG
+        label: SPI_RX_IFS_REG
+      type: String
+    SPI_RX_IFS_REG_MASK:
+      attributes:
+        id: SPI_RX_IFS_REG_MASK
+        label: SPI_RX_IFS_REG_MASK
+      type: String
+    SPI_SPICON_CLK_PH:
+      attributes:
+        id: SPI_SPICON_CLK_PH
+        label: SPI Clock Edge Select bit
+      type: KeyValueSet
+    SPI_SPICON_CLK_POL:
+      attributes:
+        id: SPI_SPICON_CLK_POL
+        label: Clock Polarity Select bit
+      type: KeyValueSet
+    SPI_SPICON_MODE:
+      attributes:
+        id: SPI_SPICON_MODE
+        label: Data Width
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    SPI_SPICON_MSSEN:
+      attributes:
+        id: SPI_SPICON_MSSEN
+        label: Master Mode Slave Select Enable bit
+      type: KeyValueSet
+    SPI_SPICON_SMP:
+      attributes:
+        id: SPI_SPICON_SMP
+        label: SPI Data Input Sample Phase bit
+      type: KeyValueSet
+    SPI_TX_IEC_REG:
+      attributes:
+        id: SPI_TX_IEC_REG
+        label: SPI_TX_IEC_REG
+      type: String
+    SPI_TX_IEC_REG_MASK:
+      attributes:
+        id: SPI_TX_IEC_REG_MASK
+        label: SPI_TX_IEC_REG_MASK
+      type: String
+    SPI_TX_IFS_REG:
+      attributes:
+        id: SPI_TX_IFS_REG
+        label: SPI_TX_IFS_REG
+      type: String
+    SPI_TX_IFS_REG_MASK:
+      attributes:
+        id: SPI_TX_IFS_REG_MASK
+        label: SPI_TX_IFS_REG_MASK
+      type: String
+    TRANSMIT_DATA_REGISTER:
+      attributes:
+        id: TRANSMIT_DATA_REGISTER
+        label: TRANSMIT_DATA_REGISTER
+      type: String
+  userData: {}

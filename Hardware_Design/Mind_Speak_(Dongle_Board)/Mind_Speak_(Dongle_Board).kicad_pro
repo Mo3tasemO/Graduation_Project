@@ -566,6 +566,12 @@
     },
     "net_colors": null,
     "netclass_assignments": {
+      "/D+": [
+        "DP_90R"
+      ],
+      "/D-": [
+        "DP_90R"
+      ],
       "USB_D+": [
         "DP_90R"
       ],
