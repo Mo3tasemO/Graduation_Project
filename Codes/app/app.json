@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "MindSpeak",
+    "slug": "mindspeak",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "backgroundColor": "#EAF2FF"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mindspeak.app"
+    },
+    "android": {
+      "package": "com.mindspeak.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "MindSpeak needs access to your photos so you can choose a profile picture."
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Allow MindSpeak to use Face ID for quick login."
+        }
+      ],
+      "expo-secure-store"
+    ]
+  }
+}
