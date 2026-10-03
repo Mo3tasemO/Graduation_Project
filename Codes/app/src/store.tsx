@@ -17,7 +17,11 @@ export type Settings = {
   language: string;
 };
 
+export type AccountRole = 'patient' | 'caregiver';
+
 export type Profile = {
+  role: AccountRole;
+  linkedPatientId: string;
   name: string;
   email: string;
   id: string;
@@ -34,6 +38,8 @@ export type Profile = {
 };
 
 const BLANK_PROFILE: Profile = {
+  role: 'patient',
+  linkedPatientId: '',
   name: '',
   email: '',
   id: '',
@@ -102,6 +108,8 @@ const DEFAULT: Persisted = {
     language: 'English',
   },
   profile: {
+    role: 'patient',
+    linkedPatientId: '',
     name: 'Sara Ahmed',
     email: '',
     id: '202206401',

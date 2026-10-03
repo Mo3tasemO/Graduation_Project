@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { KeyboardAvoidingView, Platform, View } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Button, FadeIn, Icon, Press, Screen, useToast } from '../components/ui';
 import { Avatar, Field, PasswordField, PasswordRules } from '../components/Field';
 import { T, useTheme } from '../theme';
-import { AuthError, auth, isGmail, parseBirthDate, passwordOk, phoneOk } from '../services/auth';
+import { AuthError, auth, isEmail, parseBirthDate, passwordOk, phoneOk } from '../services/auth';
+import AccountRolePicker from '../components/AccountRolePicker';
+import type { AccountRole } from '../store';
 
 /** Auto-inserts slashes: 12052001 -> 12/05/2001 */
 const maskDate = (s: string) => {
@@ -15,6 +17,9 @@ const maskDate = (s: string) => {
 
 export default function Signup() {
   const nav = useNavigation<any>();
+  const route = useRoute<any>();
+  const [role, setRole] = useState<AccountRole>(route.params?.role === 'caregiver' ? 'caregiver' : 'patient');
+  const [linkedPatientId, setLinkedPatientId] = useState('');
   const { c } = useTheme();
   const toast = useToast();
   const [username, setUsername] = useState('');
@@ -41,10 +46,11 @@ export default function Signup() {
   const validate = () => {
     const e: Record<string, string> = {};
     if (!/^[A-Za-z0-9_.]{3,20}$/.test(username.trim())) e.username = '3-20 characters: letters, numbers, . or _';
-    if (!isGmail(email)) e.email = 'Use a Gmail address (name@gmail.com)';
+    if (!isEmail(email)) e.email = 'Enter a valid email address, such as name@gmail.com, name@hotmail.com or name@yahoo.com';
     if (!passwordOk(pw)) e.pw = 'Password does not meet all the rules below';
     if (!parseBirthDate(birth)) e.birth = 'Enter a valid date as DD/MM/YYYY';
-    if (!phoneOk(phone)) e.phone = 'Phone number must have at least 11 digits';
+    if (!phoneOk(phone)) e.phone = 'Enter a valid phone number with 11-15 digits';
+    if (role === 'caregiver' && !linkedPatientId.trim()) e.linkedPatientId = 'Enter the patient ID you want to care for';
     setErrs(e);
     return Object.keys(e).length === 0;
   };
@@ -53,11 +59,11 @@ export default function Signup() {
     if (!validate()) return;
     setBusy(true);
     try {
-      const r = await auth.register({ username, email, password: pw, birthDate: birth, phone, photo: photo || undefined });
+      const r = await auth.register({ username, email, password: pw, birthDate: birth, phone, photo: photo || undefined, role, linkedPatientId });
       nav.navigate('VerifyCode', { mode: 'register', email: r.email, devCode: r.devCode });
     } catch (e) {
       const err = e as AuthError;
-      const key = err.code === 'EXISTS' || err.code === 'BAD_EMAIL' ? 'email' : err.code === 'USERNAME_TAKEN' || err.code === 'BAD_USERNAME' ? 'username' : '';
+      const key = err.code === 'EXISTS' || err.code === 'BAD_EMAIL' ? 'email' : err.code === 'USERNAME_TAKEN' || err.code === 'BAD_USERNAME' ? 'username' : err.code === 'PHONE_TAKEN' || err.code === 'BAD_PHONE' ? 'phone' : err.code === 'BAD_PATIENT_ID' ? 'linkedPatientId' : '';
       if (key) setErrs({ [key]: err.message });
       else toast(err.message, 'error');
     } finally {
@@ -88,8 +94,16 @@ export default function Signup() {
         </FadeIn>
 
         <FadeIn delay={100} style={{ gap: 14 }}>
+          <AccountRolePicker value={role} onChange={setRole} />
+          {role === 'caregiver' && (
+            <View style={{ gap: 6 }}>
+              <Field label="Patient ID" icon="identifier" placeholder="Enter your patient's ID" value={linkedPatientId} onChangeText={setLinkedPatientId} keyboardType="number-pad" autoCapitalize="none" error={errs.linkedPatientId} />
+              <T v="caption" muted>Ask the patient for the Patient ID shown in their profile. Their email must be verified first.</T>
+            </View>
+          )}
           <Field label="Username" icon="account-outline" placeholder="e.g. sara_ahmed" value={username} onChangeText={setUsername} autoCapitalize="none" autoCorrect={false} maxLength={20} error={errs.username} />
-          <Field label="Email" icon="email-outline" placeholder="name@gmail.com" value={email} onChangeText={setEmail} autoCapitalize="none" autoCorrect={false} keyboardType="email-address" error={errs.email} />
+          <Field label="Email" icon="email-outline" placeholder="Email address" value={email} onChangeText={setEmail} autoCapitalize="none" autoCorrect={false} keyboardType="email-address" error={errs.email} />
+          <T v="caption" muted>Gmail, Hotmail, Yahoo and other email providers are supported.</T>
           <View>
             <PasswordField label="Password" placeholder="Create a password" value={pw} onChangeText={setPw} error={errs.pw} />
             <PasswordRules password={pw} />
@@ -104,7 +118,7 @@ export default function Signup() {
             maxLength={10}
             error={errs.birth}
           />
-          <Field label="Phone number" icon="phone-outline" placeholder="01012345678" value={phone} onChangeText={(t) => setPhone(t.replace(/[^\d+]/g, ''))} keyboardType="phone-pad" maxLength={16} error={errs.phone} />
+          <Field label="Phone number" icon="phone-outline" placeholder="01012345678" value={phone} onChangeText={(t) => setPhone(t.replace(/[^\d+]/g, ''))} keyboardType="phone-pad" maxLength={17} error={errs.phone} />
           <Button title="Create account" onPress={submit} loading={busy} style={{ marginTop: 6 }} />
           <Press onPress={() => nav.goBack()} style={{ alignSelf: 'center', padding: 8 }}>
             <T v="body" muted>

@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Button, FadeIn, Icon, Screen } from '../components/ui';
 import { Field } from '../components/Field';
 import { T, useTheme } from '../theme';
-import { AuthError, auth, isGmail } from '../services/auth';
+import { AuthError, auth, isEmail } from '../services/auth';
 
 export default function ForgotPassword() {
   const nav = useNavigation<any>();
@@ -14,7 +14,7 @@ export default function ForgotPassword() {
   const [busy, setBusy] = useState(false);
 
   const send = async () => {
-    if (!isGmail(email)) return setErr('Use your Gmail address (name@gmail.com)');
+    if (!isEmail(email)) return setErr('Enter a valid email address');
     setErr('');
     setBusy(true);
     try {
@@ -37,11 +37,11 @@ export default function ForgotPassword() {
           Reset your password
         </T>
         <T v="body" muted center style={{ marginTop: 4, marginBottom: 24 }}>
-          Enter your Gmail address. We'll email you a code to confirm it's really you.
+          Enter your account email address. We'll email you a code to confirm it's really you.
         </T>
       </FadeIn>
       <FadeIn delay={100} style={{ gap: 16 }}>
-        <Field icon="email-outline" placeholder="name@gmail.com" value={email} onChangeText={setEmail} autoCapitalize="none" autoCorrect={false} keyboardType="email-address" error={err} onSubmitEditing={send} />
+        <Field icon="email-outline" placeholder="Email address" value={email} onChangeText={setEmail} autoCapitalize="none" autoCorrect={false} keyboardType="email-address" error={err} onSubmitEditing={send} />
         <Button title="Send code" onPress={send} loading={busy} />
       </FadeIn>
     </Screen>

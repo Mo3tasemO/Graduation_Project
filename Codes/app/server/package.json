@@ -5,7 +5,12 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node --env-file-if-exists=.env index.js"
+    "start": "node --env-file-if-exists=.env index.js",
+    "test": "node --test",
+    "db:setup": "node --env-file-if-exists=.env check-db.js",
+    "db:check": "node --env-file-if-exists=.env check-db.js",
+    "db:check:strict": "node --env-file-if-exists=.env check-db.js --strict",
+    "mail:check": "node --env-file-if-exists=.env check-mail.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

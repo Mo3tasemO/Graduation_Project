@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { Button, FadeIn, Screen, useToast } from '../components/ui';
 import { T, fonts, useTheme } from '../theme';
 import { Profile, useApp } from '../store';
+import { auth, phoneOk } from '../services/auth';
 
 type Field = { key: keyof Profile; label: string; keyboard?: any };
 
@@ -21,13 +22,22 @@ export default function EditProfile() {
   const { profile, updateProfile } = useApp();
   const toast = useToast();
   const [draft, setDraft] = useState<Profile>(profile);
+  const [busy, setBusy] = useState(false);
   const section = SECTIONS[route.params?.section ?? 'all'];
 
-  const save = () => {
-    if (draft.phone && draft.phone.replace(/\D/g, '').length < 11) return toast('Phone number must have at least 11 digits', 'error');
-    updateProfile(draft);
-    toast('Profile updated', 'success');
-    nav.goBack();
+  const save = async () => {
+    if (!phoneOk(draft.phone)) return toast('Enter a valid phone number with 11-15 digits', 'error');
+    setBusy(true);
+    try {
+      const user = draft.phone !== profile.phone ? (await auth.updatePhone(draft.phone)).user : {};
+      updateProfile({ ...draft, ...user });
+      toast('Profile updated', 'success');
+      nav.goBack();
+    } catch (error) {
+      toast((error as Error).message, 'error');
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (
@@ -61,7 +71,7 @@ export default function EditProfile() {
           </View>
         </FadeIn>
       ))}
-      <Button title="Save changes" onPress={save} style={{ marginTop: 24 }} />
+      <Button title="Save changes" onPress={save} loading={busy} style={{ marginTop: 24 }} />
     </Screen>
   );
 }

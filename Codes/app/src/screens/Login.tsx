@@ -6,7 +6,8 @@ import { BrainLogo } from '../components/Logo';
 import { Button, FadeIn, Icon, Picker, Press, ND, useToast } from '../components/ui';
 import { Field, PasswordField } from '../components/Field';
 import { T, useTheme } from '../theme';
-import { useApp } from '../store';
+import { AccountRole, useApp } from '../store';
+import AccountRolePicker from '../components/AccountRolePicker';
 import { AuthError, LoginResult, auth } from '../services/auth';
 import { session } from '../session';
 import { biometricInfo, biometricPrompt } from '../biometric';
@@ -16,7 +17,8 @@ export default function Login() {
   const route = useRoute<any>();
   const { c } = useTheme();
   const toast = useToast();
-  const { signIn, biometricEmail, setBiometricEmail } = useApp();
+  const { signIn, biometricEmail, setBiometricEmail, profile } = useApp();
+  const [role, setRole] = useState<AccountRole>(route.params?.role ?? profile.role);
   const [email, setEmail] = useState<string>(route.params?.email ?? biometricEmail ?? '');
   const [pw, setPw] = useState('');
   const [busy, setBusy] = useState(false);
@@ -31,7 +33,8 @@ export default function Login() {
 
   useEffect(() => {
     if (route.params?.email) setEmail(route.params.email);
-  }, [route.params?.email]);
+    if (route.params?.role) setRole(route.params.role);
+  }, [route.params?.email, route.params?.role]);
 
   const fail = (m: string) => {
     setErr(m);
@@ -47,7 +50,7 @@ export default function Login() {
     setErr('');
     setBusy(true);
     try {
-      const res = await auth.login(email, pw);
+      const res = await auth.login(email, pw, role);
       await session.setToken(res.token);
       // first login on a phone that has biometrics: offer quick login for next time
       const mail = email.trim().toLowerCase();
@@ -69,7 +72,7 @@ export default function Login() {
     try {
       const deviceToken = await session.getDeviceToken(biometricEmail);
       if (!deviceToken) throw new AuthError('Quick login expired. Please log in with your password.', 'INVALID');
-      const res = await auth.loginBiometric(biometricEmail, deviceToken);
+      const res = await auth.loginBiometric(biometricEmail, deviceToken, role);
       await session.setToken(res.token);
       enter(res);
     } catch (e) {
@@ -114,7 +117,8 @@ export default function Login() {
             </T>
           </FadeIn>
           <Animated.View style={{ gap: 14, transform: [{ translateX: shake }] }}>
-            <Field icon="email-outline" placeholder="Gmail address" value={email} onChangeText={setEmail} autoCapitalize="none" autoCorrect={false} keyboardType="email-address" />
+            <AccountRolePicker value={role} onChange={(value) => { setRole(value); setErr(''); }} />
+            <Field icon="email-outline" placeholder="Email address" value={email} onChangeText={setEmail} autoCapitalize="none" autoCorrect={false} keyboardType="email-address" />
             <PasswordField placeholder="Password" value={pw} onChangeText={setPw} onSubmitEditing={submit} />
             {!!err && (
               <FadeIn from={-6} duration={200}>
@@ -139,7 +143,7 @@ export default function Login() {
               </T>
               <View style={{ flex: 1, height: 1, backgroundColor: c.border }} />
             </View>
-            <Button title="Create new account" variant="secondary" onPress={() => nav.navigate('Signup')} />
+            <Button title="Create new account" variant="secondary" onPress={() => nav.navigate('Signup', { role })} />
           </Animated.View>
         </ScrollView>
       </KeyboardAvoidingView>

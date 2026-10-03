@@ -38,36 +38,43 @@ export function adminRouter(ADMIN_KEY) {
     res.status(401).send(page('Admin', '<h1>MindSpeak admin</h1><p class="mut">Add <code>?key=YOUR_ADMIN_KEY</code> to the address. The key is printed when the server starts and saved in server/data/admin.key</p>'));
   });
 
-  const users = () =>
+  const users = (role) =>
     db
       .prepare(
-        `SELECT u.id, u.patient_id, u.username, u.email, u.phone, u.birth_date, u.verified, u.created_at, u.last_login_at,
+        `SELECT u.id, u.patient_id, u.role, u.linked_patient_id, u.username, u.email, u.phone, u.birth_date, u.verified, u.created_at, u.last_login_at,
                 (photo IS NOT NULL) AS has_photo, d.history, d.notifications, d.calibrated, d.updated_at
-         FROM users u LEFT JOIN user_data d ON d.user_id = u.id ORDER BY u.id DESC`,
+         FROM users u LEFT JOIN user_data d ON d.user_id = u.id
+         WHERE (? IS NULL OR u.id IN (SELECT user_id FROM patients WHERE ?='patient')
+           OR u.id IN (SELECT user_id FROM caregivers WHERE ?='caregiver')) ORDER BY u.id DESC`,
       )
-      .all();
+      .all(role ?? null, role ?? null, role ?? null);
 
   r.get('/api/users', (_req, res) => res.json(users().map(({ history, notifications, ...u }) => ({ ...u, history_count: json(history, []).length, notification_count: json(notifications, []).length }))));
+  r.get('/api/patients', (_req, res) => res.json(db.prepare('SELECT * FROM patient_records ORDER BY user_id DESC').all()));
+  r.get('/api/caregivers', (_req, res) => res.json(db.prepare('SELECT * FROM caregiver_records ORDER BY user_id DESC').all()));
 
-  r.get('/', (req, res) => {
+  r.get(['/', '/patients', '/caregivers'], (req, res) => {
     const k = encodeURIComponent(req.query.key);
-    const rows = users();
+    const role = req.path === '/patients' ? 'patient' : req.path === '/caregivers' ? 'caregiver' : undefined;
+    const title = role === 'patient' ? 'Patients' : role === 'caregiver' ? 'Caregivers' : 'All accounts';
+    const rows = users(role);
     const verified = rows.filter((u) => u.verified).length;
     const totalMsgs = rows.reduce((n, u) => n + json(u.history, []).length, 0);
     res.send(
       page(
         'MindSpeak admin',
-        `<h1>MindSpeak users</h1><div class="mut">Live view of server/data/mindspeak.db</div>
+        `<h1>MindSpeak · ${title}</h1><div class="mut">Local SQL database · ${role === 'patient' ? 'patients' : role === 'caregiver' ? 'caregivers' : 'users'} table</div>
+        <p><a href="/admin?key=${k}">All accounts</a> &middot; <a href="/admin/patients?key=${k}">Patients</a> &middot; <a href="/admin/caregivers?key=${k}">Caregivers</a></p>
         <div class="card stats"><div class="stat"><b>${rows.length}</b><span class="mut">accounts</span></div><div class="stat"><b>${verified}</b><span class="mut">verified</span></div><div class="stat"><b>${totalMsgs}</b><span class="mut">messages saved</span></div></div>
-        <div class="card"><table><tr><th>Patient ID</th><th>Username</th><th>Email</th><th>Phone</th><th>Birth date</th><th>Status</th><th>Messages</th><th>Created</th><th>Last login</th></tr>
+        <div class="card"><table><tr><th>Account ID</th><th>Type</th><th>Linked patient ID</th><th>Username</th><th>Email</th><th>Phone</th><th>Birth date</th><th>Status</th><th>Messages</th><th>Created</th><th>Last login</th></tr>
         ${rows
           .map(
-            (u) => `<tr><td><a href="/admin/user/${u.id}?key=${k}">${esc(u.patient_id)}</a></td><td>${esc(u.username)}</td><td>${esc(u.email)}</td><td>${esc(u.phone)}</td><td>${esc(u.birth_date)}</td>
+            (u) => `<tr><td><a href="/admin/user/${u.id}?key=${k}">${esc(u.patient_id)}</a></td><td>${esc(u.role)}</td><td>${esc(u.linked_patient_id || '-')}</td><td>${esc(u.username)}</td><td>${esc(u.email)}</td><td>${esc(u.phone)}</td><td>${esc(u.birth_date)}</td>
           <td><span class="pill ${u.verified ? 'ok' : 'no'}">${u.verified ? 'verified' : 'pending'}</span></td><td>${json(u.history, []).length}</td><td>${esc(u.created_at)}</td><td>${esc(u.last_login_at || '-')}</td></tr>`,
           )
-          .join('') || '<tr><td colspan="9" class="mut">No users yet.</td></tr>'}
+          .join('') || '<tr><td colspan="11" class="mut">No users yet.</td></tr>'}
         </table></div>
-        <p class="mut">JSON: <a href="/admin/api/users?key=${k}">/admin/api/users</a></p>`,
+        <p class="mut">JSON: <a href="/admin/api/${role === 'patient' ? 'patients' : role === 'caregiver' ? 'caregivers' : 'users'}?key=${k}">Download this account list</a></p>`,
       ),
     );
   });
@@ -85,8 +92,9 @@ export function adminRouter(ADMIN_KEY) {
       page(
         u.username,
         `<a href="/admin?key=${k}">&larr; All users</a>
-        <div class="card" style="display:flex;gap:16px;align-items:center">${u.photo ? `<img class="av" src="${esc(u.photo)}">` : ''}<div><h1>${esc(u.username)}</h1><div class="mut">Patient ID ${esc(u.patient_id)} &middot; ${esc(u.email)}</div></div></div>
+        <div class="card" style="display:flex;gap:16px;align-items:center">${u.photo ? `<img class="av" src="${esc(u.photo)}">` : ''}<div><h1>${esc(u.username)}</h1><div class="mut">${u.role === 'caregiver' ? 'Caregiver' : 'Patient'} ID ${esc(u.patient_id)} &middot; ${esc(u.email)}</div></div></div>
         <div class="card"><table>
+          <tr><th>Account type</th><td>${esc(u.role)}</td></tr><tr><th>Linked patient ID</th><td>${esc(u.linked_patient_id || '-')}</td></tr>
           <tr><th>Phone</th><td>${esc(u.phone)}</td></tr><tr><th>Birth date</th><td>${esc(u.birth_date)}</td></tr>
           <tr><th>Verified</th><td>${u.verified ? 'yes' : 'no'}</td></tr><tr><th>Created</th><td>${esc(u.created_at)}</td></tr>
           <tr><th>Last login</th><td>${esc(u.last_login_at || '-')}</td></tr><tr><th>Biometric devices</th><td>${devices}</td></tr>

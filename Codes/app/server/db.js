@@ -1,12 +1,24 @@
 import { DatabaseSync } from 'node:sqlite';
 import fs from 'node:fs';
 import path from 'node:path';
+import { migrateAccounts } from './account-schema.js';
+import { migrateRoles, needsRoleMigration } from './role-schema.js';
 
-export const DATA_DIR = path.join(import.meta.dirname, 'data');
+export const DATA_DIR = path.resolve(process.env.MINDSPEAK_DATA_DIR || path.join(import.meta.dirname, 'data'));
 fs.mkdirSync(DATA_DIR, { recursive: true });
 
-/** The whole "cloud dataset" is this one file: server/data/mindspeak.db */
-export const db = new DatabaseSync(path.join(DATA_DIR, 'mindspeak.db'));
+/** Local SQL storage, served to the app through the Express API. */
+export const DATABASE_PATH = path.join(DATA_DIR, 'mindspeak.db');
+export const db = new DatabaseSync(DATABASE_PATH, { timeout: 5000 });
+
+// VACUUM INTO takes a consistent snapshot, including data in the WAL file.
+if (needsRoleMigration(db) && db.prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name='users'").get()) {
+  const backups = path.join(DATA_DIR, 'backups');
+  fs.mkdirSync(backups, { recursive: true });
+  const backup = path.join(backups, `before-patient-caregiver-${Date.now()}.db`);
+  db.prepare('VACUUM INTO ?').run(backup);
+  console.log(`Database backup saved: ${backup}`);
+}
 
 db.exec(`
 PRAGMA journal_mode = WAL;
@@ -61,3 +73,7 @@ CREATE TABLE IF NOT EXISTS devices (
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 `);
+
+migrateAccounts(db);
+migrateRoles(db);
+db.exec('CREATE INDEX IF NOT EXISTS users_pending_created_at ON users(created_at) WHERE verified=0');

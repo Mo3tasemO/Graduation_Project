@@ -36,7 +36,7 @@ const Tab = createBottomTabNavigator();
 const TABS: Record<string, { label: string; icon: string }> = {
   Home: { label: 'Home', icon: 'home' },
   Communicate: { label: 'Communicate', icon: 'brain' },
-  AAC: { label: 'AAC', icon: 'view-grid' },
+  AAC: { label: 'AAC', icon: 'train' },
   History: { label: 'History', icon: 'history' },
   Profile: { label: 'Profile', icon: 'account' },
 };

@@ -55,7 +55,7 @@ export default function Home() {
           <View style={{ flex: 1 }}>
             <T v="h2">Hello, {first}</T>
             <T v="caption" muted>
-              Ready to communicate?
+              {profile.role === 'caregiver' ? `Caregiver · Patient ${profile.linkedPatientId}` : 'Ready to communicate?'}
             </T>
           </View>
           <IconButton name="bell-outline" badge={unread} onPress={() => nav.navigate('Notifications')} label="Notifications" />

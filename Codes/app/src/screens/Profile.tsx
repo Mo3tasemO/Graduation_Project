@@ -37,7 +37,7 @@ export default function Profile() {
   const { c } = useTheme();
   const { profile, calibrated } = useApp();
   return (
-    <Screen title="Patient Profile" back={false} right={<IconButton name="cog-outline" label="Settings" onPress={() => nav.navigate('Settings')} />}>
+    <Screen title={profile.role === 'caregiver' ? 'Caregiver Profile' : 'Patient Profile'} back={false} right={<IconButton name="cog-outline" label="Settings" onPress={() => nav.navigate('Settings')} />}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ gap: 14, paddingBottom: 24 }}>
         <FadeIn>
           <Card style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
@@ -45,7 +45,7 @@ export default function Profile() {
             <View style={{ flex: 1 }}>
               <T v="title">{profile.name}</T>
               <T v="caption" muted>
-                Patient ID: {profile.id}
+                {profile.role === 'caregiver' ? 'Caregiver ID' : 'Patient ID'}: {profile.id}
               </T>
               <T v="caption" muted>
                 {profile.email}
@@ -56,7 +56,10 @@ export default function Profile() {
         </FadeIn>
         <FadeIn delay={80}>
           <Card pad={4} style={{ paddingHorizontal: 16 }}>
-            <InfoRow icon="identifier" label="Patient ID" value={profile.id} />
+            <InfoRow icon="account-outline" label="Account type" value={profile.role === 'caregiver' ? 'Caregiver' : 'Patient'} />
+            <Divider />
+            <InfoRow icon="identifier" label={profile.role === 'caregiver' ? 'Caregiver ID' : 'Patient ID'} value={profile.id} />
+            {profile.role === 'caregiver' && <><Divider /><InfoRow icon="account-heart-outline" label="Linked patient ID" value={profile.linkedPatientId} /></>}
             <Divider />
             <InfoRow icon="account-outline" label="Age" value={profile.age} />
             <Divider />

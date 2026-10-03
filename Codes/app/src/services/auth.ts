@@ -2,7 +2,7 @@
  * MindSpeak auth client. Talks to the real server in E:\app\server (see README.md).
  * Passwords are hashed and codes are emailed by the SERVER; nothing sensitive is stored here.
  */
-import type { Profile, Settings, HistoryItem, AppNotification } from '../store';
+import type { AccountRole, Profile, Settings, HistoryItem, AppNotification } from '../store';
 import { API_URL } from '../config';
 import { session } from '../session';
 
@@ -17,7 +17,7 @@ export class AuthError extends Error {
 }
 
 // ------------------------------------------------------------------ validation (shared with the UI)
-export const isGmail = (e: string) => /^[^\s@]+@gmail\.com$/i.test(e.trim());
+export { isEmail } from '../../shared/email.js';
 
 export function passwordChecks(pw: string) {
   return { length: pw.length >= 8, number: /\d/.test(pw), special: /[^A-Za-z0-9]/.test(pw) };
@@ -29,7 +29,8 @@ export const cleanPhone = (p: string) => {
   return (t.startsWith('+') ? '+' : '') + t.replace(/\D/g, '');
 };
 export const phoneOk = (p: string) => {
-  const d = p.replace(/\D/g, '');
+  if (!/^\+?[\d\s().-]+$/.test(p.trim())) return false;
+  const d = p.replace(/\D/g, '').replace(/^00/, '');
   return d.length >= 11 && d.length <= 15;
 };
 
@@ -88,17 +89,17 @@ type CodeInfo = { devCode?: string; emailSent?: boolean };
 
 export const auth = {
   /** Creates an unverified account and emails a 6-digit code. */
-  async register(i: { username: string; email: string; password: string; birthDate: string; phone: string; photo?: string }) {
+  async register(i: { username: string; email: string; password: string; birthDate: string; phone: string; photo?: string; role: AccountRole; linkedPatientId?: string }) {
     const birth = parseBirthDate(i.birthDate);
     if (!birth) throw new AuthError('Enter a valid birth date (DD/MM/YYYY)', 'BAD_BIRTH');
     return request<{ email: string } & CodeInfo>('/auth/register', {
-      body: { username: i.username.trim(), email: i.email, password: i.password, birthDate: birth, phone: cleanPhone(i.phone), photo: i.photo },
+      body: { username: i.username.trim(), email: i.email, password: i.password, birthDate: birth, phone: cleanPhone(i.phone), photo: i.photo, role: i.role, linkedPatientId: i.role === 'caregiver' ? i.linkedPatientId?.trim() : undefined },
     });
   },
   resendCode: (purpose: 'register' | 'reset', email: string) => request<CodeInfo>('/auth/resend-code', { body: { purpose, email } }),
-  verifyEmail: (email: string, code: string) => request<{ ok: true }>('/auth/verify-email', { body: { email, code } }),
-  login: (email: string, password: string) => request<LoginResult>('/auth/login', { body: { email, password } }),
-  loginBiometric: (email: string, deviceToken: string) => request<LoginResult>('/auth/login-biometric', { body: { email, deviceToken } }),
+  verifyEmail: (email: string, code: string) => request<{ ok: true; role: AccountRole }>('/auth/verify-email', { body: { email, code } }),
+  login: (email: string, password: string, role?: AccountRole) => request<LoginResult>('/auth/login', { body: { email, password, role } }),
+  loginBiometric: (email: string, deviceToken: string, role?: AccountRole) => request<LoginResult>('/auth/login-biometric', { body: { email, deviceToken, role } }),
   requestPasswordReset: (email: string) => request<{ email: string } & CodeInfo>('/auth/forgot-password', { body: { email } }),
   verifyResetCode: async (email: string, code: string) => (await request<{ token: string }>('/auth/verify-reset-code', { body: { email, code } })).token,
   resetPassword: (email: string, token: string, password: string) => request<{ ok: true }>('/auth/reset-password', { body: { email, token, password } }),
@@ -109,4 +110,5 @@ export const auth = {
 
   /** Saves the patient's profile / settings / history to the cloud database. */
   pushData: (d: ServerData) => request('/me/data', { method: 'PUT', auth: true, body: d }),
+  updatePhone: (phone: string) => request<{ user: Partial<Profile> }>('/me/profile', { method: 'PUT', auth: true, body: { phone } }),
 };

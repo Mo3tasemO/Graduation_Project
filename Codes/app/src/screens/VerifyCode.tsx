@@ -15,7 +15,10 @@ export default function VerifyCode() {
   const [code, setCode] = useState('');
   const [devCode, setDevCode] = useState<string | undefined>(params.devCode);
   const [err, setErr] = useState('');
+  const [accountExpired, setAccountExpired] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [resending, setResending] = useState(false);
+  const inFlight = useRef(false);
   const [wait, setWait] = useState(30);
   const input = useRef<TextInput>(null);
   const shake = useRef(new Animated.Value(0)).current;
@@ -27,33 +30,49 @@ export default function VerifyCode() {
   }, [wait]);
 
   const verify = async (value = code) => {
+    if (inFlight.current || accountExpired) return;
     if (value.length !== 6) return setErr('Enter the 6-digit code');
+    inFlight.current = true;
     setBusy(true);
     setErr('');
     try {
       if (mode === 'register') {
-        await auth.verifyEmail(email, value);
+        const verified = await auth.verifyEmail(email, value);
         toast('Email verified! You can log in now.', 'success');
-        nav.reset({ index: 0, routes: [{ name: 'Login', params: { email } }] });
+        nav.reset({ index: 0, routes: [{ name: 'Login', params: { email, role: verified.role } }] });
       } else {
         const token = await auth.verifyResetCode(email, value);
         nav.replace('ResetPassword', { email, token });
       }
     } catch (e) {
       setErr((e as AuthError).message);
+      setAccountExpired((e as AuthError).code === 'ACCOUNT_EXPIRED');
       setCode('');
       Animated.sequence([-10, 10, -8, 8, 0].map((v) => Animated.timing(shake, { toValue: v, duration: 60, useNativeDriver: ND }))).start();
     } finally {
+      inFlight.current = false;
       setBusy(false);
     }
   };
 
   const resend = async () => {
-    const r = await auth.resendCode(mode, email);
-    setDevCode((r as any).devCode);
-    setWait(30);
-    setErr('');
-    toast('A new code was sent', 'success');
+    if (inFlight.current || wait > 0 || accountExpired) return;
+    inFlight.current = true;
+    setResending(true);
+    try {
+      const r = await auth.resendCode(mode, email);
+      setDevCode(r.devCode);
+      setCode('');
+      setWait(30);
+      setErr('');
+      toast(r.devCode ? 'A new test code is ready' : 'If your account is eligible, a new code was emailed. Check your spam folder too.', 'success');
+    } catch (error) {
+      setErr((error as AuthError).message);
+      setAccountExpired((error as AuthError).code === 'ACCOUNT_EXPIRED');
+    } finally {
+      inFlight.current = false;
+      setResending(false);
+    }
   };
 
   return (
@@ -63,13 +82,17 @@ export default function VerifyCode() {
           <Icon name="email-fast-outline" size={42} color={c.primary} />
         </View>
         <T v="h2" style={{ marginTop: 14 }}>
-          Check your email
+          {devCode ? 'Test verification code' : 'Check your email'}
         </T>
         <T v="body" muted center style={{ marginTop: 4 }}>
-          We sent a 6-digit code to
+          {devCode ? 'Use the test code below for' : mode === 'reset' ? 'If this email has a verified account, a 6-digit code was sent to' : 'Enter the 6-digit code emailed to'}
         </T>
         <T v="bodyM" center>
           {email}
+        </T>
+        {!devCode && <T v="caption" muted center style={{ marginTop: 8 }}>Check your inbox and spam folder.</T>}
+        <T v="caption" muted center style={{ marginTop: 8 }}>
+          {mode === 'register' ? 'Verify within 10 minutes of creating your account. Unverified accounts are removed automatically; resending a code does not extend this time.' : 'The code expires in 10 minutes.'}
         </T>
       </FadeIn>
 
@@ -102,6 +125,7 @@ export default function VerifyCode() {
           ref={input}
           value={code}
           autoFocus
+          editable={!busy && !resending && !accountExpired}
           onChangeText={(t) => {
             const v = t.replace(/\D/g, '').slice(0, 6);
             setCode(v);
@@ -125,10 +149,11 @@ export default function VerifyCode() {
         <DevCodeBanner code={devCode} />
       </View>
 
-      <Button title="Verify" onPress={() => verify()} loading={busy} disabled={code.length !== 6} style={{ marginTop: 22 }} />
-      <Press onPress={resend} disabled={wait > 0} style={{ alignSelf: 'center', padding: 12 }}>
+      {accountExpired ? <Button title="Create account again" onPress={() => nav.replace('Signup')} style={{ marginTop: 22 }} /> :
+        <Button title="Verify" onPress={() => verify()} loading={busy} disabled={code.length !== 6 || resending} style={{ marginTop: 22 }} />}
+      <Press onPress={resend} disabled={wait > 0 || busy || resending || accountExpired} style={{ alignSelf: 'center', padding: 12 }}>
         <T v="bodyM" color={wait > 0 ? c.textMuted : c.primary}>
-          {wait > 0 ? `Resend code in ${wait}s` : 'Resend code'}
+          {resending ? 'Sending code...' : wait > 0 ? `Resend code in ${wait}s` : 'Resend code'}
         </T>
       </Press>
     </Screen>
