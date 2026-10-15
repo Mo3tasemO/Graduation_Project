@@ -56,10 +56,10 @@ H1,MountingHole_Pad,MountingHole_3.2mm_M3_Pad,80.75,-49.25,0,top
 H2,MountingHole_Pad,MountingHole_3.2mm_M3_Pad,121.75,-49.25,0,top
 H3,MountingHole_Pad,MountingHole_3.2mm_M3_Pad,82.75,-95.25,0,top
 H4,MountingHole_Pad,MountingHole_3.2mm_M3_Pad,119.75,-95.25,0,top
-J2,Conn_01x04_Pin,PinHeader_1x04_P2.54mm_Vertical,71.541368,-67.403899,19.29,top
+J2,Conn_01x04_Pin,PinHeader_1x04_P2.54mm_Vertical,71.441368,-67.503899,19.29,top
 J3,Conn_02x13_Odd_Even,PinHeader_2x13_P2.54mm_Horizontal,86.01,-50.74,90,top
 J4,Conn_01x04_Pin,PinHeader_1x04_P2.54mm_Vertical,100.21,-96.4,-90,top
-J5,Conn_01x08_Pin,PinHeader_1x08_P2.54mm_Vertical,72.363191,-56.209096,19.29,top
+J5,Conn_01x08_Pin,PinHeader_1x08_P2.54mm_Vertical,72.563191,-56.209096,19.29,top
 J6,Conn_01x02_Pin,PinHeader_1x02_P2.54mm_Vertical,114,-75.2,-90,top
 J7,Conn_01x05_Pin,PinHeader_1x05_P2.54mm_Vertical,131.036599,-68.155646,-19.29,top
 J8,Conn_01x05_Pin,PinHeader_1x05_P2.54mm_Vertical,126.358422,-81.155646,-19.29,top
