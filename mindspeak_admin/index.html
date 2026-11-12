@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#173f5f" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'self'; object-src 'none'" />
+    <title>MindSpeak Admin</title>
+    <link rel="stylesheet" href="/admin/styles.css" />
+    <script src="/admin/app.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section id="loginPanel" class="login-panel" aria-labelledby="loginTitle">
+        <div class="brand-lockup" aria-label="MindSpeak Admin">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span><strong>Mind</strong><b>Speak</b><small>ADMIN</small></span>
+        </div>
+        <div class="login-copy">
+          <p class="eyebrow">SECURE ADMINISTRATION</p>
+          <h1 id="loginTitle">Welcome back</h1>
+          <p>Sign in with your administrator account to view MindSpeak data.</p>
+        </div>
+        <form id="loginForm" class="login-form" novalidate>
+          <label for="adminEmail">Administrator email</label>
+          <input id="adminEmail" name="email" type="email" autocomplete="username" required />
+          <label for="adminPassword">Password</label>
+          <input id="adminPassword" name="password" type="password" autocomplete="current-password" required />
+          <p id="loginError" class="message error-message" role="alert" hidden></p>
+          <button id="loginButton" class="primary-button" type="submit">Sign in</button>
+        </form>
+        <p class="login-footnote">Administrator accounts are provisioned locally. Public admin registration is disabled.</p>
+      </section>
+
+      <section id="dashboardPanel" class="dashboard-panel" hidden>
+        <header class="topbar">
+          <div class="brand-lockup compact" aria-label="MindSpeak Admin">
+            <span class="brand-mark" aria-hidden="true">M</span>
+            <span><strong>Mind</strong><b>Speak</b><small>ADMIN</small></span>
+          </div>
+          <div class="topbar-actions">
+            <span id="adminIdentity" class="admin-identity"></span>
+            <button id="logoutButton" class="quiet-button" type="button">Sign out</button>
+          </div>
+        </header>
+
+        <div class="dashboard-content">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">OVERVIEW</p>
+              <h1>Dashboard</h1>
+              <p class="subtitle">A clear view of MindSpeak account activity.</p>
+            </div>
+            <span class="live-indicator"><i aria-hidden="true"></i> Live database</span>
+          </div>
+
+          <section class="stat-grid" aria-label="User statistics">
+            <article class="stat-card">
+              <span class="stat-icon users-icon" aria-hidden="true">U</span>
+              <p>Total users</p>
+              <strong id="totalUsers" class="stat-value">—</strong>
+              <span class="stat-note">All registered accounts</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon verified-icon" aria-hidden="true">✓</span>
+              <p>Verified users</p>
+              <strong id="verifiedUsers" class="stat-value">—</strong>
+              <span class="stat-note">Email confirmed</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon new-icon" aria-hidden="true">＋</span>
+              <p>New this week</p>
+              <strong id="newUsers" class="stat-value">—</strong>
+              <span class="stat-note">Registered in the last 7 days</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon rate-icon" aria-hidden="true">%</span>
+              <p>Verification rate</p>
+              <strong id="verificationRate" class="stat-value">—</strong>
+              <span class="stat-note">Verified out of all users</span>
+            </article>
+          </section>
+
+          <section class="users-panel" aria-labelledby="usersTitle">
+            <div class="users-heading">
+              <div>
+                <p class="eyebrow">ACCOUNT DIRECTORY</p>
+                <h2 id="usersTitle">Users</h2>
+              </div>
+              <label class="search-box">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input id="userSearch" type="search" maxlength="100" placeholder="Search name or email" aria-label="Search users by name or email" />
+              </label>
+            </div>
+            <div id="usersError" class="message error-message panel-message" role="alert" hidden></div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Account ID</th>
+                    <th scope="col">
+                      <button id="sortDateButton" class="sort-button" type="button" aria-label="Sort by registration date, newest first">
+                        Registered <span id="sortGlyph" aria-hidden="true">↓</span>
+                      </button>
+                    </th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="userRows">
+                  <tr><td class="table-state" colspan="5">Sign in to load users.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <footer class="table-footer">
+              <span id="resultSummary" aria-live="polite">No users loaded</span>
+              <div class="pagination-controls">
+                <button id="previousPage" class="page-button" type="button" disabled>Previous</button>
+                <span id="pageIndicator">Page 1</span>
+                <button id="nextPage" class="page-button" type="button" disabled>Next</button>
+              </div>
+            </footer>
+          </section>
+          <p class="privacy-note">Admin data is loaded from the existing MindSpeak database. Password hashes and verification secrets are never included.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
