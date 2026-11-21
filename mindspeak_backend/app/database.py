@@ -36,5 +36,15 @@ def initialize_database(engine: Engine) -> None:
             connection.exec_driver_sql(
                 "UPDATE users SET email_verified_at = created_at WHERE email_verified_at IS NULL"
             )
+    existing_columns = {column["name"] for column in inspect(engine).get_columns("users")}
+    additions = {
+        "age": "INTEGER",
+        "medical_information": "TEXT",
+        "avatar_data": "TEXT",
+    }
+    with engine.begin() as connection:
+        for name, sql_type in additions.items():
+            if name not in existing_columns:
+                connection.exec_driver_sql(f"ALTER TABLE users ADD COLUMN {name} {sql_type}")
 
 

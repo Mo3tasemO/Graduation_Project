@@ -23,6 +23,7 @@ from .schemas import (
     LoginResponse,
     MessageResponse,
     PendingRegisterResponse,
+    ProfileUpdateRequest,
     RegisterRequest,
     RegisterResponse,
     ResetPasswordRequest,
@@ -371,6 +372,20 @@ def login(
 def get_me(
     current_user: Annotated[User, Depends(get_current_user)],
 ) -> UserResponse:
+    return UserResponse.model_validate(current_user)
+
+
+@router.put("/me", response_model=UserResponse, summary="Update the signed-in user's profile")
+def update_me(
+    payload: ProfileUpdateRequest,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> UserResponse:
+    for field, value in payload.model_dump(exclude_unset=True).items():
+        setattr(current_user, field, value)
+    session.add(current_user)
+    session.commit()
+    session.refresh(current_user)
     return UserResponse.model_validate(current_user)
 
 

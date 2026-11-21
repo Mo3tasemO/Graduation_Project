@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../design_tokens.dart';
 import '../bluetooth/headset_bluetooth.dart';
+import '../app_preferences.dart';
 import 'home_repository.dart';
 import 'speech_controller.dart';
+import 'profile_settings.dart';
 
 const _quickPhrases = ['I need help', 'I am thirsty', 'Yes', 'No'];
 
@@ -12,6 +14,7 @@ class HomeScreen extends StatefulWidget {
     required this.gateway,
     required this.onLogout,
     required this.onReconnect,
+    this.onCalibration,
     this.repository = const ApiHomeRepository(),
     this.speechEngine,
     super.key,
@@ -20,6 +23,7 @@ class HomeScreen extends StatefulWidget {
   final HeadsetBluetoothGateway gateway;
   final VoidCallback onLogout;
   final VoidCallback onReconnect;
+  final VoidCallback? onCalibration;
   final HomeRepository repository;
   final SpeechEngine? speechEngine;
 
@@ -33,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<SavedPhrase> _phrases = const [];
   bool _loadingPhrases = true;
   String? _phraseError;
+  Map<String, dynamic>? _profile;
 
   @override
   void initState() {
@@ -40,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _speech = SpeechController(engine: widget.speechEngine);
     _speech.addListener(_speechChanged);
     _loadPhrases();
+    _loadProfile();
     _initializeSpeech();
   }
 
@@ -65,6 +71,15 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  Future<void> _loadProfile() async {
+    try {
+      final profile = await widget.repository.loadProfile();
+      if (mounted) setState(() => _profile = profile);
+    } catch (_) {
+      // Communication and speech controls remain available if profile data is offline.
+    }
+  }
+
   void _speechChanged() {
     if (mounted) setState(() {});
   }
@@ -79,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    backgroundColor: bg,
+    backgroundColor: MindSpeakPalette.of(context).background,
     body: SafeArea(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(22, 18, 22, 18),
@@ -91,13 +106,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   _buildHeader(context),
+                  const SizedBox(height: 12),
+                  _welcomeCard(context),
                   const SizedBox(height: 18),
                   _BluetoothStatus(
                     gateway: widget.gateway,
                     onReconnect: widget.onReconnect,
                   ),
                   const SizedBox(height: 22),
-                  const _SectionLabel('YOUR MESSAGE'),
+                  _SectionLabel(_t(context, 'YOUR MESSAGE', 'رسالتك')),
                   const SizedBox(height: 9),
                   TextField(
                     key: const Key('home_message_field'),
@@ -106,8 +123,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     maxLines: 5,
                     maxLength: 500,
                     textInputAction: TextInputAction.newline,
-                    decoration: const InputDecoration(
-                      hintText: 'Type a message to speak',
+                    decoration: InputDecoration(
+                      hintText: _t(
+                        context,
+                        'Type a message to speak',
+                        'اكتب رسالة لنطقها',
+                      ),
                       alignLabelWithHint: true,
                       counterText: '',
                     ),
@@ -124,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                   const SizedBox(height: 22),
-                  const _SectionLabel('QUICK PHRASES'),
+                  _SectionLabel(_t(context, 'QUICK PHRASES', 'عبارات سريعة')),
                   Wrap(
                     spacing: 10,
                     runSpacing: 10,
@@ -144,10 +165,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         key: const Key('add_phrase_button'),
                         onPressed: _addPhrase,
                         icon: const Icon(Icons.add_rounded),
-                        label: const Text('Add phrase'),
+                        label: Text(_t(context, 'Add phrase', 'إضافة عبارة')),
                         style: OutlinedButton.styleFrom(
                           foregroundColor: muted,
-                          side: const BorderSide(color: line),
+                          side: BorderSide(
+                            color: MindSpeakPalette.of(context).border,
+                          ),
                           padding: const EdgeInsets.symmetric(
                             horizontal: 14,
                             vertical: 12,
@@ -160,7 +183,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 8),
                     Text(
                       _phraseError!,
-                      style: const TextStyle(color: muted, fontSize: 12),
+                      style: TextStyle(
+                        color: MindSpeakPalette.of(context).secondaryText,
+                        fontSize: 12,
+                      ),
                     ),
                   ],
                 ],
@@ -176,28 +202,188 @@ class _HomeScreenState extends State<HomeScreen> {
     children: [
       const Expanded(child: _HomeWordmark()),
       IconButton(
-        tooltip: 'Message history',
+        tooltip: _t(context, 'Message history', 'سجل الرسائل'),
         onPressed: _openHistory,
-        icon: const Icon(Icons.history_rounded, color: navy),
+        icon: Icon(
+          Icons.history_rounded,
+          color: MindSpeakPalette.of(context).primaryText,
+        ),
       ),
       IconButton(
         key: const Key('profile_button'),
-        tooltip: 'Profile and settings',
-        onPressed: () => Navigator.of(context).push(
-          MaterialPageRoute<void>(
-            builder: (_) => ProfileSettingsScreen(
-              gateway: widget.gateway,
-              repository: widget.repository,
-              speech: _speech,
-              onLogout: widget.onLogout,
-              onReconnect: _manageFromProfile,
+        tooltip: _t(context, 'Profile and settings', 'الملف الشخصي والإعدادات'),
+        onPressed: _openProfile,
+        icon: Icon(
+          Icons.person_outline_rounded,
+          color: MindSpeakPalette.of(context).primaryText,
+        ),
+      ),
+      IconButton(
+        tooltip: _t(context, 'Help', 'المساعدة'),
+        onPressed: () => _openInfo(context, _t(context, 'Help', 'المساعدة'), [
+          (
+            Icons.edit_note_rounded,
+            _t(context, 'Create a message', 'اكتب رسالة'),
+            _t(
+              context,
+              'Type in the message box, choose a quick phrase, then tap Speak message to hear it through the device voice.',
+              'اكتب في مربع الرسالة أو اختر عبارة سريعة، ثم اضغط على نطق الرسالة لسماعها.',
             ),
           ),
+          (
+            Icons.bluetooth_searching_rounded,
+            _t(context, 'Connect a headset', 'توصيل السماعة'),
+            _t(
+              context,
+              'Open the headset screen, choose Scan for devices, select the real device shown by the system, and connect. On Chrome, approve the Bluetooth chooser. Continue stays disabled until the BLE link is confirmed.',
+              'افتح شاشة السماعة واضغط البحث عن الأجهزة، ثم اختر الجهاز الحقيقي واتصل به. في Chrome وافق على نافذة البلوتوث. يظل زر المتابعة معطلاً حتى يتأكد الاتصال.',
+            ),
+          ),
+          (
+            Icons.bookmarks_outlined,
+            _t(context, 'Phrases and history', 'العبارات والسجل'),
+            _t(
+              context,
+              'Use the History button to review recent messages. Add and manage your own quick phrases in the phrase section.',
+              'استخدم زر السجل لمراجعة الرسائل الأخيرة. أضف عباراتك السريعة وأدرها من قسم العبارات.',
+            ),
+          ),
+        ]),
+        icon: Icon(
+          Icons.help_outline_rounded,
+          color: MindSpeakPalette.of(context).primaryText,
         ),
-        icon: const Icon(Icons.person_outline_rounded, color: navy),
+      ),
+      PopupMenuButton<String>(
+        tooltip: _t(context, 'More information', 'معلومات إضافية'),
+        onSelected: (item) => _openInfo(
+          context,
+          item == 'about'
+              ? _t(context, 'About MindSpeak', 'عن MindSpeak')
+              : _t(context, 'Contact us', 'اتصل بنا'),
+          item == 'about'
+              ? [
+                  (
+                    Icons.psychology_alt_outlined,
+                    _t(context, 'Purpose', 'الهدف'),
+                    _t(
+                      context,
+                      'MindSpeak is a graduation project for assistive communication. It lets a person compose a message and use the device speech engine to communicate.',
+                      'MindSpeak مشروع تخرج للتواصل المساند. يتيح للمستخدم كتابة رسالة واستخدام محرك النطق في الجهاز للتواصل.',
+                    ),
+                  ),
+                  (
+                    Icons.apps_rounded,
+                    _t(context, 'Project features', 'مزايا المشروع'),
+                    _t(
+                      context,
+                      'The current app includes typed speech, saved phrases, message history, account-based preferences, and a BLE headset connection flow. EEG interpretation is not configured in this phase.',
+                      'يتضمن التطبيق النطق للنصوص والعبارات المحفوظة وسجل الرسائل والإعدادات الشخصية واتصال سماعة BLE. تحليل EEG غير مهيأ في هذه المرحلة.',
+                    ),
+                  ),
+                ]
+              : [
+                  (
+                    Icons.info_outline_rounded,
+                    _t(context, 'Project contact', 'جهة التواصل'),
+                    _t(
+                      context,
+                      'No public email address or phone number is listed in the project files yet.',
+                      'لا يوجد بريد إلكتروني أو رقم هاتف للتواصل منشور في ملفات المشروع حالياً.',
+                    ),
+                  ),
+                ],
+        ),
+        itemBuilder: (_) => [
+          PopupMenuItem(
+            value: 'about',
+            child: Text(_t(context, 'About us', 'من نحن')),
+          ),
+          PopupMenuItem(
+            value: 'contact',
+            child: Text(_t(context, 'Contact us', 'اتصل بنا')),
+          ),
+        ],
       ),
     ],
   );
+
+  Future<void> _openProfile() async {
+    await Navigator.of(context).push<void>(
+      MaterialPageRoute<void>(
+        builder: (_) => ProfileScreen(
+          gateway: widget.gateway,
+          repository: widget.repository,
+          speech: _speech,
+          onLogout: widget.onLogout,
+          onReconnect: _manageFromProfile,
+          onCalibration: widget.onCalibration ?? () {},
+        ),
+      ),
+    );
+    if (mounted) await _loadProfile();
+  }
+
+  Widget _welcomeCard(BuildContext context) {
+    final palette = MindSpeakPalette.of(context);
+    final name = _profile?['name']?.toString().trim();
+    final id = _profile?['id'];
+    return Card(
+      color: palette.surface,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        child: Row(
+          children: [
+            CircleAvatar(
+              backgroundColor: soft,
+              child: Icon(
+                Icons.waving_hand_outlined,
+                color: palette.primaryText,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name == null || name.isEmpty
+                        ? _t(context, 'Welcome back', 'مرحباً بعودتك')
+                        : '${_t(context, 'Welcome back', 'مرحباً بعودتك')}, $name',
+                    style: TextStyle(
+                      color: palette.primaryText,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 17,
+                    ),
+                  ),
+                  if (id != null)
+                    Text(
+                      '${_t(context, 'User ID', 'معرّف المستخدم')}: $id',
+                      style: TextStyle(
+                        color: palette.secondaryText,
+                        fontSize: 12,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _openInfo(
+    BuildContext context,
+    String title,
+    List<(IconData, String, String)> sections,
+  ) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => MindSpeakInfoScreen(title: title, sections: sections),
+      ),
+    );
+  }
 
   Widget _buildSpeakButton() {
     final status = _speech.status;
@@ -206,7 +392,7 @@ class _HomeScreenState extends State<HomeScreen> {
         key: const Key('stop_speech_button'),
         onPressed: _speech.stop,
         icon: const Icon(Icons.stop_rounded),
-        label: const Text('Stop speaking'),
+        label: Text(_t(context, 'Stop speaking', 'إيقاف النطق')),
       );
     }
     return FilledButton.icon(
@@ -222,7 +408,9 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           : const Icon(Icons.volume_up_rounded),
       label: Text(
-        status == SpeechStatus.loading ? 'Preparing speech…' : 'Speak message',
+        status == SpeechStatus.loading
+            ? _t(context, 'Preparing speech…', 'جارٍ تجهيز النطق…')
+            : _t(context, 'Speak message', 'نطق الرسالة'),
       ),
     );
   }
@@ -235,7 +423,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () => _selectPhrase(phrase.text),
         style: OutlinedButton.styleFrom(
           foregroundColor: muted,
-          side: const BorderSide(color: line),
+          side: BorderSide(color: MindSpeakPalette.of(context).border),
           backgroundColor: soft,
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         ),
@@ -295,6 +483,9 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.of(context).pop();
     widget.onReconnect();
   }
+
+  String _t(BuildContext context, String en, String ar) =>
+      Localizations.localeOf(context).languageCode == 'ar' ? ar : en;
 
   Future<void> _addPhrase() => _editPhraseDialog();
 
@@ -402,7 +593,10 @@ class _MessageHistoryScreenState extends State<MessageHistoryScreen> {
       IconButton(
         tooltip: 'Clear history',
         onPressed: _clearHistory,
-        icon: const Icon(Icons.delete_sweep_outlined, color: navy),
+        icon: Icon(
+          Icons.delete_sweep_outlined,
+          color: MindSpeakPalette.of(context).primaryText,
+        ),
       ),
     ],
     child: FutureBuilder<List<SpeechHistoryEntry>>(
@@ -429,7 +623,7 @@ class _MessageHistoryScreenState extends State<MessageHistoryScreen> {
           itemBuilder: (context, index) {
             final entry = entries[index];
             return Card(
-              color: Colors.white,
+              color: MindSpeakPalette.of(context).surface,
               child: ListTile(
                 title: Text(entry.text),
                 subtitle: Text(_formatTimestamp(entry.createdAt)),
@@ -836,11 +1030,13 @@ class _BluetoothStatus extends StatelessWidget {
       final device = snapshot.devices
           .where((item) => item.id == snapshot.selectedDeviceId)
           .firstOrNull;
+      final palette = MindSpeakPalette.of(context);
+      final arabic = Localizations.localeOf(context).languageCode == 'ar';
       return DecoratedBox(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: palette.surface,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: line),
+          border: Border.all(color: palette.border),
         ),
         child: ListTile(
           leading: CircleAvatar(
@@ -854,12 +1050,14 @@ class _BluetoothStatus extends StatelessWidget {
           ),
           title: Text(device?.name ?? 'No headset connected'),
           subtitle: Text(
-            '${connected ? 'BLE Connected' : 'Disconnected'} · EEG device not configured',
+            arabic
+                ? '${connected ? 'متصل عبر BLE' : 'غير متصل'} · جهاز EEG غير مهيأ'
+                : '${connected ? 'BLE Connected' : 'Disconnected'} · EEG device not configured',
             style: TextStyle(color: connected ? green : muted),
           ),
           trailing: TextButton(
             onPressed: onReconnect,
-            child: const Text('Manage'),
+            child: Text(arabic ? 'إدارة' : 'Manage'),
           ),
         ),
       );
@@ -876,9 +1074,9 @@ class _QuickPhrase extends StatelessWidget {
   Widget build(BuildContext context) => OutlinedButton(
     onPressed: onTap,
     style: OutlinedButton.styleFrom(
-      foregroundColor: muted,
-      side: const BorderSide(color: line),
-      backgroundColor: soft,
+      foregroundColor: MindSpeakPalette.of(context).secondaryText,
+      side: BorderSide(color: MindSpeakPalette.of(context).border),
+      backgroundColor: MindSpeakPalette.of(context).softSurface,
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
     ),
     child: Text(text),
@@ -891,8 +1089,8 @@ class _SectionLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     text,
-    style: const TextStyle(
-      color: muted,
+    style: TextStyle(
+      color: MindSpeakPalette.of(context).secondaryText,
       fontSize: 12,
       fontWeight: FontWeight.w700,
     ),
@@ -903,21 +1101,27 @@ class _HomeWordmark extends StatelessWidget {
   const _HomeWordmark();
 
   @override
-  Widget build(BuildContext context) => const Text.rich(
-    TextSpan(
-      children: [
-        TextSpan(
-          text: 'Mind',
-          style: TextStyle(color: navy, fontWeight: FontWeight.w700),
-        ),
-        TextSpan(
-          text: 'Speak',
-          style: TextStyle(color: blue, fontWeight: FontWeight.w700),
-        ),
-      ],
-    ),
-    style: TextStyle(fontSize: 25),
-  );
+  Widget build(BuildContext context) {
+    final palette = MindSpeakPalette.of(context);
+    return Text.rich(
+      TextSpan(
+        children: [
+          TextSpan(
+            text: 'Mind',
+            style: TextStyle(
+              color: palette.primaryText,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          TextSpan(
+            text: 'Speak',
+            style: TextStyle(color: blue, fontWeight: FontWeight.w700),
+          ),
+        ],
+      ),
+      style: TextStyle(fontSize: 25),
+    );
+  }
 }
 
 class _Page extends StatelessWidget {
@@ -930,29 +1134,35 @@ class _Page extends StatelessWidget {
   final Widget child;
   final List<Widget> actions;
   @override
-  Widget build(BuildContext context) => Scaffold(
-    backgroundColor: bg,
-    appBar: AppBar(
-      backgroundColor: bg,
-      foregroundColor: navy,
-      title: Text(
-        title,
-        style: const TextStyle(color: navy, fontWeight: FontWeight.w700),
+  Widget build(BuildContext context) {
+    final palette = MindSpeakPalette.of(context);
+    return Scaffold(
+      backgroundColor: palette.background,
+      appBar: AppBar(
+        backgroundColor: bg,
+        foregroundColor: palette.primaryText,
+        title: Text(
+          title,
+          style: TextStyle(
+            color: palette.primaryText,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        actions: actions,
       ),
-      actions: actions,
-    ),
-    body: SafeArea(
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 760),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(22, 6, 22, 18),
-            child: SingleChildScrollView(child: child),
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 760),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(22, 6, 22, 18),
+              child: SingleChildScrollView(child: child),
+            ),
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 String _formatTimestamp(DateTime value) {

@@ -2,6 +2,8 @@
 
 This independent FastAPI service provides email-verified account registration, login, bearer-token sessions, and email-based password recovery. It uses its own SQLite database under this folder. It does not use the unrelated Node.js service in `Codes/app/server/`.
 
+The protected `GET /api/v1/me` and `PUT /api/v1/me` routes provide each signed-in user their own profile. The additive profile migration adds optional age, medical notes, and a validated small image data URI to the existing users table without changing the primary key or deleting existing rows. Profile updates cannot change the account ID or email. Medical notes are accessible only through the authenticated user's own token; protect the local database file as sensitive data.
+
 ## Main parts
 
 - `app/main.py` creates the FastAPI app, database tables, health endpoint, and local Flutter web CORS policy. Startup applies additive database changes and marks pre-verification legacy users as verified, preserving their existing accounts.

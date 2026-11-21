@@ -8,9 +8,10 @@ void main() {
     'Welcome and account creation expose the updated registration controls',
     (WidgetTester tester) async {
       await tester.pumpWidget(const MindSpeakApp());
-      await tester.pump(const Duration(milliseconds: 50));
+      await tester.pump(const Duration(seconds: 3));
 
       expect(find.text('Get started'), findsOneWidget);
+      expect(find.byKey(const Key('welcome_bottom_waves')), findsOneWidget);
 
       await tester.pumpWidget(
         const MaterialApp(home: AccessScreen(isLogin: false)),

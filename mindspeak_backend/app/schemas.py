@@ -1,4 +1,6 @@
 from datetime import datetime
+import base64
+import binascii
 import re
 
 from pydantic import (
@@ -119,8 +121,60 @@ class UserResponse(BaseModel):
     email: EmailStr
     created_at: datetime
     email_verified_at: datetime | None = None
+    age: int | None = None
+    medical_information: str | None = None
+    avatar_data: str | None = None
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class ProfileUpdateRequest(BaseModel):
+    name: str | None = Field(default=None, min_length=1, max_length=80)
+    age: int | None = Field(default=None, ge=1, le=120)
+    medical_information: str | None = Field(default=None, max_length=5000)
+    avatar_data: str | None = Field(default=None, max_length=1_500_000)
+
+    @field_validator("name")
+    @classmethod
+    def clean_name(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        cleaned = " ".join(value.split())
+        if not cleaned:
+            raise ValueError("Name must not be empty.")
+        return cleaned
+
+    @field_validator("medical_information")
+    @classmethod
+    def clean_medical_information(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        cleaned = value.strip()
+        return cleaned or None
+
+    @field_validator("avatar_data")
+    @classmethod
+    def validate_avatar(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        try:
+            header, encoded = value.split(",", 1)
+            image = base64.b64decode(encoded, validate=True)
+        except (ValueError, binascii.Error):
+            raise ValueError("Profile image must be a valid PNG, JPEG, or WebP image.") from None
+        valid = (
+            header == "data:image/png;base64" and image.startswith(b"\x89PNG\r\n\x1a\n")
+        ) or (
+            header == "data:image/jpeg;base64" and image.startswith(b"\xff\xd8\xff")
+        ) or (
+            header == "data:image/webp;base64"
+            and len(image) >= 12
+            and image[:4] == b"RIFF"
+            and image[8:12] == b"WEBP"
+        )
+        if not valid or len(image) > 1_000_000:
+            raise ValueError("Profile image must be PNG, JPEG, or WebP and under 1 MB.")
+        return value
 
 
 class RegisterResponse(BaseModel):

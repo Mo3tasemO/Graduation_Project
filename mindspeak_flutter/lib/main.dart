@@ -3,8 +3,11 @@ import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'auth_api.dart';
+import 'app_preferences.dart';
+import 'biometric_service.dart';
 import 'bluetooth/headset_bluetooth.dart';
 import 'design_tokens.dart';
 import 'home/home_screen.dart';
@@ -12,13 +15,24 @@ import 'home/home_screen.dart';
 final RouteObserver<PageRoute<dynamic>> _mindSpeakRouteObserver =
     RouteObserver<PageRoute<dynamic>>();
 
-void main() => runApp(const MindSpeakApp());
+String _tr(BuildContext context, String english, String arabic) =>
+    Localizations.localeOf(context).languageCode == 'ar' ? arabic : english;
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MindSpeakApp());
+}
 
 void _logoutToLogin(NavigatorState navigator) {
-  AuthApi.logout();
-  navigator.pushAndRemoveUntil(
-    MaterialPageRoute<void>(builder: (_) => const AccessScreen(isLogin: true)),
-    (_) => false,
+  unawaited(
+    AuthApi.logout().then((_) {
+      navigator.pushAndRemoveUntil(
+        MaterialPageRoute<void>(
+          builder: (_) => const AccessScreen(isLogin: true),
+        ),
+        (_) => false,
+      );
+    }),
   );
 }
 
@@ -36,58 +50,175 @@ void _openHeadsetConnection(
   );
 }
 
-class MindSpeakApp extends StatelessWidget {
+class MindSpeakApp extends StatefulWidget {
   const MindSpeakApp({super.key});
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-    title: 'MindSpeak',
-    debugShowCheckedModeBanner: false,
-    navigatorObservers: [_mindSpeakRouteObserver],
-    theme: ThemeData(
-      useMaterial3: true,
-      colorScheme: ColorScheme.fromSeed(seedColor: navy, primary: navy),
-      scaffoldBackgroundColor: bg,
-      filledButtonTheme: FilledButtonThemeData(
-        style: FilledButton.styleFrom(
-          backgroundColor: navy,
-          foregroundColor: Colors.white,
-          minimumSize: const Size.fromHeight(54),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14),
-          ),
-        ),
-      ),
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: Colors.white,
-        contentPadding: const EdgeInsets.all(14),
-        border: _border,
-        enabledBorder: _border,
-      ),
-    ),
-    home: const WelcomeScreen(),
-  );
+  State<MindSpeakApp> createState() => _MindSpeakAppState();
 }
 
-final _border = OutlineInputBorder(
-  borderRadius: BorderRadius.circular(12),
-  borderSide: const BorderSide(color: line),
-);
+class _MindSpeakAppState extends State<MindSpeakApp> {
+  bool _ready = false;
+  bool _signedIn = false;
+  bool _biometricUnlockAvailable = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _bootstrap();
+  }
+
+  Future<void> _bootstrap() async {
+    final preferences = MindSpeakPreferences.instance;
+    var signedIn = false;
+    try {
+      await preferences.load().timeout(const Duration(seconds: 2));
+      final hasToken = await AuthApi.hasSavedToken().timeout(
+        const Duration(seconds: 2),
+      );
+      if (hasToken && preferences.biometricsEnabled) {
+        if (await BiometricService.authenticate()) {
+          signedIn = await AuthApi.restoreSession().timeout(
+            const Duration(seconds: 4),
+            onTimeout: () => true,
+          );
+        }
+        _biometricUnlockAvailable = !signedIn;
+      } else if (hasToken) {
+        signedIn = await AuthApi.restoreSession().timeout(
+          const Duration(seconds: 4),
+          onTimeout: () => true,
+        );
+      }
+    } catch (_) {
+      // Platform secure storage may be unavailable in previews/test harnesses.
+    }
+    if (mounted) {
+      setState(() {
+        _signedIn = signedIn;
+        _ready = true;
+      });
+    }
+  }
+
+  Future<void> _unlockWithBiometrics() async {
+    if (!await BiometricService.authenticate()) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Biometric authentication was not completed.'),
+          ),
+        );
+      }
+      return;
+    }
+    final restored = await AuthApi.restoreSession();
+    if (mounted) setState(() => _signedIn = restored);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final preferences = MindSpeakPreferences.instance;
+    return AnimatedBuilder(
+      animation: preferences,
+      builder: (context, _) => MaterialApp(
+        title: 'MindSpeak',
+        debugShowCheckedModeBanner: false,
+        locale: preferences.locale,
+        supportedLocales: const [Locale('en'), Locale('ar')],
+        localizationsDelegates: GlobalMaterialLocalizations.delegates,
+        navigatorObservers: [_mindSpeakRouteObserver],
+        theme: _buildTheme(Brightness.light),
+        darkTheme: _buildTheme(Brightness.dark),
+        themeMode: preferences.themeMode,
+        home: !_ready
+            ? const Scaffold(body: Center(child: CircularProgressIndicator()))
+            : _signedIn
+            ? const ConnectHeadsetScreen(needsCalibration: false)
+            : WelcomeScreen(
+                onBiometricUnlock: _biometricUnlockAvailable
+                    ? _unlockWithBiometrics
+                    : null,
+              ),
+      ),
+    );
+  }
+}
+
+ThemeData _buildTheme(Brightness brightness) {
+  final dark = brightness == Brightness.dark;
+  final palette = dark
+      ? const MindSpeakPalette(
+          background: Color(0xFF101B26),
+          surface: Color(0xFF182838),
+          primaryText: Color(0xFFEAF2F8),
+          secondaryText: Color(0xFFB1C3D2),
+          border: Color(0xFF334A5F),
+          softSurface: Color(0xFF20384D),
+        )
+      : const MindSpeakPalette(
+          background: Color(0xFFF5F7FA),
+          surface: Colors.white,
+          primaryText: Color(0xFF173F5F),
+          secondaryText: Color(0xFF5C7185),
+          border: Color(0xFFD6E0E9),
+          softSurface: Color(0xFFDCE9F4),
+        );
+  final scheme = ColorScheme.fromSeed(
+    seedColor: navy,
+    brightness: brightness,
+    primary: dark ? const Color(0xFF83BDF0) : navy,
+    surface: palette.surface,
+  );
+  final border = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(12),
+    borderSide: BorderSide(color: palette.border),
+  );
+  return ThemeData(
+    useMaterial3: true,
+    brightness: brightness,
+    colorScheme: scheme,
+    scaffoldBackgroundColor: palette.background,
+    appBarTheme: AppBarTheme(
+      backgroundColor: palette.background,
+      foregroundColor: palette.primaryText,
+    ),
+    cardTheme: CardThemeData(color: palette.surface),
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(
+        backgroundColor: navy,
+        foregroundColor: Colors.white,
+        minimumSize: const Size.fromHeight(54),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: palette.surface,
+      contentPadding: const EdgeInsets.all(14),
+      border: border,
+      enabledBorder: border,
+    ),
+  );
+}
 
 class AppPage extends StatelessWidget {
   const AppPage({required this.child, super.key});
   final Widget child;
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    body: SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(22, 18, 22, 18),
-        child: child,
+  Widget build(BuildContext context) {
+    final palette = MindSpeakPalette.of(context);
+    return Scaffold(
+      backgroundColor: palette.background,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(22, 18, 22, 18),
+          child: child,
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 class BrandWordmark extends StatelessWidget {
@@ -510,7 +641,9 @@ class _BackHeader extends StatelessWidget {
 }
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+  const WelcomeScreen({this.onBiometricUnlock, super.key});
+
+  final VoidCallback? onBiometricUnlock;
 
   @override
   Widget build(BuildContext context) => AppPage(
@@ -525,34 +658,79 @@ class WelcomeScreen extends StatelessWidget {
                 child: CustomPaint(painter: _WelcomeNeuralBackgroundPainter()),
               ),
             ),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: 118,
+              child: IgnorePointer(
+                child: CustomPaint(
+                  key: const Key('welcome_bottom_waves'),
+                  painter: _WelcomeWavePainter(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? const Color(0xFF6CAFE0).withValues(alpha: .08)
+                        : const Color(0xFF8BC9F2).withValues(alpha: .16),
+                  ),
+                ),
+              ),
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Spacer(flex: compact ? 1 : 3),
                 const Center(child: BrandLockup()),
                 Spacer(flex: compact ? 2 : 4),
-                const Text(
-                  'Express yourself with confidence.',
+                Text(
+                  _tr(
+                    context,
+                    'Express yourself with confidence.',
+                    'عبّر عن نفسك بثقة.',
+                  ),
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: navy,
+                    color: MindSpeakPalette.of(context).primaryText,
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 const SizedBox(height: 3),
-                const Text(
-                  'A simple space for clearer communication.',
+                Text(
+                  _tr(
+                    context,
+                    'A simple space for clearer communication.',
+                    'مساحة بسيطة لتواصل أوضح.',
+                  ),
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: muted, fontSize: 12),
+                  style: TextStyle(
+                    color: MindSpeakPalette.of(context).secondaryText,
+                    fontSize: 12,
+                  ),
                 ),
                 const SizedBox(height: 15),
                 _WelcomePressButton(onPressed: () => _open(context, false)),
                 const SizedBox(height: 8),
                 TextButton(
                   onPressed: () => _open(context, true),
-                  child: const Text('I already have an account · Log in'),
+                  child: Text(
+                    _tr(
+                      context,
+                      'I already have an account · Log in',
+                      'لدي حساب بالفعل · تسجيل الدخول',
+                    ),
+                  ),
                 ),
+                if (onBiometricUnlock != null)
+                  TextButton.icon(
+                    onPressed: onBiometricUnlock,
+                    icon: const Icon(Icons.fingerprint_rounded),
+                    label: Text(
+                      _tr(
+                        context,
+                        'Unlock with biometrics',
+                        'فتح بالبصمة أو الوجه',
+                      ),
+                    ),
+                  ),
               ],
             ),
           ],
@@ -665,6 +843,54 @@ class _WelcomeNeuralBackgroundPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant _WelcomeNeuralBackgroundPainter oldDelegate) =>
       false;
+}
+
+class _WelcomeWavePainter extends CustomPainter {
+  const _WelcomeWavePainter({required this.color});
+
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    if (size.isEmpty) return;
+    final fill = Paint()..color = color;
+    final backWave = Path()
+      ..moveTo(0, size.height * .47)
+      ..cubicTo(
+        size.width * .28,
+        size.height * .12,
+        size.width * .65,
+        size.height * .88,
+        size.width,
+        size.height * .34,
+      )
+      ..lineTo(size.width, size.height)
+      ..lineTo(0, size.height)
+      ..close();
+    canvas.drawPath(backWave, fill);
+
+    final frontWave = Path()
+      ..moveTo(0, size.height * .68)
+      ..cubicTo(
+        size.width * .32,
+        size.height * .34,
+        size.width * .68,
+        size.height * .92,
+        size.width,
+        size.height * .55,
+      )
+      ..lineTo(size.width, size.height)
+      ..lineTo(0, size.height)
+      ..close();
+    canvas.drawPath(
+      frontWave,
+      Paint()..color = color.withValues(alpha: color.a * 1.35),
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _WelcomeWavePainter oldDelegate) =>
+      oldDelegate.color != color;
 }
 
 class AccessScreen extends StatefulWidget {
@@ -782,9 +1008,11 @@ class _AccessScreenState extends State<AccessScreen> {
         _BackHeader(onBack: () => Navigator.of(context).pop()),
         const SizedBox(height: 36),
         Text(
-          isLogin ? 'Welcome back!' : 'Create your account',
-          style: const TextStyle(
-            color: navy,
+          isLogin
+              ? _tr(context, 'Welcome back!', 'مرحباً بعودتك!')
+              : _tr(context, 'Create your account', 'أنشئ حسابك'),
+          style: TextStyle(
+            color: MindSpeakPalette.of(context).primaryText,
             fontSize: 25,
             fontWeight: FontWeight.w700,
           ),
@@ -792,9 +1020,17 @@ class _AccessScreenState extends State<AccessScreen> {
         const SizedBox(height: 8),
         Text(
           isLogin
-              ? 'Sign in to connect your headset.'
-              : 'New accounts complete calibration once.',
-          style: const TextStyle(color: muted),
+              ? _tr(
+                  context,
+                  'Sign in to connect your headset.',
+                  'سجّل الدخول لتوصيل السماعة.',
+                )
+              : _tr(
+                  context,
+                  'New accounts complete calibration once.',
+                  'تكمل الحسابات الجديدة المعايرة مرة واحدة.',
+                ),
+          style: TextStyle(color: MindSpeakPalette.of(context).secondaryText),
         ),
         const SizedBox(height: 22),
         Form(
@@ -808,7 +1044,9 @@ class _AccessScreenState extends State<AccessScreen> {
                   textCapitalization: TextCapitalization.words,
                   textInputAction: TextInputAction.next,
                   autofillHints: const [AutofillHints.givenName],
-                  decoration: const InputDecoration(labelText: 'First name'),
+                  decoration: InputDecoration(
+                    labelText: _tr(context, 'First name', 'الاسم الأول'),
+                  ),
                   validator: (value) => _validateName(value, 'first name'),
                 ),
                 const SizedBox(height: 12),
@@ -817,7 +1055,9 @@ class _AccessScreenState extends State<AccessScreen> {
                   textCapitalization: TextCapitalization.words,
                   textInputAction: TextInputAction.next,
                   autofillHints: const [AutofillHints.familyName],
-                  decoration: const InputDecoration(labelText: 'Last name'),
+                  decoration: InputDecoration(
+                    labelText: _tr(context, 'Last name', 'اسم العائلة'),
+                  ),
                   validator: (value) => _validateName(value, 'last name'),
                 ),
                 const SizedBox(height: 12),
@@ -826,7 +1066,9 @@ class _AccessScreenState extends State<AccessScreen> {
                 controller: _email,
                 keyboardType: TextInputType.emailAddress,
                 autocorrect: false,
-                decoration: const InputDecoration(labelText: 'Email address'),
+                decoration: InputDecoration(
+                  labelText: _tr(context, 'Email address', 'البريد الإلكتروني'),
+                ),
                 validator: _validateEmail,
               ),
               const SizedBox(height: 16),
@@ -850,7 +1092,9 @@ class _AccessScreenState extends State<AccessScreen> {
                         builder: (_) => const ForgotPasswordEmailScreen(),
                       ),
                     ),
-              child: const Text('Forgot password?'),
+              child: Text(
+                _tr(context, 'Forgot password?', 'هل نسيت كلمة المرور؟'),
+              ),
             ),
           ),
         if (_error != null) ...[
@@ -871,7 +1115,11 @@ class _AccessScreenState extends State<AccessScreen> {
                     color: Colors.white,
                   ),
                 )
-              : Text(isLogin ? 'Log in' : 'Create account'),
+              : Text(
+                  isLogin
+                      ? _tr(context, 'Log in', 'تسجيل الدخول')
+                      : _tr(context, 'Create account', 'إنشاء حساب'),
+                ),
         ),
         const SizedBox(height: 8),
         TextButton(
@@ -881,7 +1129,9 @@ class _AccessScreenState extends State<AccessScreen> {
             ),
           ),
           child: Text(
-            isLogin ? 'Create new account' : 'I already have an account',
+            isLogin
+                ? _tr(context, 'Create new account', 'إنشاء حساب جديد')
+                : _tr(context, 'I already have an account', 'لدي حساب بالفعل'),
           ),
         ),
       ],
@@ -950,25 +1200,31 @@ class _ForgotPasswordEmailScreenState extends State<ForgotPasswordEmailScreen> {
       children: [
         _BackHeader(onBack: () => Navigator.of(context).pop()),
         const SizedBox(height: 36),
-        const Text(
-          'Forgot password?',
+        Text(
+          _tr(context, 'Forgot password?', 'هل نسيت كلمة المرور؟'),
           style: TextStyle(
-            color: navy,
+            color: MindSpeakPalette.of(context).primaryText,
             fontSize: 25,
             fontWeight: FontWeight.w700,
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Enter your registered email and we’ll send you a verification code.',
-          style: TextStyle(color: muted),
+        Text(
+          _tr(
+            context,
+            'Enter your registered email and we’ll send you a verification code.',
+            'أدخل بريدك المسجل وسنرسل إليك رمز التحقق.',
+          ),
+          style: TextStyle(color: MindSpeakPalette.of(context).secondaryText),
         ),
         const SizedBox(height: 22),
         TextField(
           controller: _email,
           keyboardType: TextInputType.emailAddress,
           autocorrect: false,
-          decoration: const InputDecoration(labelText: 'Email address'),
+          decoration: InputDecoration(
+            labelText: _tr(context, 'Email address', 'البريد الإلكتروني'),
+          ),
           onSubmitted: (_) => _requestCode(),
         ),
         if (_error != null) ...[
@@ -983,7 +1239,9 @@ class _ForgotPasswordEmailScreenState extends State<ForgotPasswordEmailScreen> {
           onPressed: _loading ? null : _requestCode,
           child: _loading
               ? const _ButtonLoader()
-              : const Text('Send verification code'),
+              : Text(
+                  _tr(context, 'Send verification code', 'إرسال رمز التحقق'),
+                ),
         ),
       ],
     ),
@@ -1116,10 +1374,10 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
         const SizedBox(height: 36),
         Text(
           widget.purpose == VerificationPurpose.registration
-              ? 'Verify your email'
-              : 'Check your email',
-          style: const TextStyle(
-            color: navy,
+              ? _tr(context, 'Verify your email', 'تحقق من بريدك الإلكتروني')
+              : _tr(context, 'Check your email', 'تحقق من بريدك'),
+          style: TextStyle(
+            color: MindSpeakPalette.of(context).primaryText,
             fontSize: 25,
             fontWeight: FontWeight.w700,
           ),
@@ -1127,17 +1385,25 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
         const SizedBox(height: 8),
         Text(
           widget.purpose == VerificationPurpose.registration
-              ? "We've sent a verification code to ${widget.email}. It expires in 5 minutes."
-              : 'Enter the six-digit verification code sent to ${widget.email}. It expires in 5 minutes.',
-          style: const TextStyle(color: muted),
+              ? _tr(
+                  context,
+                  "We've sent a verification code to ${widget.email}. It expires in 5 minutes.",
+                  'أرسلنا رمز تحقق إلى ${widget.email}. تنتهي صلاحيته خلال 5 دقائق.',
+                )
+              : _tr(
+                  context,
+                  'Enter the six-digit verification code sent to ${widget.email}. It expires in 5 minutes.',
+                  'أدخل الرمز المكوّن من 6 أرقام المرسل إلى ${widget.email}. تنتهي صلاحيته خلال 5 دقائق.',
+                ),
+          style: TextStyle(color: MindSpeakPalette.of(context).secondaryText),
         ),
         const SizedBox(height: 22),
         TextField(
           controller: _code,
           keyboardType: TextInputType.number,
           maxLength: 6,
-          decoration: const InputDecoration(
-            labelText: 'Verification code',
+          decoration: InputDecoration(
+            labelText: _tr(context, 'Verification code', 'رمز التحقق'),
             counterText: '',
           ),
           onSubmitted: (_) => _verifyCode(),
@@ -1147,7 +1413,13 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
           child: TextButton(
             onPressed: _loading || _cooldown > 0 ? null : _resendCode,
             child: Text(
-              _cooldown > 0 ? 'Resend code in ${_cooldown}s' : 'Resend code',
+              _cooldown > 0
+                  ? _tr(
+                      context,
+                      'Resend code in ${_cooldown}s',
+                      'إعادة الإرسال خلال ${_cooldown}ث',
+                    )
+                  : _tr(context, 'Resend code', 'إعادة إرسال الرمز'),
             ),
           ),
         ),
@@ -1163,8 +1435,8 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
               ? const _ButtonLoader()
               : Text(
                   widget.purpose == VerificationPurpose.registration
-                      ? 'Verify email'
-                      : 'Verify code',
+                      ? _tr(context, 'Verify email', 'تأكيد البريد')
+                      : _tr(context, 'Verify code', 'تحقق من الرمز'),
                 ),
         ),
       ],
@@ -1255,18 +1527,22 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       children: [
         _BackHeader(onBack: () => Navigator.of(context).pop()),
         const SizedBox(height: 36),
-        const Text(
-          'Create a new password',
+        Text(
+          _tr(context, 'Create a new password', 'أنشئ كلمة مرور جديدة'),
           style: TextStyle(
-            color: navy,
+            color: MindSpeakPalette.of(context).primaryText,
             fontSize: 25,
             fontWeight: FontWeight.w700,
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Choose a strong password for your account.',
-          style: TextStyle(color: muted),
+        Text(
+          _tr(
+            context,
+            'Choose a strong password for your account.',
+            'اختر كلمة مرور قوية لحسابك.',
+          ),
+          style: TextStyle(color: MindSpeakPalette.of(context).secondaryText),
         ),
         const SizedBox(height: 22),
         Form(
@@ -1275,13 +1551,17 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             children: [
               _PasswordFormField(
                 controller: _password,
-                labelText: 'New password',
+                labelText: _tr(context, 'New password', 'كلمة المرور الجديدة'),
                 validator: _validateNewPassword,
               ),
               const SizedBox(height: 16),
               _PasswordFormField(
                 controller: _confirm,
-                labelText: 'Confirm password',
+                labelText: _tr(
+                  context,
+                  'Confirm password',
+                  'تأكيد كلمة المرور',
+                ),
                 validator: (value) =>
                     value != _password.text ? 'Passwords do not match.' : null,
               ),
@@ -1300,7 +1580,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           onPressed: _loading ? null : _savePassword,
           child: _loading
               ? const _ButtonLoader()
-              : const Text('Reset password'),
+              : Text(_tr(context, 'Reset password', 'إعادة تعيين كلمة المرور')),
         ),
       ],
     ),
@@ -1399,30 +1679,34 @@ class _ConnectHeadsetScreenState extends State<ConnectHeadsetScreen> {
         children: [
           _BackHeader(onBack: () => Navigator.of(context).pop()),
           const SizedBox(height: 22),
-          const Icon(Icons.bluetooth_rounded, color: navy, size: 62),
+          const Icon(Icons.bluetooth_rounded, color: blue, size: 62),
           const SizedBox(height: 14),
-          const Text(
-            'Connect your headset',
+          Text(
+            _tr(context, 'Connect your headset', 'وصّل السماعة'),
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: navy,
+              color: MindSpeakPalette.of(context).primaryText,
               fontSize: 23,
               fontWeight: FontWeight.w700,
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Turn on your NINA BLE device and keep it nearby.',
+          Text(
+            _tr(
+              context,
+              'Turn on your NINA BLE device and keep it nearby.',
+              'شغّل جهاز NINA BLE وأبقِه قريباً.',
+            ),
             textAlign: TextAlign.center,
-            style: TextStyle(color: muted),
+            style: TextStyle(color: MindSpeakPalette.of(context).secondaryText),
           ),
           const SizedBox(height: 18),
           _ConnectionStatusCard(snapshot: _snapshot),
           const SizedBox(height: 16),
-          const Text(
-            'AVAILABLE DEVICE',
+          Text(
+            _tr(context, 'AVAILABLE DEVICE', 'الأجهزة المتاحة'),
             style: TextStyle(
-              color: muted,
+              color: MindSpeakPalette.of(context).secondaryText,
               fontWeight: FontWeight.w700,
               fontSize: 12,
             ),
@@ -1447,8 +1731,12 @@ class _ConnectHeadsetScreenState extends State<ConnectHeadsetScreen> {
                 : const Icon(Icons.bluetooth_searching_rounded),
             label: Text(
               _snapshot.status == HeadsetConnectionStatus.scanning
-                  ? 'Scanning for devices…'
-                  : 'Scan for devices',
+                  ? _tr(
+                      context,
+                      'Scanning for devices…',
+                      'جارٍ البحث عن الأجهزة…',
+                    )
+                  : _tr(context, 'Scan for devices', 'البحث عن الأجهزة'),
             ),
           ),
           OutlinedButton.icon(
@@ -1456,21 +1744,27 @@ class _ConnectHeadsetScreenState extends State<ConnectHeadsetScreen> {
             icon: const Icon(Icons.link_rounded),
             label: Text(
               _snapshot.status == HeadsetConnectionStatus.connecting
-                  ? 'Connecting…'
+                  ? _tr(context, 'Connecting…', 'جارٍ الاتصال…')
                   : _snapshot.status == HeadsetConnectionStatus.connectionLost
-                  ? 'Reconnect headset'
-                  : 'Connect to selected device',
+                  ? _tr(context, 'Reconnect headset', 'إعادة توصيل السماعة')
+                  : _tr(
+                      context,
+                      'Connect to selected device',
+                      'الاتصال بالجهاز المحدد',
+                    ),
             ),
           ),
           const SizedBox(height: 8),
           FilledButton(
             onPressed: _snapshot.isConnected ? _continue : null,
-            child: const Text('Continue'),
+            child: Text(_tr(context, 'Continue', 'متابعة')),
           ),
           const SizedBox(height: 8),
           TextButton(
             onPressed: _openBluetoothSettings,
-            child: const Text('Open Bluetooth settings'),
+            child: Text(
+              _tr(context, 'Open Bluetooth settings', 'فتح إعدادات البلوتوث'),
+            ),
           ),
         ],
       ),
@@ -1552,6 +1846,17 @@ class _ConnectHeadsetScreenState extends State<ConnectHeadsetScreen> {
             gateway: _gateway,
             onLogout: () => _logoutToLogin(navigator),
             onReconnect: () => _openHeadsetConnection(navigator, _gateway),
+            onCalibration: () {
+              navigator.pop();
+              navigator.push(
+                MaterialPageRoute<void>(
+                  builder: (_) => CalibrationScreen(
+                    gateway: _gateway,
+                    returnToExistingHome: true,
+                  ),
+                ),
+              );
+            },
           );
     Navigator.of(context)
         .pushReplacement(MaterialPageRoute<void>(builder: (_) => page));
@@ -1571,6 +1876,7 @@ class _ConnectionStatusCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final palette = MindSpeakPalette.of(context);
     final connected = snapshot.isConnected;
     final icon = switch (snapshot.status) {
       HeadsetConnectionStatus.bluetoothUnavailable =>
@@ -1598,8 +1904,8 @@ class _ConnectionStatusCard extends StatelessWidget {
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: line),
+        color: palette.surface,
+        border: Border.all(color: palette.border),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
@@ -1615,7 +1921,7 @@ class _ConnectionStatusCard extends StatelessWidget {
                   Text(
                     label,
                     style: TextStyle(
-                      color: connected ? green : navy,
+                      color: connected ? green : palette.primaryText,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -1623,7 +1929,10 @@ class _ConnectionStatusCard extends StatelessWidget {
                     const SizedBox(height: 2),
                     Text(
                       snapshot.message!,
-                      style: const TextStyle(color: muted, fontSize: 12),
+                      style: TextStyle(
+                        color: palette.secondaryText,
+                        fontSize: 12,
+                      ),
                     ),
                   ],
                 ],
@@ -1634,7 +1943,7 @@ class _ConnectionStatusCard extends StatelessWidget {
               snapshot.batteryLevel == null
                   ? 'Battery unavailable'
                   : 'Battery ${snapshot.batteryLevel}%',
-              style: const TextStyle(color: muted, fontSize: 11),
+              style: TextStyle(color: palette.secondaryText, fontSize: 11),
               textAlign: TextAlign.end,
             ),
           ],
@@ -1663,38 +1972,41 @@ class _DeviceCard extends StatelessWidget {
   final bool empty;
 
   @override
-  Widget build(BuildContext context) => Material(
-    color: Colors.white,
-    clipBehavior: Clip.antiAlias,
-    shape: RoundedRectangleBorder(
-      side: BorderSide(color: selected ? blue : line),
-      borderRadius: BorderRadius.circular(16),
-    ),
-    child: ListTile(
-      onTap: onTap,
-      leading: CircleAvatar(
-        backgroundColor: soft,
-        child: Icon(
-          empty
-              ? Icons.bluetooth_searching_rounded
-              : Icons.settings_input_antenna_rounded,
-          color: navy,
+  Widget build(BuildContext context) {
+    final palette = MindSpeakPalette.of(context);
+    return Material(
+      color: palette.surface,
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: selected ? blue : palette.border),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: ListTile(
+        onTap: onTap,
+        leading: CircleAvatar(
+          backgroundColor: palette.softSurface,
+          child: Icon(
+            empty
+                ? Icons.bluetooth_searching_rounded
+                : Icons.settings_input_antenna_rounded,
+            color: palette.primaryText,
+          ),
         ),
+        title: Text(empty ? 'No BLE device selected' : device!.name),
+        subtitle: Text(
+          empty
+              ? 'Scan to discover nearby Bluetooth LE devices.'
+              : selected
+              ? 'Selected device'
+              : 'Tap to select',
+          style: TextStyle(color: palette.secondaryText),
+        ),
+        trailing: selected
+            ? const Icon(Icons.check_circle_rounded, color: blue)
+            : null,
       ),
-      title: Text(empty ? 'No BLE device selected' : device!.name),
-      subtitle: Text(
-        empty
-            ? 'Scan to discover nearby Bluetooth LE devices.'
-            : selected
-            ? 'Selected device'
-            : 'Tap to select',
-        style: const TextStyle(color: muted),
-      ),
-      trailing: selected
-          ? const Icon(Icons.check_circle_rounded, color: blue)
-          : null,
-    ),
-  );
+    );
+  }
 }
 
 class _HeadsetConnectionGuard extends StatelessWidget {
@@ -1714,27 +2026,36 @@ class _HeadsetConnectionGuard extends StatelessWidget {
     initialData: gateway.snapshot,
     builder: (context, state) {
       if (state.data?.isConnected ?? false) return child;
+      final palette = MindSpeakPalette.of(context);
       return AppPage(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Icon(Icons.bluetooth_disabled_rounded, color: navy, size: 58),
+            Icon(
+              Icons.bluetooth_disabled_rounded,
+              color: palette.primaryText,
+              size: 58,
+            ),
             const SizedBox(height: 18),
-            const Text(
-              'Headset connection lost',
+            Text(
+              _tr(context, 'Headset connection lost', 'انقطع اتصال السماعة'),
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: navy,
+                color: palette.primaryText,
                 fontSize: 22,
                 fontWeight: FontWeight.w700,
               ),
             ),
             const SizedBox(height: 10),
-            const Text(
-              'Reconnect the headset before continuing.',
+            Text(
+              _tr(
+                context,
+                'Reconnect the headset before continuing.',
+                'أعد توصيل السماعة للمتابعة.',
+              ),
               textAlign: TextAlign.center,
-              style: TextStyle(color: muted),
+              style: TextStyle(color: palette.secondaryText),
             ),
             const SizedBox(height: 24),
             FilledButton(
@@ -1746,7 +2067,9 @@ class _HeadsetConnectionGuard extends StatelessWidget {
                   ),
                 ),
               ),
-              child: const Text('Reconnect headset'),
+              child: Text(
+                _tr(context, 'Reconnect headset', 'إعادة توصيل السماعة'),
+              ),
             ),
           ],
         ),
@@ -1756,9 +2079,14 @@ class _HeadsetConnectionGuard extends StatelessWidget {
 }
 
 class CalibrationScreen extends StatefulWidget {
-  const CalibrationScreen({required this.gateway, super.key});
+  const CalibrationScreen({
+    required this.gateway,
+    this.returnToExistingHome = false,
+    super.key,
+  });
 
   final HeadsetBluetoothGateway gateway;
+  final bool returnToExistingHome;
 
   @override
   State<CalibrationScreen> createState() => _CalibrationScreenState();
@@ -1772,6 +2100,7 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
   Widget build(BuildContext context) {
     final complete = index == words.length;
     final word = words[complete ? words.length - 1 : index];
+    final palette = MindSpeakPalette.of(context);
     return AppPage(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1782,7 +2111,7 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
               const Spacer(),
               Text(
                 complete ? '5 of 5' : (index + 1).toString() + ' of 5',
-                style: const TextStyle(color: muted, fontSize: 12),
+                style: TextStyle(color: palette.secondaryText, fontSize: 12),
               ),
             ],
           ),
@@ -1803,14 +2132,14 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
           Icon(
             complete ? Icons.check_circle_rounded : Icons.psychology_rounded,
             size: 86,
-            color: navy,
+            color: palette.primaryText,
           ),
           const SizedBox(height: 18),
           Text(
             complete ? 'All set!' : 'Help us personalise\nyour model',
             textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: navy,
+            style: TextStyle(
+              color: palette.primaryText,
               fontSize: 23,
               fontWeight: FontWeight.w700,
             ),
@@ -1819,23 +2148,23 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
           if (!complete)
             DecoratedBox(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: palette.surface,
                 borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: line),
+                border: Border.all(color: palette.border),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(22),
                 child: Column(
                   children: [
-                    const Text(
-                      'Imagine saying',
-                      style: TextStyle(color: muted),
+                    Text(
+                      _tr(context, 'Imagine saying', 'تخيّل أنك تقول'),
+                      style: TextStyle(color: palette.secondaryText),
                     ),
                     const SizedBox(height: 7),
                     Text(
                       word,
-                      style: const TextStyle(
-                        color: navy,
+                      style: TextStyle(
+                        color: palette.primaryText,
                         fontSize: 30,
                         fontWeight: FontWeight.w700,
                       ),
@@ -1850,12 +2179,20 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
                 ? 'Your communication model is ready.'
                 : 'Hold the thought for a few seconds while we record.',
             textAlign: TextAlign.center,
-            style: const TextStyle(color: muted),
+            style: TextStyle(color: palette.secondaryText),
           ),
           const Spacer(),
           FilledButton(
             onPressed: _next,
-            child: Text(complete ? 'Continue to MindSpeak' : 'Record sample'),
+            child: Text(
+              complete
+                  ? _tr(
+                      context,
+                      'Continue to MindSpeak',
+                      'المتابعة إلى MindSpeak',
+                    )
+                  : _tr(context, 'Record sample', 'تسجيل عينة'),
+            ),
           ),
         ],
       ),
@@ -1864,6 +2201,10 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
 
   void _next() {
     if (index == words.length) {
+      if (widget.returnToExistingHome) {
+        Navigator.of(context).pop();
+        return;
+      }
       final navigator = Navigator.of(context);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute<void>(
@@ -1872,6 +2213,14 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
             onLogout: () => _logoutToLogin(navigator),
             onReconnect: () =>
                 _openHeadsetConnection(navigator, widget.gateway),
+            onCalibration: () => navigator.push(
+              MaterialPageRoute<void>(
+                builder: (_) => CalibrationScreen(
+                  gateway: widget.gateway,
+                  returnToExistingHome: true,
+                ),
+              ),
+            ),
           ),
         ),
       );

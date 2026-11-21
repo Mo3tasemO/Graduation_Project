@@ -144,6 +144,24 @@ def test_registration_requires_email_verification_and_protects_profile(tmp_path,
         assert profile.status_code == 200
         assert profile.json()["email"] == "sara@example.com"
         assert "password_hash" not in profile.text
+        updated = client.put(
+            "/api/v1/me",
+            headers={"Authorization": f"Bearer {token}"},
+            json={"name": "Sara Ahmed Updated", "age": 28, "medical_information": "User supplied notes."},
+        )
+        assert updated.status_code == 200
+        assert updated.json()["name"] == "Sara Ahmed Updated"
+        assert updated.json()["age"] == 28
+        assert updated.json()["medical_information"] == "User supplied notes."
+        assert updated.json()["id"] == profile.json()["id"]
+        assert "password_hash" not in updated.text
+        assert client.put("/api/v1/me", json={"name": "Other user"}).status_code == 401
+        invalid_age = client.put(
+            "/api/v1/me",
+            headers={"Authorization": f"Bearer {token}"},
+            json={"age": 0},
+        )
+        assert invalid_age.status_code == 422
         assert client.get("/api/v1/me", headers={"Authorization": "Bearer invalid"}).status_code == 401
 
 

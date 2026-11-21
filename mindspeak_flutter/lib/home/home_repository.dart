@@ -31,6 +31,7 @@ class SpeechHistoryEntry {
 
 abstract interface class HomeRepository {
   Future<Map<String, dynamic>> loadProfile();
+  Future<Map<String, dynamic>> saveProfile(Map<String, Object?> changes);
   Future<List<SavedPhrase>> loadPhrases();
   Future<SavedPhrase> createPhrase(String text);
   Future<SavedPhrase> updatePhrase(int id, String text);
@@ -48,6 +49,10 @@ class ApiHomeRepository implements HomeRepository {
 
   @override
   Future<Map<String, dynamic>> loadProfile() => AuthApi.getProfile();
+
+  @override
+  Future<Map<String, dynamic>> saveProfile(Map<String, Object?> changes) =>
+      AuthApi.updateProfile(changes);
 
   @override
   Future<List<SavedPhrase>> loadPhrases() async =>

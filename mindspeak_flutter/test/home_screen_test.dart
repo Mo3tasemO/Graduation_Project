@@ -74,6 +74,8 @@ void main() {
       final repo = _FakeHomeRepository();
       await tester.pumpWidget(_home(repo, _FakeSpeechEngine()));
       await tester.pumpAndSettle();
+      expect(find.text('Welcome back, Test User'), findsOneWidget);
+      expect(find.text('User ID: 12'), findsOneWidget);
 
       await tester.tap(find.byKey(const Key('add_phrase_button')));
       await tester.pumpAndSettle();
@@ -133,13 +135,19 @@ void main() {
 
       await tester.tap(find.byKey(const Key('profile_button')));
       await tester.pumpAndSettle();
-      expect(find.text('Test User'), findsOneWidget);
-    expect(find.textContaining('test@example.com'), findsOneWidget);
+      expect(find.text('Test User'), findsNWidgets(2));
+      expect(find.textContaining('test@example.com'), findsOneWidget);
       expect(find.textContaining('Email verified'), findsOneWidget);
+      await tester.tap(find.byTooltip('Settings'));
+      await tester.pumpAndSettle();
       expect(find.byKey(const Key('speech_language_dropdown')), findsOneWidget);
       expect(find.byKey(const Key('speech_voice_dropdown')), findsOneWidget);
-    await tester.ensureVisible(find.byKey(const Key('logout_button')));
+      await tester.pageBack();
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.byKey(const Key('logout_button')));
       await tester.tap(find.byKey(const Key('logout_button')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Log out').last);
       expect(loggedOut, isTrue);
     },
   );
@@ -164,6 +172,35 @@ void main() {
       expect(speech.spoken, ['I need water', 'I need water']);
     },
   );
+
+  testWidgets('profile edits save to the authenticated profile repository', (
+    tester,
+  ) async {
+    final repo = _FakeHomeRepository();
+    await tester.pumpWidget(_home(repo, _FakeSpeechEngine()));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('profile_button')));
+    await tester.pumpAndSettle();
+
+    await tester.enterText(find.byType(TextField).first, 'Updated Name');
+    await tester.enterText(find.byType(TextField).at(1), '35');
+    await tester.enterText(
+      find.byType(TextField).at(2),
+      'Uses a communication aid.',
+    );
+    await tester.ensureVisible(find.byKey(const Key('save_profile_button')));
+    await tester.tap(find.byKey(const Key('save_profile_button')));
+    await tester.pumpAndSettle();
+
+    expect(repo.profile['name'], 'Updated Name');
+    expect(repo.profile['age'], 35);
+    expect(repo.profile['medical_information'], 'Uses a communication aid.');
+    expect(repo.profile['id'], 12);
+
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+    expect(find.text('Welcome back, Updated Name'), findsOneWidget);
+  });
 }
 
 Widget _home(_FakeHomeRepository repository, _FakeSpeechEngine speech) =>
@@ -227,6 +264,15 @@ class _FakeSpeechEngine implements SpeechEngine {
 }
 
 class _FakeHomeRepository implements HomeRepository {
+  final profile = <String, dynamic>{
+    'id': 12,
+    'name': 'Test User',
+    'email': 'test@example.com',
+    'email_verified_at': '2026-01-01T00:00:00Z',
+    'age': null,
+    'medical_information': null,
+    'avatar_data': null,
+  };
   final List<SavedPhrase> phrases = [
     const SavedPhrase(id: 1, text: 'Good morning'),
   ];
@@ -235,11 +281,13 @@ class _FakeHomeRepository implements HomeRepository {
   int _nextHistoryId = 1;
 
   @override
-  Future<Map<String, dynamic>> loadProfile() async => {
-    'name': 'Test User',
-    'email': 'test@example.com',
-    'email_verified_at': '2026-01-01T00:00:00Z',
-  };
+  Future<Map<String, dynamic>> loadProfile() async => Map.of(profile);
+  @override
+  Future<Map<String, dynamic>> saveProfile(Map<String, Object?> changes) async {
+    profile.addAll(changes);
+    return Map.of(profile);
+  }
+
   @override
   Future<List<SavedPhrase>> loadPhrases() async => List.of(phrases);
   @override

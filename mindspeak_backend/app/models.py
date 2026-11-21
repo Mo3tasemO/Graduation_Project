@@ -16,6 +16,9 @@ class User(Base):
     email: Mapped[str] = mapped_column(String(254), unique=True, index=True, nullable=False)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
     email_verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    age: Mapped[int | None] = mapped_column(Integer)
+    medical_information: Mapped[str | None] = mapped_column(Text)
+    avatar_data: Mapped[str | None] = mapped_column(Text)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),

@@ -1,6 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+import 'app_preferences.dart';
 
 /// Small client for the independent MindSpeak API.
 /// Override the base URL with --dart-define when using a device/emulator.
@@ -12,10 +15,52 @@ class AuthApi {
     defaultValue: 'http://127.0.0.1:8000/api/v1',
   );
   static String? _accessToken;
+  static const _storage = FlutterSecureStorage();
+  static const _tokenKey = 'mindspeak_access_token';
 
   static String? get accessToken => _accessToken;
 
-  static void logout() => _accessToken = null;
+  static Future<bool> hasSavedToken() async =>
+      MindSpeakPreferences.instance.sessionStored;
+
+  /// Restores the saved token only after optional device biometrics have passed,
+  /// then validates it against the server before treating the user as signed in.
+  static Future<bool> restoreSession() async {
+    final saved = await _storage.read(key: _tokenKey);
+    if (saved == null || saved.isEmpty) return false;
+    _accessToken = saved;
+    try {
+      await getProfile();
+      return true;
+    } on AuthApiException catch (error) {
+      if (error.statusCode == 401 || error.statusCode == 403) {
+        await logout();
+        return false;
+      }
+      // A server or permission error does not prove that the session is invalid.
+      return true;
+    } catch (_) {
+      // Preserve a valid-looking secure token during temporary network outages.
+      return true;
+    }
+  }
+
+  static Future<void> logout() async {
+    _accessToken = null;
+    await _storage.delete(key: _tokenKey);
+    await MindSpeakPreferences.instance.setSessionStored(false);
+  }
+
+  static Future<void> _saveToken(String? token) async {
+    _accessToken = token;
+    if (token == null || token.isEmpty) {
+      await _storage.delete(key: _tokenKey);
+      await MindSpeakPreferences.instance.setSessionStored(false);
+    } else {
+      await _storage.write(key: _tokenKey, value: token);
+      await MindSpeakPreferences.instance.setSessionStored(true);
+    }
+  }
 
   static Future<Map<String, dynamic>> _post(
     String path,
@@ -48,7 +93,10 @@ class AuthApi {
         ? <String, dynamic>{}
         : jsonDecode(streamed.body);
     if (streamed.statusCode < 200 || streamed.statusCode >= 300) {
-      throw AuthApiException(_messageFrom(decoded));
+      throw AuthApiException(
+        _messageFrom(decoded),
+        statusCode: streamed.statusCode,
+      );
     }
     return decoded;
   }
@@ -76,7 +124,7 @@ class AuthApi {
     required String email,
     required String password,
   }) async {
-    _accessToken = null;
+    await _saveToken(null);
     await _post('/auth/register', {
       'first_name': firstName,
       'last_name': lastName,
@@ -97,7 +145,7 @@ class AuthApi {
       'email': email,
       'code': code,
     });
-    _accessToken = result['access_token'] as String?;
+    await _saveToken(result['access_token'] as String?);
   }
 
   static Future<void> login({
@@ -108,7 +156,7 @@ class AuthApi {
       'email': email,
       'password': password,
     });
-    _accessToken = result['access_token'] as String?;
+    await _saveToken(result['access_token'] as String?);
   }
 
   static Future<void> requestPasswordReset(String email) async {
@@ -136,11 +184,17 @@ class AuthApi {
       'reset_token': resetToken,
       'new_password': newPassword,
     });
-    _accessToken = null;
+    await _saveToken(null);
   }
 
   static Future<Map<String, dynamic>> getProfile() async =>
       (await _request('GET', '/me', authenticated: true))
+          as Map<String, dynamic>;
+
+  static Future<Map<String, dynamic>> updateProfile(
+    Map<String, Object?> changes,
+  ) async =>
+      (await _request('PUT', '/me', body: changes, authenticated: true))
           as Map<String, dynamic>;
 
   static Future<List<dynamic>> getCustomPhrases() async =>
@@ -204,8 +258,9 @@ class AuthApi {
 }
 
 class AuthApiException implements Exception {
-  const AuthApiException(this.message);
+  const AuthApiException(this.message, {this.statusCode});
   final String message;
+  final int? statusCode;
 
   @override
   String toString() => message;
