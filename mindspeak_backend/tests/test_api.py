@@ -162,6 +162,31 @@ def test_registration_requires_email_verification_and_protects_profile(tmp_path,
             json={"age": 0},
         )
         assert invalid_age.status_code == 422
+        # An explicit null name is a validation error, not a NOT NULL database crash.
+        null_name = client.put(
+            "/api/v1/me",
+            headers={"Authorization": f"Bearer {token}"},
+            json={"name": None},
+        )
+        assert null_name.status_code == 422
+        # Names are flexible: a single display name is accepted on edit.
+        single_name = client.put(
+            "/api/v1/me",
+            headers={"Authorization": f"Bearer {token}"},
+            json={"name": "Sara"},
+        )
+        assert single_name.status_code == 200
+        assert single_name.json()["name"] == "Sara"
+        # Clearing optional fields with null still works.
+        cleared = client.put(
+            "/api/v1/me",
+            headers={"Authorization": f"Bearer {token}"},
+            json={"age": None, "medical_information": None},
+        )
+        assert cleared.status_code == 200
+        assert cleared.json()["age"] is None
+        assert cleared.json()["medical_information"] is None
+        assert cleared.json()["name"] == "Sara"
         assert client.get("/api/v1/me", headers={"Authorization": "Bearer invalid"}).status_code == 401
 
 

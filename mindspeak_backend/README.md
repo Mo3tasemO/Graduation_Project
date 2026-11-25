@@ -56,18 +56,18 @@ For Gmail, enable 2-Step Verification on a dedicated test account, then create a
 .\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8001
 ```
 
-Open `http://127.0.0.1:8001/docs` for interactive Swagger documentation. The first run creates `mindspeak.db` and its tables in this folder. The backend only permits browser requests from localhost during development.
+Open `http://127.0.0.1:8001/docs` for interactive Swagger documentation. The first run creates `mindspeak.db` and its tables in this folder. A relative SQLite `DATABASE_URL` (such as the default `sqlite:///./mindspeak.db`) is always resolved inside `mindspeak_backend`, whichever folder the server is started from, so a second empty database is not created by accident. If `.env` is missing or `JWT_SECRET_KEY` is not set, startup stops with a short message explaining the fix. The backend only permits browser requests from localhost during development.
 
 ## Authentication rules
 
-- Registration requires exactly four whitespace-separated name words. It sends a verification code and creates a pending row only; there is no user account and login is rejected until the code is verified.
+- Registration requires a first name and a last name (Arabic or English; an older app build may send one `name` field with at least two words). Profile edits accept any non-empty display name. Registration sends a verification code and creates a pending row only; there is no user account and login is rejected until the code is verified.
 - Registration pending data contains an Argon2 password hash and keyed verification-code hash, never plaintext secrets. The code expires after five minutes, allows five attempts, and can be requested after a 60-second cooldown (maximum three requests per hour). A pending registration expires after 24 hours; expired rows are removed during registration, resend, or verification requests.
 - Successful email verification atomically creates the user, records the verified timestamp, removes the pending registration, and returns a JWT.
 - Email addresses are validated, normalized to lowercase, and unique.
 - Passwords need 8–128 characters, an uppercase and lowercase letter, a number, and a symbol.
 - Passwords are stored using Argon2 hashes.
 - Login returns a 30-minute JWT bearer token. User responses never include password hashes.
-- The Flutter client keeps the token in memory for the current app session; restarting the app requires logging in again.
+- The Flutter client stores the token in `flutter_secure_storage` and validates it with `GET /api/v1/me` when the app opens, so users stay signed in across restarts until the 30-minute token expires. If biometric unlock is enabled in Settings, the device check runs before the saved session is restored. There is no refresh token yet, so an expired token requires signing in again.
 - Reset codes expire after five minutes, can be requested once per 60 seconds (maximum three requests per hour), and allow five verification attempts.
 - A verified reset token expires after ten minutes and can only be used once. Reset codes and reset tokens are stored as keyed hashes, not plaintext.
 
@@ -120,11 +120,11 @@ flutter pub get
 flutter run -d chrome --dart-define=MINDSPEAK_API_URL=http://127.0.0.1:8001/api/v1
 ```
 
-For an Android emulator, use `http://10.0.2.2:8000/api/v1` as the define value. For a physical device, use the development computer's LAN IP and ensure the backend is bound to an interface reachable on that network. Use HTTPS for non-local deployments. Start the API separately from the Flutter app.
+For an Android emulator, use `http://10.0.2.2:8001/api/v1` as the define value. For a physical device, use the development computer's LAN IP and ensure the backend is bound to an interface reachable on that network. Use HTTPS for non-local deployments. Start the API separately from the Flutter app.
 
 ## Admin dashboard
 
-The separate `mindspeak_admin` site is served by FastAPI at `http://127.0.0.1:8001/admin/` and queries the same configured SQLite database. It does not use mock data. Start FastAPI on port 8001, then open that URL in Chrome.
+The separate `mindspeak_admin` site is served by FastAPI at `http://127.0.0.1:8001/admin/` and queries the same configured SQLite database. It does not use mock data. Start FastAPI on port 8001, then open that URL in Chrome, or double-click `Open_MindSpeak_Dashboard.bat` in the repository root, which uses the backend's `.venv`, starts FastAPI on port 8001 if it is not already running, waits for `/health`, and opens the dashboard.
 
 Provision the first administrator locally from this backend directory:
 

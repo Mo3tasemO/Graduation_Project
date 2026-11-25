@@ -137,8 +137,10 @@ class ProfileUpdateRequest(BaseModel):
     @field_validator("name")
     @classmethod
     def clean_name(cls, value: str | None) -> str | None:
+        # Only runs when the client sends "name". Omit the field to keep the current
+        # name; an explicit null would violate the NOT NULL column and return a 500.
         if value is None:
-            return None
+            raise ValueError("Name cannot be removed. Omit the field to keep the current name.")
         cleaned = " ".join(value.split())
         if not cleaned:
             raise ValueError("Name must not be empty.")

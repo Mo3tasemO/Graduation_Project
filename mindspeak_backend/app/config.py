@@ -1,8 +1,11 @@
 from functools import lru_cache
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
-from pydantic import Field, SecretStr, model_validator
+from pydantic import Field, SecretStr, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+BACKEND_DIRECTORY = Path(__file__).resolve().parent.parent
+SQLITE_PREFIX = "sqlite:///"
 
 
 class Settings(BaseSettings):
@@ -26,6 +29,24 @@ class Settings(BaseSettings):
         env_ignore_empty=True,
         extra="ignore",
     )
+
+    @field_validator("database_url")
+    @classmethod
+    def anchor_relative_sqlite_path(cls, value: str) -> str:
+        """Keep a relative SQLite file inside mindspeak_backend, whatever folder starts the server.
+
+        Without this, sqlite:///./mindspeak.db resolves against the shell's working folder,
+        so starting from the repository root silently creates a second, empty database.
+        """
+        if not value.startswith(SQLITE_PREFIX):
+            return value
+        path_part, separator, query = value[len(SQLITE_PREFIX):].partition("?")
+        if not path_part or path_part == ":memory:":
+            return value
+        if Path(path_part).is_absolute() or PureWindowsPath(path_part).is_absolute():
+            return value
+        anchored = (BACKEND_DIRECTORY / path_part).resolve().as_posix()
+        return f"{SQLITE_PREFIX}{anchored}{separator}{query}"
 
     @model_validator(mode="after")
     def check_jwt_algorithm(self) -> "Settings":

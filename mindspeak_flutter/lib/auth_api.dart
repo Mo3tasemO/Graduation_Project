@@ -12,7 +12,7 @@ class AuthApi {
 
   static const String _baseUrl = String.fromEnvironment(
     'MINDSPEAK_API_URL',
-    defaultValue: 'http://127.0.0.1:8000/api/v1',
+    defaultValue: 'http://127.0.0.1:8001/api/v1',
   );
   static String? _accessToken;
   static const _storage = FlutterSecureStorage();

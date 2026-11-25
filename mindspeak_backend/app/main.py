@@ -5,6 +5,7 @@ from typing import Annotated
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from pydantic import ValidationError
 from sqlalchemy import text
 
 from . import models  # noqa: F401 - make sure the User table is registered with SQLAlchemy
@@ -84,4 +85,22 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     return app
 
 
-app = create_app()
+def _startup_configuration_message(error: ValidationError) -> str:
+    problems = []
+    for item in error.errors():
+        field = ".".join(str(part) for part in item.get("loc", ())) or "settings"
+        problems.append(f"  - {field.upper()}: {item.get('msg', 'invalid value')}")
+    return (
+        "\nMindSpeak backend could not start because its configuration is incomplete.\n"
+        + "\n".join(problems)
+        + "\n\nFix: in mindspeak_backend, copy .env.example to .env and set JWT_SECRET_KEY to the output of\n"
+        '  python -c "import secrets; print(secrets.token_urlsafe(48))"\n'
+        "Then start the server from mindspeak_backend:\n"
+        "  .\\.venv\\Scripts\\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8001\n"
+    )
+
+
+try:
+    app = create_app()
+except ValidationError as configuration_error:
+    raise SystemExit(_startup_configuration_message(configuration_error)) from None
