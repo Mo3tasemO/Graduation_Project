@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../animated_waves.dart';
 import '../app_preferences.dart';
 import '../auth_api.dart';
 import '../biometric_service.dart';
@@ -266,13 +267,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     title: Text(
                       _t(context, 'Unique User ID', 'معرّف المستخدم'),
                     ),
-                    subtitle: SelectableText('${profile['id']}'),
+                    subtitle: SelectableText('${profile['user_code'] ?? profile['id']}'),
                     trailing: IconButton(
                       tooltip: _t(context, 'Copy ID', 'نسخ المعرّف'),
                       icon: const Icon(Icons.copy_rounded),
                       onPressed: () async {
                         await Clipboard.setData(
-                          ClipboardData(text: '${profile['id']}'),
+                          ClipboardData(text: '${profile['user_code'] ?? profile['id']}'),
                         );
                         if (mounted) _message('User ID copied.');
                       },
@@ -499,6 +500,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
+  Future<void> _setStaySignedIn(bool enabled) async {
+    await AuthApi.setRememberSession(enabled);
+    if (mounted) setState(() {});
+  }
+
   Future<void> _setBiometrics(bool enabled) async {
     final prefs = MindSpeakPreferences.instance;
     if (!enabled) {
@@ -510,7 +516,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       return;
     }
     if (!await AuthApi.hasSavedToken()) {
-      _message('Sign in again before enabling biometric unlock.');
+      _message('Turn on "Stay signed in on this device" first.');
       return;
     }
     if (!await BiometricService.authenticate()) {
@@ -593,23 +599,47 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             const SizedBox(height: 18),
             _SectionTitle(
-              _t(context, 'Biometric unlock', 'فتح بالبصمة أو الوجه'),
+              _t(context, 'Sign-in & biometrics', 'تسجيل الدخول والبصمة'),
             ),
             Card(
               color: palette.surface,
-              child: SwitchListTile.adaptive(
-                value: prefs.biometricsEnabled,
-                title: Text(
-                  _t(context, 'Use biometrics', 'استخدام المصادقة الحيوية'),
-                ),
-                subtitle: Text(
-                  _t(
-                    context,
-                    'Your normal MindSpeak session is still validated with its server token.',
-                    'يظل التطبيق يتحقق من جلستك باستخدام رمز الدخول الآمن.',
+              child: Column(
+                children: [
+                  SwitchListTile.adaptive(
+                    key: const Key('settings_stay_signed_in'),
+                    value: AuthApi.isSessionRemembered,
+                    title: Text(
+                      _t(
+                        context,
+                        'Stay signed in on this device',
+                        'افضل مسجّل دخول على الجهاز ده',
+                      ),
+                    ),
+                    subtitle: Text(
+                      _t(
+                        context,
+                        'Open MindSpeak without typing your password. The password itself is never saved.',
+                        'افتح MindSpeak من غير ما تكتب الباسورد. الباسورد نفسه مش بيتحفظ.',
+                      ),
+                    ),
+                    onChanged: _setStaySignedIn,
                   ),
-                ),
-                onChanged: _setBiometrics,
+                  const Divider(height: 1),
+                  SwitchListTile.adaptive(
+                    value: prefs.biometricsEnabled,
+                    title: Text(
+                      _t(context, 'Use biometrics', 'استخدام المصادقة الحيوية'),
+                    ),
+                    subtitle: Text(
+                      _t(
+                        context,
+                        'Ask for your fingerprint or face before opening your saved sign-in.',
+                        'اطلب البصمة أو الوش قبل فتح حسابك المحفوظ.',
+                      ),
+                    ),
+                    onChanged: _setBiometrics,
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 18),
@@ -872,13 +902,15 @@ class _ProfilePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: palette.background,
       appBar: AppBar(title: Text(title), actions: actions),
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 760),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
-              child: SingleChildScrollView(child: child),
+      body: WavesBackground(
+        child: SafeArea(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 760),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
+                child: SingleChildScrollView(child: child),
+              ),
             ),
           ),
         ),

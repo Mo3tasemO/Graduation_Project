@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../design_tokens.dart';
 import '../bluetooth/headset_bluetooth.dart';
+import '../animated_waves.dart';
 import '../app_preferences.dart';
 import 'home_repository.dart';
 import 'speech_controller.dart';
@@ -95,7 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: MindSpeakPalette.of(context).background,
-    body: SafeArea(
+    body: WavesBackground(
+      child: SafeArea(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(22, 18, 22, 18),
         child: Center(
@@ -195,6 +197,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    ),
     ),
   );
 
@@ -327,7 +330,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _welcomeCard(BuildContext context) {
     final palette = MindSpeakPalette.of(context);
     final name = _profile?['name']?.toString().trim();
-    final id = _profile?['id'];
+    // The 7-digit User ID; older servers only send the internal id.
+    final id = _profile?['user_code'] ?? _profile?['id'];
     return Card(
       color: palette.surface,
       child: Padding(
@@ -881,13 +885,15 @@ class _Page extends StatelessWidget {
         ),
         actions: actions,
       ),
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 760),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(22, 6, 22, 18),
-              child: SingleChildScrollView(child: child),
+      body: WavesBackground(
+        child: SafeArea(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 760),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(22, 6, 22, 18),
+                child: SingleChildScrollView(child: child),
+              ),
             ),
           ),
         ),

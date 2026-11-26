@@ -17,24 +17,63 @@ class AuthApi {
   static String? _accessToken;
   static const _storage = FlutterSecureStorage();
   static const _tokenKey = 'mindspeak_access_token';
+  static const _refreshKey = 'mindspeak_refresh_token';
+  static Future<bool>? _refreshInFlight;
+
+  /// Tokens always live in memory while the app is open. They are written to
+  /// secure storage only when the user agreed to stay signed in on this device.
+  /// The password itself is never stored.
+  static String? _refreshToken;
+  static bool _remember = false;
 
   static String? get accessToken => _accessToken;
+
+  /// Whether this device keeps the sign-in after the app is closed.
+  static bool get isSessionRemembered => _remember;
+
+  /// Called after the user answers "Stay signed in on this device?".
+  /// Yes saves the current sign-in to secure storage; no removes any saved copy
+  /// (the user stays signed in until the app is closed).
+  static Future<void> setRememberSession(bool remember) async {
+    _remember = remember;
+    if (remember && _accessToken != null) {
+      await _storage.write(key: _tokenKey, value: _accessToken);
+      if (_refreshToken != null) {
+        await _storage.write(key: _refreshKey, value: _refreshToken);
+      }
+      await MindSpeakPreferences.instance.setSessionStored(true);
+    } else {
+      await _storage.delete(key: _tokenKey);
+      await _storage.delete(key: _refreshKey);
+      await MindSpeakPreferences.instance.setSessionStored(false);
+      // Biometric unlock only protects a saved sign-in, so it goes with it.
+      await MindSpeakPreferences.instance.setBiometrics(false);
+    }
+  }
 
   static Future<bool> hasSavedToken() async =>
       MindSpeakPreferences.instance.sessionStored;
 
-  /// Restores the saved token only after optional device biometrics have passed,
+  /// Restores the saved sign-in only after optional device biometrics have passed,
   /// then validates it against the server before treating the user as signed in.
+  /// An expired access token is renewed with the saved refresh token, so the user
+  /// is not asked for the password again until the refresh token itself expires.
   static Future<bool> restoreSession() async {
     final saved = await _storage.read(key: _tokenKey);
-    if (saved == null || saved.isEmpty) return false;
-    _accessToken = saved;
+    final refresh = await _storage.read(key: _refreshKey);
+    if ((saved == null || saved.isEmpty) && (refresh == null || refresh.isEmpty)) {
+      return false;
+    }
+    _accessToken = (saved == null || saved.isEmpty) ? null : saved;
+    _refreshToken = (refresh == null || refresh.isEmpty) ? null : refresh;
+    _remember = true;
+    if (_accessToken == null && !await _refreshAccessToken()) return false;
     try {
       await getProfile();
       return true;
     } on AuthApiException catch (error) {
       if (error.statusCode == 401 || error.statusCode == 403) {
-        await logout();
+        await _clearSession();
         return false;
       }
       // A server or permission error does not prove that the session is invalid.
@@ -45,21 +84,71 @@ class AuthApi {
     }
   }
 
+  /// Ends this device's sign-in on the server (best effort) and clears saved tokens.
   static Future<void> logout() async {
+    final refresh = _refreshToken ?? await _storage.read(key: _refreshKey);
+    if (refresh != null && refresh.isNotEmpty) {
+      try {
+        await _send('POST', '/auth/logout', body: {'refresh_token': refresh})
+            .timeout(const Duration(seconds: 5));
+      } catch (_) {
+        // Logging out locally must still work when the server is unreachable.
+      }
+    }
+    await _clearSession();
+  }
+
+  static Future<void> _clearSession() async {
     _accessToken = null;
+    _refreshToken = null;
+    _remember = false;
     await _storage.delete(key: _tokenKey);
+    await _storage.delete(key: _refreshKey);
     await MindSpeakPreferences.instance.setSessionStored(false);
   }
 
-  static Future<void> _saveToken(String? token) async {
-    _accessToken = token;
-    if (token == null || token.isEmpty) {
-      await _storage.delete(key: _tokenKey);
-      await MindSpeakPreferences.instance.setSessionStored(false);
-    } else {
-      await _storage.write(key: _tokenKey, value: token);
-      await MindSpeakPreferences.instance.setSessionStored(true);
+  static Future<void> _saveTokens(Map<String, dynamic> result) async {
+    final access = result['access_token'] as String?;
+    if (access == null || access.isEmpty) {
+      await _clearSession();
+      return;
     }
+    _accessToken = access;
+    final refresh = result['refresh_token'] as String?;
+    if (refresh != null && refresh.isNotEmpty) _refreshToken = refresh;
+    if (!_remember) return;
+    await _storage.write(key: _tokenKey, value: access);
+    if (_refreshToken != null) {
+      await _storage.write(key: _refreshKey, value: _refreshToken);
+    }
+    await MindSpeakPreferences.instance.setSessionStored(true);
+  }
+
+  /// Trades the saved refresh token for a new pair. Concurrent callers share one
+  /// request, because each refresh token can be used only once.
+  static Future<bool> _refreshAccessToken() {
+    return _refreshInFlight ??= () async {
+      try {
+        final refresh = _refreshToken ?? await _storage.read(key: _refreshKey);
+        if (refresh == null || refresh.isEmpty) return false;
+        final response = await _send(
+          'POST',
+          '/auth/refresh',
+          body: {'refresh_token': refresh},
+        );
+        final decoded = _decode(response);
+        if (response.statusCode == 200 && decoded is Map<String, dynamic>) {
+          await _saveTokens(decoded);
+          return true;
+        }
+        if (response.statusCode == 401) await _clearSession();
+        return false;
+      } catch (_) {
+        return false;
+      } finally {
+        _refreshInFlight = null;
+      }
+    }();
   }
 
   static Future<Map<String, dynamic>> _post(
@@ -67,7 +156,7 @@ class AuthApi {
     Map<String, Object?> body,
   ) async => (await _request('POST', path, body: body)) as Map<String, dynamic>;
 
-  static Future<dynamic> _request(
+  static Future<http.Response> _send(
     String method,
     String path, {
     Map<String, Object?>? body,
@@ -81,21 +170,47 @@ class AuthApi {
       ..headers.addAll(headers);
     if (body != null) request.body = jsonEncode(body);
     final client = http.Client();
-    late final http.Response streamed;
     try {
-      streamed = await http.Response.fromStream(
+      return await http.Response.fromStream(
         await client.send(request).timeout(const Duration(seconds: 15)),
       );
     } finally {
       client.close();
     }
-    final decoded = streamed.body.isEmpty
-        ? <String, dynamic>{}
-        : jsonDecode(streamed.body);
-    if (streamed.statusCode < 200 || streamed.statusCode >= 300) {
+  }
+
+  static dynamic _decode(http.Response response) =>
+      response.body.isEmpty ? <String, dynamic>{} : jsonDecode(response.body);
+
+  static Future<dynamic> _request(
+    String method,
+    String path, {
+    Map<String, Object?>? body,
+    bool authenticated = false,
+  }) async {
+    var response = await _send(
+      method,
+      path,
+      body: body,
+      authenticated: authenticated,
+    );
+    // The access token lasts minutes; renew it once and retry instead of
+    // sending the user back to the login screen.
+    if (authenticated &&
+        response.statusCode == 401 &&
+        await _refreshAccessToken()) {
+      response = await _send(
+        method,
+        path,
+        body: body,
+        authenticated: authenticated,
+      );
+    }
+    final decoded = _decode(response);
+    if (response.statusCode < 200 || response.statusCode >= 300) {
       throw AuthApiException(
         _messageFrom(decoded),
-        statusCode: streamed.statusCode,
+        statusCode: response.statusCode,
       );
     }
     return decoded;
@@ -124,7 +239,7 @@ class AuthApi {
     required String email,
     required String password,
   }) async {
-    await _saveToken(null);
+    await _clearSession();
     await _post('/auth/register', {
       'first_name': firstName,
       'last_name': lastName,
@@ -145,7 +260,9 @@ class AuthApi {
       'email': email,
       'code': code,
     });
-    await _saveToken(result['access_token'] as String?);
+    // A new sign-in starts unsaved; the app then asks whether to keep it.
+    await _clearSession();
+    await _saveTokens(result);
   }
 
   static Future<void> login({
@@ -156,7 +273,9 @@ class AuthApi {
       'email': email,
       'password': password,
     });
-    await _saveToken(result['access_token'] as String?);
+    // A new sign-in starts unsaved; the app then asks whether to keep it.
+    await _clearSession();
+    await _saveTokens(result);
   }
 
   static Future<void> requestPasswordReset(String email) async {
@@ -184,7 +303,7 @@ class AuthApi {
       'reset_token': resetToken,
       'new_password': newPassword,
     });
-    await _saveToken(null);
+    await _clearSession();
   }
 
   static Future<Map<String, dynamic>> getProfile() async =>

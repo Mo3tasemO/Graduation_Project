@@ -117,6 +117,8 @@ class MessageResponse(BaseModel):
 
 class UserResponse(BaseModel):
     id: int
+    # The 7-digit User ID shown in the app. `id` is internal.
+    user_code: int | None = None
     name: str
     email: EmailStr
     created_at: datetime
@@ -183,6 +185,7 @@ class RegisterResponse(BaseModel):
     user: UserResponse
     access_token: str
     token_type: str = "bearer"
+    refresh_token: str | None = None
 
 
 class PendingRegisterResponse(BaseModel):
@@ -198,3 +201,14 @@ class LoginResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
     user: UserResponse
+    refresh_token: str | None = None
+
+
+class RefreshRequest(BaseModel):
+    refresh_token: str = Field(min_length=20, max_length=200)
+
+
+class RefreshResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    refresh_token: str

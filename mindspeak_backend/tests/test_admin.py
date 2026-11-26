@@ -104,6 +104,7 @@ def test_admin_auth_stats_search_pagination_and_sort(tmp_path):
         assert [user["name"] for user in page_one["users"]] == ["Alice Jones", "Ann Smith"]
         assert set(page_one["users"][0]) == {
             "id",
+            "user_code",
             "name",
             "email",
             "email_verified",

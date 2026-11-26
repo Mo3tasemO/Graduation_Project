@@ -34,6 +34,7 @@ class DashboardStatsResponse(BaseModel):
 
 class AdminUserItem(BaseModel):
     id: int
+    user_code: int | None = None
     name: str
     email: EmailStr
     email_verified: bool

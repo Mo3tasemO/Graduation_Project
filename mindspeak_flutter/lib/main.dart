@@ -11,6 +11,9 @@ import 'biometric_service.dart';
 import 'bluetooth/headset_bluetooth.dart';
 import 'design_tokens.dart';
 import 'home/home_screen.dart';
+import 'animated_waves.dart';
+import 'remember_session_prompt.dart';
+import 'splash_screen.dart';
 
 final RouteObserver<PageRoute<dynamic>> _mindSpeakRouteObserver =
     RouteObserver<PageRoute<dynamic>>();
@@ -59,6 +62,7 @@ class MindSpeakApp extends StatefulWidget {
 
 class _MindSpeakAppState extends State<MindSpeakApp> {
   bool _ready = false;
+  bool _splashDone = false;
   bool _signedIn = false;
   bool _biometricUnlockAvailable = false;
 
@@ -131,15 +135,33 @@ class _MindSpeakAppState extends State<MindSpeakApp> {
         theme: _buildTheme(Brightness.light),
         darkTheme: _buildTheme(Brightness.dark),
         themeMode: preferences.themeMode,
-        home: !_ready
-            ? const Scaffold(body: Center(child: CircularProgressIndicator()))
-            : _signedIn
-            ? const ConnectHeadsetScreen(needsCalibration: false)
-            : WelcomeScreen(
-                onBiometricUnlock: _biometricUnlockAvailable
-                    ? _unlockWithBiometrics
-                    : null,
-              ),
+        // The splash shows first while the saved session is checked in the
+        // background, then fades into Welcome (or straight into the app).
+        home: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 450),
+          switchInCurve: Curves.easeOut,
+          switchOutCurve: Curves.easeIn,
+          child: !_splashDone || !_ready
+              ? MindSpeakSplashScreen(
+                  key: const ValueKey('splash'),
+                  onFinished: () {
+                    if (mounted) setState(() => _splashDone = true);
+                  },
+                )
+              : _signedIn
+              ? const KeyedSubtree(
+                  key: ValueKey('signed_in'),
+                  child: ConnectHeadsetScreen(needsCalibration: false),
+                )
+              : KeyedSubtree(
+                  key: const ValueKey('welcome'),
+                  child: WelcomeScreen(
+                    onBiometricUnlock: _biometricUnlockAvailable
+                        ? _unlockWithBiometrics
+                        : null,
+                  ),
+                ),
+        ),
       ),
     );
   }
@@ -211,10 +233,12 @@ class AppPage extends StatelessWidget {
     final palette = MindSpeakPalette.of(context);
     return Scaffold(
       backgroundColor: palette.background,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(22, 18, 22, 18),
-          child: child,
+      body: WavesBackground(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(22, 18, 22, 18),
+            child: child,
+          ),
         ),
       ),
     );
@@ -373,9 +397,13 @@ class _BrandLockupState extends State<BrandLockup>
           ),
           child: AnimatedBuilder(
             animation: _activity,
+            // Gentle left-right sway of the logo and the name together.
             builder: (context, child) => Transform.translate(
-              offset: Offset(0, math.sin(_activity.value * 2 * math.pi) * 1.25),
-              child: child,
+              offset: Offset(math.sin(_activity.value * 2 * math.pi) * 10, 0),
+              child: Transform.rotate(
+                angle: math.sin(_activity.value * 2 * math.pi) * .012,
+                child: child,
+              ),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -658,22 +686,6 @@ class WelcomeScreen extends StatelessWidget {
                 child: CustomPaint(painter: _WelcomeNeuralBackgroundPainter()),
               ),
             ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0,
-              height: 118,
-              child: IgnorePointer(
-                child: CustomPaint(
-                  key: const Key('welcome_bottom_waves'),
-                  painter: _WelcomeWavePainter(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? const Color(0xFF6CAFE0).withValues(alpha: .08)
-                        : const Color(0xFF8BC9F2).withValues(alpha: .16),
-                  ),
-                ),
-              ),
-            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -845,54 +857,6 @@ class _WelcomeNeuralBackgroundPainter extends CustomPainter {
       false;
 }
 
-class _WelcomeWavePainter extends CustomPainter {
-  const _WelcomeWavePainter({required this.color});
-
-  final Color color;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    if (size.isEmpty) return;
-    final fill = Paint()..color = color;
-    final backWave = Path()
-      ..moveTo(0, size.height * .47)
-      ..cubicTo(
-        size.width * .28,
-        size.height * .12,
-        size.width * .65,
-        size.height * .88,
-        size.width,
-        size.height * .34,
-      )
-      ..lineTo(size.width, size.height)
-      ..lineTo(0, size.height)
-      ..close();
-    canvas.drawPath(backWave, fill);
-
-    final frontWave = Path()
-      ..moveTo(0, size.height * .68)
-      ..cubicTo(
-        size.width * .32,
-        size.height * .34,
-        size.width * .68,
-        size.height * .92,
-        size.width,
-        size.height * .55,
-      )
-      ..lineTo(size.width, size.height)
-      ..lineTo(0, size.height)
-      ..close();
-    canvas.drawPath(
-      frontWave,
-      Paint()..color = color.withValues(alpha: color.a * 1.35),
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant _WelcomeWavePainter oldDelegate) =>
-      oldDelegate.color != color;
-}
-
 class AccessScreen extends StatefulWidget {
   const AccessScreen({required this.isLogin, super.key});
   final bool isLogin;
@@ -962,6 +926,8 @@ class _AccessScreenState extends State<AccessScreen> {
           email: _email.text.trim(),
           password: _password.text,
         );
+        if (!mounted) return;
+        await askToRememberSession(context);
       } else {
         final email = _email.text.trim().toLowerCase();
         await AuthApi.register(
@@ -1307,6 +1273,8 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
     try {
       if (widget.purpose == VerificationPurpose.registration) {
         await AuthApi.verifyEmail(email: widget.email, code: _code.text.trim());
+        if (!mounted) return;
+        await askToRememberSession(context);
         if (!mounted) return;
         Navigator.of(context).pushReplacement(
           MaterialPageRoute<void>(

@@ -46,5 +46,36 @@ def initialize_database(engine: Engine) -> None:
         for name, sql_type in additions.items():
             if name not in existing_columns:
                 connection.exec_driver_sql(f"ALTER TABLE users ADD COLUMN {name} {sql_type}")
+    _assign_user_codes(engine, existing_columns)
+
+
+def _assign_user_codes(engine: Engine, existing_columns: set[str]) -> None:
+    """Give every account a unique 7-digit User ID without touching its internal id."""
+    from .models import random_user_code
+
+    with engine.begin() as connection:
+        if "user_code" not in existing_columns:
+            connection.exec_driver_sql("ALTER TABLE users ADD COLUMN user_code INTEGER")
+        connection.exec_driver_sql(
+            "CREATE UNIQUE INDEX IF NOT EXISTS ix_users_user_code ON users (user_code)"
+        )
+        taken = {
+            row[0]
+            for row in connection.exec_driver_sql(
+                "SELECT user_code FROM users WHERE user_code IS NOT NULL"
+            )
+        }
+        missing = [
+            row[0]
+            for row in connection.exec_driver_sql("SELECT id FROM users WHERE user_code IS NULL")
+        ]
+        for user_id in missing:
+            code = random_user_code()
+            while code in taken:
+                code = random_user_code()
+            taken.add(code)
+            connection.exec_driver_sql(
+                "UPDATE users SET user_code = ? WHERE id = ?", (code, user_id)
+            )
 
 

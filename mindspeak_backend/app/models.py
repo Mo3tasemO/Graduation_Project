@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+import secrets
 
 from sqlalchemy import Boolean, DateTime, Float, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
@@ -6,12 +7,26 @@ from sqlalchemy.orm import Mapped, mapped_column
 from .database import Base
 
 
+USER_CODE_MIN = 1_000_000
+USER_CODE_MAX = 9_999_999
+
+
+def random_user_code() -> int:
+    """A random 7-digit number (1000000-9999999) shown to users as their User ID."""
+    return USER_CODE_MIN + secrets.randbelow(USER_CODE_MAX - USER_CODE_MIN + 1)
+
+
 class User(Base):
     """A registered MindSpeak account. The password column stores only a hash."""
 
     __tablename__ = "users"
 
+    # Internal key used by every other table. Never shown to users.
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    # The User ID people see: 7 random digits, unique, and never changes.
+    user_code: Mapped[int] = mapped_column(
+        Integer, unique=True, index=True, nullable=False, default=random_user_code
+    )
     name: Mapped[str] = mapped_column(String(80), nullable=False)
     email: Mapped[str] = mapped_column(String(254), unique=True, index=True, nullable=False)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
@@ -130,3 +145,36 @@ class SpeechPreference(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False
     )
+
+
+class RefreshToken(Base):
+    """A long-lived sign-in that lets the app get new access tokens without the password.
+
+    Only a keyed hash of the token is stored. Each use rotates the token: the old row is
+    revoked and a new one is issued in the same family. Presenting an already-revoked
+    token means it was copied, so the whole family is revoked and the user must sign in.
+    """
+
+    __tablename__ = "refresh_tokens"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True, nullable=False
+    )
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True, index=True, nullable=False)
+    family_id: Mapped[str] = mapped_column(String(64), index=True, nullable=False)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False
+    )
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+def new_unique_user_code(session) -> int:
+    """Pick a 7-digit User ID that no other account has."""
+    from sqlalchemy import select
+
+    while True:
+        code = random_user_code()
+        if session.scalar(select(User.id).where(User.user_code == code)) is None:
+            return code

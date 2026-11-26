@@ -8,10 +8,21 @@ void main() {
     'Welcome and account creation expose the updated registration controls',
     (WidgetTester tester) async {
       await tester.pumpWidget(const MindSpeakApp());
+      await tester.pump();
+
+      // The animated splash comes first, with the project name and taglines.
+      expect(find.byKey(const Key('mindspeak_splash')), findsOneWidget);
+      expect(find.text('Bridging Thoughts to Words'), findsOneWidget);
+      expect(find.text('Think It... We Speak It'), findsOneWidget);
+
+      // After the intro it fades into the Welcome screen.
       await tester.pump(const Duration(seconds: 3));
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 1));
+      expect(find.byKey(const Key('mindspeak_splash')), findsNothing);
 
       expect(find.text('Get started'), findsOneWidget);
-      expect(find.byKey(const Key('welcome_bottom_waves')), findsOneWidget);
+      expect(find.byKey(const Key('background_waves')), findsOneWidget);
 
       await tester.pumpWidget(
         const MaterialApp(home: AccessScreen(isLogin: false)),

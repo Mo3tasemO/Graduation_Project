@@ -14,6 +14,8 @@ class Settings(BaseSettings):
     jwt_secret_key: SecretStr = Field(min_length=32)
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = Field(default=30, gt=0, le=1440)
+    # How long the app stays signed in without the password; each use renews it.
+    refresh_token_expire_days: int = Field(default=30, gt=0, le=365)
     database_url: str = "sqlite:///./mindspeak.db"
     smtp_host: str | None = None
     smtp_port: int = Field(default=587, gt=0, le=65535)

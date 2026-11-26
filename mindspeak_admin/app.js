@@ -117,7 +117,7 @@
       email.textContent = user.email;
       const id = document.createElement("td");
       id.className = "id-cell";
-      id.textContent = `#${user.id}`;
+      id.textContent = `#${user.user_code ?? user.id}`;
       const created = document.createElement("td");
       created.textContent = dateLabel(user.created_at);
       const statusCell = document.createElement("td");

@@ -67,7 +67,7 @@ Open `http://127.0.0.1:8001/docs` for interactive Swagger documentation. The fir
 - Passwords need 8–128 characters, an uppercase and lowercase letter, a number, and a symbol.
 - Passwords are stored using Argon2 hashes.
 - Login returns a 30-minute JWT bearer token. User responses never include password hashes.
-- The Flutter client stores the token in `flutter_secure_storage` and validates it with `GET /api/v1/me` when the app opens, so users stay signed in across restarts until the 30-minute token expires. If biometric unlock is enabled in Settings, the device check runs before the saved session is restored. There is no refresh token yet, so an expired token requires signing in again.
+- The Flutter client stores the token in `flutter_secure_storage` and validates it with `GET /api/v1/me` when the app opens, so users stay signed in across restarts. Login and email verification also return a `refresh_token` (valid `REFRESH_TOKEN_EXPIRE_DAYS`, default 30). When the 30-minute access token expires, the app calls `POST /api/v1/auth/refresh` automatically and retries, so the password is asked for again only after 30 days without use, after logout, or after a password reset. Refresh tokens are random, stored only as keyed hashes in `refresh_tokens`, and rotated on every use; reusing an old one revokes that sign-in everywhere. If biometric unlock is enabled in Settings, the device check runs before the saved session is restored.
 - Reset codes expire after five minutes, can be requested once per 60 seconds (maximum three requests per hour), and allow five verification attempts.
 - A verified reset token expires after ten minutes and can only be used once. Reset codes and reset tokens are stored as keyed hashes, not plaintext.
 
@@ -81,11 +81,13 @@ All auth paths below are prefixed by `/api/v1`.
 | `POST` | `/api/v1/auth/register` | Begin registration and send a code. Requires `name`, `email`, `password`. Returns `202`; does not create a user. |
 | `POST` | `/api/v1/auth/verify-email` | Verify `email` and six-digit `code`; creates the user and returns a bearer token. |
 | `POST` | `/api/v1/auth/resend-verification-code` | Resend a code for the pending `email`, subject to cooldown and request limits. |
-| `POST` | `/api/v1/auth/login` | Authenticate and return an access token. Requires `email`, `password`. |
+| `POST` | `/api/v1/auth/login` | Authenticate and return an access token and a refresh token. Requires `email`, `password`. |
+| `POST` | `/api/v1/auth/refresh` | Trade `refresh_token` for a new access token and a new refresh token (the old one stops working). `401` means log in again. |
+| `POST` | `/api/v1/auth/logout` | Revoke this device's `refresh_token`. Always returns `200`. |
 | `GET` | `/api/v1/me` | Get the current user's profile. Send `Authorization: Bearer <access_token>`. |
 | `POST` | `/api/v1/auth/forgot-password` | Request a reset email. Requires `email`; response never contains a code. |
 | `POST` | `/api/v1/auth/verify-reset-code` | Verify `email` and six-digit `code`; returns a short-lived `reset_token`. |
-| `POST` | `/api/v1/auth/reset-password` | Requires `email`, `reset_token`, and strong `new_password`. |
+| `POST` | `/api/v1/auth/reset-password` | Requires `email`, `reset_token`, and strong `new_password`. Signs out every device (revokes all refresh tokens). |
 | `GET` | `/api/v1/home/phrases` | List the signed-in user's custom phrases. |
 | `POST` | `/api/v1/home/phrases` | Save a 1–100 character custom phrase. |
 | `PUT` | `/api/v1/home/phrases/{phrase_id}` | Edit one of the signed-in user's phrases. |

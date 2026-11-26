@@ -7,3 +7,5 @@ __pycache__/
 *.db
 *.sqlite
 *.sqlite3
+*.db.backup-*
+*.db-journal

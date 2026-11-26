@@ -103,7 +103,13 @@ echo Starting Flutter in Chrome with API URL:
 echo   %API_URL%
 echo.
 pushd "%FRONTEND%"
-call "%FLUTTER%" run -d chrome --no-pub --dart-define=MINDSPEAK_API_URL=%API_URL%
+rem Release mode loads fast and reliably; debug mode loads hundreds of files and can hang.
+rem A fixed port and a persistent Chrome profile keep the saved sign-in between launches.
+rem (flutter run otherwise opens a new, empty Chrome profile on a random port every time.)
+set "WEB_PORT=5173"
+set "CHROME_PROFILE=%LOCALAPPDATA%\MindSpeak\chrome-profile"
+if not exist "%CHROME_PROFILE%" mkdir "%CHROME_PROFILE%"
+call "%FLUTTER%" run -d chrome --release --no-pub --web-port=%WEB_PORT% --web-browser-flag=--user-data-dir="%CHROME_PROFILE%" --dart-define=MINDSPEAK_API_URL=%API_URL%
 set "FLUTTER_EXIT_CODE=%ERRORLEVEL%"
 popd
 echo.

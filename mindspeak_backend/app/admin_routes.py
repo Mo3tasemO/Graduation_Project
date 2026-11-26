@@ -3,7 +3,7 @@ from typing import Annotated, Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from sqlalchemy import func, or_, select
+from sqlalchemy import String, cast, func, or_, select
 from sqlalchemy.orm import Session
 
 from .admin_schemas import (
@@ -140,10 +140,15 @@ def list_users(
     if search:
         escaped = search.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
         pattern = f"%{escaped}%"
-        search_filter = or_(
+        conditions = [
             User.name.ilike(pattern, escape="\\"),
             User.email.ilike(pattern, escape="\\"),
-        )
+        ]
+        # Typing a User ID (or part of one, with or without #) finds that account.
+        digits = search.lstrip("#")
+        if digits.isdigit():
+            conditions.append(cast(User.user_code, String).like(f"%{digits}%"))
+        search_filter = or_(*conditions)
         statement = statement.where(search_filter)
         count_statement = count_statement.where(search_filter)
 
@@ -161,6 +166,7 @@ def list_users(
         users=[
             AdminUserItem(
                 id=user.id,
+                user_code=user.user_code,
                 name=user.name,
                 email=user.email,
                 email_verified=user.email_verified_at is not None,

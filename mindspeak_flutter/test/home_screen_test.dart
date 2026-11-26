@@ -75,7 +75,9 @@ void main() {
       await tester.pumpWidget(_home(repo, _FakeSpeechEngine()));
       await tester.pumpAndSettle();
       expect(find.text('Welcome back, Test User'), findsOneWidget);
-      expect(find.text('User ID: 12'), findsOneWidget);
+      // The 7-digit User ID is shown, never the internal database id.
+      expect(find.text('User ID: 4823519'), findsOneWidget);
+      expect(find.text('User ID: 12'), findsNothing);
 
       await tester.tap(find.byKey(const Key('add_phrase_button')));
       await tester.pumpAndSettle();
@@ -266,6 +268,7 @@ class _FakeSpeechEngine implements SpeechEngine {
 class _FakeHomeRepository implements HomeRepository {
   final profile = <String, dynamic>{
     'id': 12,
+    'user_code': 4823519,
     'name': 'Test User',
     'email': 'test@example.com',
     'email_verified_at': '2026-01-01T00:00:00Z',

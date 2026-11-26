@@ -16,7 +16,7 @@ from .mailer import (
     send_email_verification_code,
     send_password_reset_code,
 )
-from .models import PasswordResetChallenge, PendingEmailVerification, User
+from .models import PasswordResetChallenge, PendingEmailVerification, User, new_unique_user_code
 from .schemas import (
     ForgotPasswordRequest,
     LoginRequest,
@@ -24,6 +24,8 @@ from .schemas import (
     MessageResponse,
     PendingRegisterResponse,
     ProfileUpdateRequest,
+    RefreshRequest,
+    RefreshResponse,
     RegisterRequest,
     RegisterResponse,
     ResetPasswordRequest,
@@ -38,6 +40,12 @@ from .security import (
     hash_reset_secret,
     read_access_token,
     verify_password,
+)
+from .sessions import (
+    issue_refresh_token,
+    revoke_all_for_user,
+    revoke_refresh_token,
+    rotate_refresh_token,
 )
 
 router = APIRouter(prefix="/api/v1", tags=["API v1"])
@@ -269,6 +277,7 @@ def verify_email(
         )
 
     user = User(
+        user_code=new_unique_user_code(session),
         name=pending.name,
         email=pending.email,
         password_hash=pending.password_hash,
@@ -285,9 +294,12 @@ def verify_email(
             detail={"code": "email_already_registered", "message": "An account with this email already exists."},
         ) from None
     session.refresh(user)
+    refresh_token = issue_refresh_token(session, user.id, settings)
+    session.commit()
     return RegisterResponse(
         user=UserResponse.model_validate(user),
         access_token=create_access_token(user.id, settings),
+        refresh_token=refresh_token,
     )
 
 
@@ -361,7 +373,45 @@ def login(
 
     settings: Settings = request.app.state.settings
     token = create_access_token(user.id, settings)
-    return LoginResponse(access_token=token, user=UserResponse.model_validate(user))
+    refresh_token = issue_refresh_token(session, user.id, settings)
+    session.commit()
+    return LoginResponse(
+        access_token=token,
+        refresh_token=refresh_token,
+        user=UserResponse.model_validate(user),
+    )
+
+
+@router.post(
+    "/auth/refresh",
+    response_model=RefreshResponse,
+    summary="Trade a refresh token for a new access token (keeps the app signed in)",
+)
+def refresh_session(
+    payload: RefreshRequest,
+    request: Request,
+    session: Annotated[Session, Depends(get_session)],
+) -> RefreshResponse:
+    settings: Settings = request.app.state.settings
+    user_id, new_refresh_token = rotate_refresh_token(session, payload.refresh_token, settings)
+    return RefreshResponse(
+        access_token=create_access_token(user_id, settings),
+        refresh_token=new_refresh_token,
+    )
+
+
+@router.post(
+    "/auth/logout",
+    response_model=MessageResponse,
+    summary="End this device's saved sign-in",
+)
+def logout(
+    payload: RefreshRequest,
+    request: Request,
+    session: Annotated[Session, Depends(get_session)],
+) -> MessageResponse:
+    revoke_refresh_token(session, payload.refresh_token, request.app.state.settings)
+    return MessageResponse(message="Logged out.")
 
 
 @router.get(
@@ -566,5 +616,7 @@ def reset_password(
     )
     for item in older:
         item.used_at = now
+    # A new password signs out every device that was still signed in with the old one.
+    revoke_all_for_user(session, user.id)
     session.commit()
     return MessageResponse(message="Password updated. You can now log in with your new password.")
