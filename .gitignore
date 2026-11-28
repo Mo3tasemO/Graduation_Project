@@ -1,0 +1,3 @@
+# Local helper scripts, logs, and phone builds made on this computer.
+# They are not part of the project and must not be pushed (the APK is 100+ MB).
+/_*

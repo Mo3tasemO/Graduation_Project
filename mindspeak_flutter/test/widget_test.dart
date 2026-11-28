@@ -1,30 +1,48 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter/material.dart';
 
 import 'package:mindspeak_flutter/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets(
+    'Welcome and account creation expose the updated registration controls',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(const MindSpeakApp());
+      await tester.pump();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+      // The animated splash comes first, with the project name and taglines.
+      expect(find.byKey(const Key('mindspeak_splash')), findsOneWidget);
+      expect(find.text('Bridging Thoughts to Words'), findsOneWidget);
+      expect(find.text('Think It... We Speak It'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+      // After the intro it fades into the Welcome screen.
+      await tester.pump(const Duration(seconds: 3));
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 1));
+      expect(find.byKey(const Key('mindspeak_splash')), findsNothing);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+      expect(find.text('Get started'), findsOneWidget);
+      expect(find.byKey(const Key('background_waves')), findsOneWidget);
+
+      await tester.pumpWidget(
+        const MaterialApp(home: AccessScreen(isLogin: false)),
+      );
+      await tester.pump();
+
+      expect(find.text('Create your account'), findsOneWidget);
+      expect(find.text('First name'), findsOneWidget);
+      expect(find.text('Last name'), findsOneWidget);
+
+      final passwordField = find.byType(EditableText).last;
+      expect(tester.widget<EditableText>(passwordField).obscureText, isTrue);
+
+      await tester.enterText(passwordField, 'StrongPass1!');
+      await tester.tap(find.byTooltip('Show password'));
+      await tester.pump();
+
+      final visibleField = tester.widget<EditableText>(passwordField);
+      expect(visibleField.obscureText, isFalse);
+      expect(visibleField.controller.text, 'StrongPass1!');
+    },
+  );
 }
