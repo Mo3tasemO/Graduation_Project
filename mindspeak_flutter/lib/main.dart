@@ -81,13 +81,10 @@ class _MindSpeakAppState extends State<MindSpeakApp> {
         const Duration(seconds: 2),
       );
       if (hasToken && preferences.biometricsEnabled) {
-        if (await BiometricService.authenticate()) {
-          signedIn = await AuthApi.restoreSession().timeout(
-            const Duration(seconds: 4),
-            onTimeout: () => true,
-          );
-        }
-        _biometricUnlockAvailable = !signedIn;
+        // Don't ask for the fingerprint yet: during startup Android cannot show
+        // the biometric prompt, so it fails silently. The prompt opens once the
+        // splash has finished and the Welcome screen is on screen.
+        _biometricUnlockAvailable = true;
       } else if (hasToken) {
         signedIn = await AuthApi.restoreSession().timeout(
           const Duration(seconds: 4),
@@ -102,7 +99,21 @@ class _MindSpeakAppState extends State<MindSpeakApp> {
         _signedIn = signedIn;
         _ready = true;
       });
+      if (_splashDone) _maybeAutoUnlock();
     }
+  }
+
+  var _autoUnlockStarted = false;
+
+  /// Opens the fingerprint / face prompt automatically, once, after the splash.
+  void _maybeAutoUnlock() {
+    if (_autoUnlockStarted || !_biometricUnlockAvailable || _signedIn) return;
+    _autoUnlockStarted = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future<void>.delayed(const Duration(milliseconds: 500), () {
+        if (mounted && !_signedIn) _unlockWithBiometrics();
+      });
+    });
   }
 
   Future<void> _unlockWithBiometrics() async {
@@ -117,7 +128,18 @@ class _MindSpeakAppState extends State<MindSpeakApp> {
       return;
     }
     final restored = await AuthApi.restoreSession();
-    if (mounted) setState(() => _signedIn = restored);
+    if (!mounted) return;
+    setState(() {
+      _signedIn = restored;
+      if (restored) _biometricUnlockAvailable = false;
+    });
+    if (!restored) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Your saved sign-in has ended. Please log in again.'),
+        ),
+      );
+    }
   }
 
   @override
@@ -145,7 +167,9 @@ class _MindSpeakAppState extends State<MindSpeakApp> {
               ? MindSpeakSplashScreen(
                   key: const ValueKey('splash'),
                   onFinished: () {
-                    if (mounted) setState(() => _splashDone = true);
+                    if (!mounted) return;
+                    setState(() => _splashDone = true);
+                    if (_ready) _maybeAutoUnlock();
                   },
                 )
               : _signedIn
@@ -719,6 +743,31 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 15),
+                // A saved, fingerprint-protected sign-in comes first: one tap
+                // (or the automatic prompt) opens the app without a password.
+                if (onBiometricUnlock != null) ...[
+                  SizedBox(
+                    width: double.infinity,
+                    height: 52,
+                    child: FilledButton.icon(
+                      key: const Key('welcome_biometric_unlock'),
+                      onPressed: onBiometricUnlock,
+                      icon: const Icon(Icons.fingerprint_rounded, size: 26),
+                      label: Text(
+                        _tr(
+                          context,
+                          'Unlock with fingerprint',
+                          'افتح بالبصمة',
+                        ),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                ],
                 _WelcomePressButton(onPressed: () => _open(context, false)),
                 const SizedBox(height: 8),
                 TextButton(
@@ -731,18 +780,6 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (onBiometricUnlock != null)
-                  TextButton.icon(
-                    onPressed: onBiometricUnlock,
-                    icon: const Icon(Icons.fingerprint_rounded),
-                    label: Text(
-                      _tr(
-                        context,
-                        'Unlock with biometrics',
-                        'فتح بالبصمة أو الوجه',
-                      ),
-                    ),
-                  ),
               ],
             ),
           ],
