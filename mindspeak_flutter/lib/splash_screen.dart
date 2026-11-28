@@ -38,10 +38,12 @@ class _MindSpeakSplashScreenState extends State<MindSpeakSplashScreen>
     _started = true;
     final reduceMotion = MediaQuery.disableAnimationsOf(context);
     if (reduceMotion) {
+      // Phones with animations turned off (often by battery saver) still see the
+      // full splash, just without motion, for about as long as the animated one.
       _intro.value = 1;
       _loop.value = .25;
       WidgetsBinding.instance.addPostFrameCallback(
-        (_) => Future<void>.delayed(const Duration(milliseconds: 900), _finish),
+        (_) => Future<void>.delayed(const Duration(milliseconds: 2400), _finish),
       );
       return;
     }
